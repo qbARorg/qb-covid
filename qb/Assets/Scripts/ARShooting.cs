@@ -11,7 +11,9 @@ public class ARShooting : MonoBehaviour
     private GameObject hands;
     private GameObject gel;
 
-    private float height = 10.0f;
+    public Transform shootPosition;
+    public float bulletSpeed = 100.0f;
+    private float height = 1.0f;
 
     private ARRaycastManager _arRaycastManager;
     private Vector2 touchPosition;
@@ -40,26 +42,30 @@ public class ARShooting : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(hands == null)
+        if (hands == null)
         {
             hands = Instantiate(handsPrefab, handsPrefab.transform.position, handsPrefab.transform.rotation);
         }
-        
-        if (!TryGetTouchPosition(out Vector2 touchPosition)) return;
+
+        //if (!TryGetTouchPosition(out Vector2 touchPosition)) return;
+
+        if ((Input.touchCount > 0 || Input.GetMouseButtonDown(0)))
+        {
+            //Shooting
+            gel = Instantiate(gelPrefab, gelPrefab.transform.position, gelPrefab.transform.rotation);
+
+            //Calculate height depending on screenPos
+
+            gel.transform.position = ParabolicTrajectory(shootPosition.position, hands.transform.position, height, 100.0f * Time.deltaTime);
+
+            //gel.transform.position = shootPosition.transform.position;
+            //gel.GetComponent<Rigidbody>().velocity = shootPosition.transform.forward * bulletSpeed;
+        }
 
         if (_arRaycastManager.Raycast(touchPosition, hits))
         {
             var hitPose = hits[0].pose;
             Vector3 touchWorldPosition = Camera.main.ScreenToWorldPoint(touchPosition);
-
-            //Calculate height depending on screenPos
-
-
-            //Shooting
-            gel = Instantiate(gelPrefab, gelPrefab.transform.position, gelPrefab.transform.rotation);
-            //gel.transform.position = Vector3.MoveTowards(gel.transform.position, touchWorldPosition, 10.0f * Time.deltaTime);
-            gel.transform.position = ParabolicTrajectory(Camera.main.transform.position, touchWorldPosition, height, 10.0f * Time.deltaTime);
-
 
         }
     }
