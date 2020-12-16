@@ -39,11 +39,11 @@ public class ARTapToPlaceObject : MonoBehaviour
     {
         if (!TryGetTouchPosition(out Vector2 touchPosition)) return;
 
-        if(_arRaycastManager.Raycast(touchPosition, hits, TrackableType.PlaneWithinPolygon))
+        if (_arRaycastManager.Raycast(touchPosition, hits, TrackableType.PlaneWithinPolygon))
         {
             var hitPose = hits[0].pose;
 
-            if(spawnedObject == null)
+            if (spawnedObject == null)
             {
                 //_arProbeMgr.AddEnvironmentProbe(hitPose, new Vector3(10f, 10f, 10f), new Vector3(10f, 10f, 10f));
                 spawnedObject = Instantiate(gameObjectToInstantiate, hitPose.position, hitPose.rotation);
