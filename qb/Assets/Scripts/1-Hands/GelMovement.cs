@@ -43,4 +43,5 @@ public class GelMovement : MonoBehaviour
 
         return new Vector3(middlePoint.x, Function(time) + Mathf.Lerp(startPoint.y, endPoint.y, time), middlePoint.z);
     }
+
 }
