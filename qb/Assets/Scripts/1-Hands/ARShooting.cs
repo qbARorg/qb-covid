@@ -6,17 +6,14 @@ using UnityEngine.XR.ARFoundation;
 [RequireComponent(typeof(ARRaycastManager))]
 public class ARShooting : MonoBehaviour
 {
-    public GameObject gelBottleHead;
-    private Vector3 targetBottlePos;
-    private Vector3 offsetBottlePos;
     public GameObject handsPrefab;
     public GameObject gelPrefab;
+
     private GameObject hands;
     private GameObject gel;
-
-    public Transform shootPosition;
-    public float bulletSpeed = 100.0f;
-    private float height = 1.0f;
+    private GameObject gelBottleHead;
+    private Vector3 offsetBottlePos;
+    private Transform shootPosition;
     private bool once = true;
 
     private ARRaycastManager _arRaycastManager;
@@ -29,6 +26,8 @@ public class ARShooting : MonoBehaviour
     {
         _arRaycastManager = GetComponent<ARRaycastManager>();
         offsetBottlePos = new Vector3(0f, 0.1f, 0f);
+        gelBottleHead = GameObject.FindWithTag("BottleHead");
+        shootPosition = gelBottleHead.transform.GetChild(0).transform;
     }
 
 
@@ -62,14 +61,12 @@ public class ARShooting : MonoBehaviour
                 once = false;
             }
             //Shooting
-            gel = Instantiate(gelPrefab, gelPrefab.transform.position, gelPrefab.transform.rotation);
+            if(gel == null)
+            {
+                gel = Instantiate(gelPrefab, gelPrefab.transform.position, gelPrefab.transform.rotation);
+                gel.GetComponent<GelMovement>().shootPosition = shootPosition;
+            }
 
-            //Calculate height depending on screenPos
-
-            gel.transform.position = ParabolicTrajectory(shootPosition.position, hands.transform.position, height, 100.0f * Time.deltaTime);
-
-            //gel.transform.position = shootPosition.transform.position;
-            //gel.GetComponent<Rigidbody>().velocity = shootPosition.transform.forward * bulletSpeed;
         }
         else
         {
@@ -84,13 +81,5 @@ public class ARShooting : MonoBehaviour
 
         }
     }
-
-    public static Vector3 ParabolicTrajectory(Vector3 startPoint, Vector3 endPoint, float height, float time)
-    {
-        Func<float, float> Function = x => -4 * height * x * x + 4 * height * x;
-
-        var middlePoint = Vector3.Lerp(startPoint, endPoint, time);
-
-        return new Vector3(middlePoint.x, Function(time) + Mathf.Lerp(startPoint.y, endPoint.y, time), middlePoint.z);
-    }
 }
+ 

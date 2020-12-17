@@ -252,11 +252,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58b55a1809b34474f891e9eedbe80942, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gelBottleHead: {fileID: 709947647593599748}
   handsPrefab: {fileID: 4766498102333236125, guid: 159319eb617b80048a77105856e571a4, type: 3}
   gelPrefab: {fileID: 8966673932087935716, guid: ff6fcbcc7b64c8746b589187d874dd9f, type: 3}
-  shootPosition: {fileID: 1886289454}
-  bulletSpeed: 2
 --- !u!114 &138714098
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -648,19 +645,9 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &1886289454 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4948682004721328204, guid: a34959665ff79dd42abb2dd236483fff, type: 3}
-  m_PrefabInstance: {fileID: 4948682003376905826}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &543450652619067836 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4839110571917201374, guid: a34959665ff79dd42abb2dd236483fff, type: 3}
-  m_PrefabInstance: {fileID: 4948682003376905826}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &709947647593599748 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5582068319140629862, guid: a34959665ff79dd42abb2dd236483fff, type: 3}
   m_PrefabInstance: {fileID: 4948682003376905826}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4948682003376905826
@@ -672,7 +659,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1600722933473615512, guid: a34959665ff79dd42abb2dd236483fff, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1600722933473615512, guid: a34959665ff79dd42abb2dd236483fff, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4839110571917201374, guid: a34959665ff79dd42abb2dd236483fff, type: 3}
       propertyPath: m_LocalPosition.x
@@ -721,6 +712,10 @@ PrefabInstance:
     - target: {fileID: 5218591980095149412, guid: a34959665ff79dd42abb2dd236483fff, type: 3}
       propertyPath: m_Name
       value: gelBottle
+      objectReference: {fileID: 0}
+    - target: {fileID: 5582068319140629862, guid: a34959665ff79dd42abb2dd236483fff, type: 3}
+      propertyPath: m_TagString
+      value: BottleHead
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a34959665ff79dd42abb2dd236483fff, type: 3}
