@@ -6,6 +6,9 @@ using UnityEngine.XR.ARFoundation;
 [RequireComponent(typeof(ARRaycastManager))]
 public class ARShooting : MonoBehaviour
 {
+    public GameObject gelBottleHead;
+    private Vector3 targetBottlePos;
+    private Vector3 offsetBottlePos;
     public GameObject handsPrefab;
     public GameObject gelPrefab;
     private GameObject hands;
@@ -14,10 +17,10 @@ public class ARShooting : MonoBehaviour
     public Transform shootPosition;
     public float bulletSpeed = 100.0f;
     private float height = 1.0f;
+    private bool once = true;
 
     private ARRaycastManager _arRaycastManager;
     private Vector2 touchPosition;
-    private AREnvironmentProbeManager _arProbeMgr;
 
     static List<ARRaycastHit> hits = new List<ARRaycastHit>();
 
@@ -25,8 +28,9 @@ public class ARShooting : MonoBehaviour
     void Awake()
     {
         _arRaycastManager = GetComponent<ARRaycastManager>();
-        _arProbeMgr = GetComponent<AREnvironmentProbeManager>();
+        offsetBottlePos = new Vector3(0f, 0.1f, 0f);
     }
+
 
     bool TryGetTouchPosition(out Vector2 touchPosition)
     {
@@ -49,8 +53,14 @@ public class ARShooting : MonoBehaviour
 
         //if (!TryGetTouchPosition(out Vector2 touchPosition)) return;
 
-        if ((Input.touchCount > 0 || Input.GetMouseButtonDown(0)))
+        if ((Input.touchCount > 0 || Input.GetMouseButton(0)))
         {
+            //Vector3.MoveTowards(gelBottleHead.transform.position, gelBottleHead.transform.position - new Vector3(0f, 0.1f, 0f), 0.01f * Time.deltaTime);
+            if (once)
+            {
+                gelBottleHead.transform.position -= offsetBottlePos;
+                once = false;
+            }
             //Shooting
             gel = Instantiate(gelPrefab, gelPrefab.transform.position, gelPrefab.transform.rotation);
 
@@ -60,6 +70,11 @@ public class ARShooting : MonoBehaviour
 
             //gel.transform.position = shootPosition.transform.position;
             //gel.GetComponent<Rigidbody>().velocity = shootPosition.transform.forward * bulletSpeed;
+        }
+        else
+        {
+            gelBottleHead.transform.position = gelBottleHead.transform.parent.transform.position;
+            once = true;
         }
 
         if (_arRaycastManager.Raycast(touchPosition, hits))
