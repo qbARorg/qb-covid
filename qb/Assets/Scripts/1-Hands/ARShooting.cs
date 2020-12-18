@@ -99,7 +99,7 @@ public class ARShooting : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) || Input.touchCount > 0)
         {
             isDragging = true;
             OnDragStart();
@@ -110,7 +110,7 @@ public class ARShooting : MonoBehaviour
             }
         }
 
-        if (Input.GetMouseButtonUp(0))
+        if (Input.GetMouseButtonUp(0) && Input.touchCount == 0)
         {
             gelBottleHead.transform.position = gelBottleHead.transform.parent.transform.position;
             once = true;
@@ -124,7 +124,7 @@ public class ARShooting : MonoBehaviour
 
         for (int i = 0; i < numPoints; i++)
         {
-            points[i].transform.position = PosInTime(i * 0.1f) + height * i;
+            points[i].transform.position = PosInTime(i * 0.1f);
         }
     }
 
