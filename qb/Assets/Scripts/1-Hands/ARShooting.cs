@@ -7,21 +7,26 @@ using UnityEngine.XR.ARFoundation;
 public class ARShooting : MonoBehaviour
 {
     #region Trash Att
-    public GameObject ARCam;
+    private GameObject ARCam;
 
-    public LineRenderer line;
-    public LayerMask layer;
-    public int lineSegment;
+    private LineRenderer line;
+    private LayerMask layer;
+    private int lineSegment;
     private float flightTime = 1.0f;
-    
+    private Vector3 height;
+
     private Vector2 touchPosition;
 
-    static List<ARRaycastHit> hits = new List<ARRaycastHit>();
+    private static List<ARRaycastHit> hits = new List<ARRaycastHit>();
+    private ARRaycastManager _arRaycastManager;
 
     #endregion
 
     public GameObject handsPrefab;
     public GameObject gelPrefab;
+    public GameObject ballParent;
+
+    [SerializeField] [Range(0.001f, 0.1f)] float distanceBtwDots;
 
     private GameObject hands;
     private GameObject gel;
@@ -33,7 +38,6 @@ public class ARShooting : MonoBehaviour
     private GameObject[] points;
     public int numPoints;
     public float force;
-    public Vector3 height;
 
     private Vector3 startPoint;
     private Vector3 endPoint;
@@ -42,7 +46,6 @@ public class ARShooting : MonoBehaviour
     private float distance;
     private bool isDragging;
 
-    private ARRaycastManager _arRaycastManager;
 
     // Start is called before the first frame update
     void Awake()
@@ -53,31 +56,18 @@ public class ARShooting : MonoBehaviour
 
         offsetBottlePos = new Vector3(0f, 0.1f, 0f);
 
-        line.positionCount = lineSegment + 1;
-        layer = default;
-
         points = new GameObject[numPoints];
         for(int i = 0; i<numPoints; i++)
         {
             points[i] = Instantiate(gelPrefab, transform.position, Quaternion.identity);
+            points[i].transform.SetParent(ballParent.transform);
         }
-    }
-
-
-    bool TryGetTouchPosition(out Vector2 touchPosition)
-    {
-        if (Input.touchCount > 0)
-        {
-            touchPosition = Input.GetTouch(0).position;
-            return true;
-        }
-        touchPosition = default;
-        return false;
     }
 
     void OnDragStart()
     {
         startPoint = Input.mousePosition;
+        if(Input.touchCount > 0) startPoint = Input.GetTouch(0).position;
     }
 
     void OnDrag()
@@ -99,7 +89,7 @@ public class ARShooting : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) || Input.touchCount > 0)
+        if (Input.GetMouseButton(0) || Input.touchCount > 0)
         {
             isDragging = true;
             OnDragStart();
@@ -110,22 +100,40 @@ public class ARShooting : MonoBehaviour
             }
         }
 
-        if (Input.GetMouseButtonUp(0) && Input.touchCount == 0)
+        if(Application.platform == RuntimePlatform.Android)
         {
-            gelBottleHead.transform.position = gelBottleHead.transform.parent.transform.position;
-            once = true;
-            isDragging = false;
+            if(Input.touchCount <= 0)
+            {
+                gelBottleHead.transform.position = gelBottleHead.transform.parent.transform.position;
+                once = true;
+                isDragging = false;
+            }
+        }
+        else
+        {
+            if (Input.GetMouseButtonUp(0))
+            {
+                gelBottleHead.transform.position = gelBottleHead.transform.parent.transform.position;
+                once = true;
+                isDragging = false;
+            }
         }
 
         if (isDragging)
         {
+            ballParent.SetActive(true);
             OnDrag();
+
+            for (int i = 0; i < numPoints; i++)
+            {
+                points[i].transform.position = PosInTime(i * distanceBtwDots);
+            }
+        }
+        else
+        {
+            ballParent.SetActive(false);
         }
 
-        for (int i = 0; i < numPoints; i++)
-        {
-            points[i].transform.position = PosInTime(i * 0.1f);
-        }
     }
 
     private Vector3 PosInTime(float t)
@@ -133,66 +141,78 @@ public class ARShooting : MonoBehaviour
         return shootPosition.position + (direction.normalized * force * t) + 0.5f * Physics.gravity * t * t;
     }
 
-    #region Trash
+    #region Trash Meth
     //Update()
     //{
-        //if(Input.touchCount > 0 || Input.GetMouseButtonDown(0))
-        //{
-        //    height = Vector3.Lerp(Input.mousePosition, handsPrefab.transform.position, 0.5f);
-        //}
-
-        //height is min (0f, 0.5f, 0f);
-
-        //if (hands == null)
-        //{
-        //    hands = Instantiate(handsPrefab, handsPrefab.transform.position, handsPrefab.transform.rotation);
-        //}
-
-        ////if (!TryGetTouchPosition(out Vector2 touchPosition)) return;
-
-        //if (Input.touchCount > 0 || Input.GetMouseButton(0))
-        //{
-
-        //    Ray camRay = Camera.main.ScreenPointToRay(Input.mousePosition);
-        //    RaycastHit hit;
-
-        //    if (Physics.Raycast(camRay, out hit, 100f, layer))
-        //    {
-
-        //        Vector3 initialVelocity = CalculateVelocty(hit.point, shootPosition.position, flightTime);
-
-        //        Visualize(initialVelocity, hit.point + Vector3.up * 0.1f); //we include the cursor position as the final nodes for the line visual position
-
-        //        transform.rotation = Quaternion.LookRotation(initialVelocity);
-        //    }
-
-        //    //Vector3.MoveTowards(gelBottleHead.transform.position, gelBottleHead.transform.position - new Vector3(0f, 0.1f, 0f), 0.01f * Time.deltaTime);
-        //    if (once)
-        //    {
-        //        gelBottleHead.transform.position -= offsetBottlePos;
-        //        once = false;
-        //    }
-        //    //Shooting
-        //    if(gel == null)
-        //    {
-        //        gel = Instantiate(gelPrefab, gelPrefab.transform.position, gelPrefab.transform.rotation);
-        //        gel.GetComponent<GelMovement>().shootPosition = shootPosition;
-        //    }
-
-        //}
-        //else
-        //{
-        //    gelBottleHead.transform.position = gelBottleHead.transform.parent.transform.position;
-        //    once = true;
-        //}
-
-        //if (_arRaycastManager.Raycast(touchPosition, hits))
-        //{
-        //    var hitPose = hits[0].pose;
-        //    Vector3 touchWorldPosition = Camera.main.ScreenToWorldPoint(touchPosition);
-
-        //}
+    //if(Input.touchCount > 0 || Input.GetMouseButtonDown(0))
+    //{
+    //    height = Vector3.Lerp(Input.mousePosition, handsPrefab.transform.position, 0.5f);
     //}
+
+    //height is min (0f, 0.5f, 0f);
+
+    //if (hands == null)
+    //{
+    //    hands = Instantiate(handsPrefab, handsPrefab.transform.position, handsPrefab.transform.rotation);
+    //}
+
+    ////if (!TryGetTouchPosition(out Vector2 touchPosition)) return;
+
+    //if (Input.touchCount > 0 || Input.GetMouseButton(0))
+    //{
+
+    //    Ray camRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+    //    RaycastHit hit;
+
+    //    if (Physics.Raycast(camRay, out hit, 100f, layer))
+    //    {
+
+    //        Vector3 initialVelocity = CalculateVelocty(hit.point, shootPosition.position, flightTime);
+
+    //        Visualize(initialVelocity, hit.point + Vector3.up * 0.1f); //we include the cursor position as the final nodes for the line visual position
+
+    //        transform.rotation = Quaternion.LookRotation(initialVelocity);
+    //    }
+
+    //    //Vector3.MoveTowards(gelBottleHead.transform.position, gelBottleHead.transform.position - new Vector3(0f, 0.1f, 0f), 0.01f * Time.deltaTime);
+    //    if (once)
+    //    {
+    //        gelBottleHead.transform.position -= offsetBottlePos;
+    //        once = false;
+    //    }
+    //    //Shooting
+    //    if(gel == null)
+    //    {
+    //        gel = Instantiate(gelPrefab, gelPrefab.transform.position, gelPrefab.transform.rotation);
+    //        gel.GetComponent<GelMovement>().shootPosition = shootPosition;
+    //    }
+
+    //}
+    //else
+    //{
+    //    gelBottleHead.transform.position = gelBottleHead.transform.parent.transform.position;
+    //    once = true;
+    //}
+
+    //if (_arRaycastManager.Raycast(touchPosition, hits))
+    //{
+    //    var hitPose = hits[0].pose;
+    //    Vector3 touchWorldPosition = Camera.main.ScreenToWorldPoint(touchPosition);
+
+    //}
+    //}
+
+
+    bool TryGetTouchPosition(out Vector2 touchPosition)
+    {
+        if (Input.touchCount > 0)
+        {
+            touchPosition = Input.GetTouch(0).position;
+            return true;
+        }
+        touchPosition = default;
+        return false;
+    }
 
     private void Visualize(Vector3 initialVel, Vector3 finalPos)
     {
