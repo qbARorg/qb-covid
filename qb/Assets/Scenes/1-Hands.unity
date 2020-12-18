@@ -233,6 +233,7 @@ GameObject:
   - component: {fileID: 138714101}
   - component: {fileID: 138714098}
   - component: {fileID: 138714097}
+  - component: {fileID: 138714099}
   m_Layer: 0
   m_Name: AR Session Origin
   m_TagString: Untagged
@@ -253,7 +254,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   handsPrefab: {fileID: 4766498102333236125, guid: 159319eb617b80048a77105856e571a4, type: 3}
-  gelPrefab: {fileID: 8966673932087935716, guid: ff6fcbcc7b64c8746b589187d874dd9f, type: 3}
+  gelPrefab: {fileID: 4706719282706785143, guid: 84a4f5a9772f5fe4ea5af806ff095f5e, type: 3}
+  ARCam: {fileID: 563583776}
+  numPoints: 10
+  force: 10
+  height: {x: 0, y: 0.5, z: 0}
+  trajectory: {fileID: 1617041038}
   line: {fileID: 1617041037}
   layer:
     serializedVersion: 2
@@ -271,6 +277,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa17d122634046b4a8e23048891fafc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &138714099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 138714096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4dea56a9eaadd1c439095de4f9a371cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SerializedLibrary: {fileID: 0}
+  m_MaxNumberOfMovingImages: 0
+  m_TrackedImagePrefab: {fileID: 0}
 --- !u!114 &138714101
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -526,6 +547,11 @@ Transform:
   m_Father: {fileID: 138714102}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &563583776 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5218591980095149412, guid: a34959665ff79dd42abb2dd236483fff, type: 3}
+  m_PrefabInstance: {fileID: 4948682003376905826}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1311208380
 GameObject:
   m_ObjectHideFlags: 0
@@ -596,7 +622,7 @@ LineRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1617041035}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -687,6 +713,24 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 0
   m_Loop: 0
+--- !u!114 &1617041038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1617041035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cd3d9b37e3ab34428a8db1fa14e45f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dotsNumber: 13
+  dotsParent: {fileID: 1617041035}
+  dotPrefab: {fileID: 4706719282706785143, guid: 84a4f5a9772f5fe4ea5af806ff095f5e, type: 3}
+  dotSpacing: 0.75
+  dotMinScale: 0.1
+  dotMaxScale: 0.338
 --- !u!1 &1773336891
 GameObject:
   m_ObjectHideFlags: 0

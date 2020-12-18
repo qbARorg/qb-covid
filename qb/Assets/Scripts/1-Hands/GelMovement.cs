@@ -22,7 +22,7 @@ public class GelMovement : MonoBehaviour
 
         //Calculate angle depending on screenPos
 
-        this.transform.position = ParabolicTrajectory(shootPosition.position, shootPosition.position + new Vector3(0, 15f, 15f), height, 1.0f * Time.deltaTime);
+        //this.transform.position = ParabolicTrajectory(shootPosition.position, shootPosition.position + new Vector3(0, 15f, 15f), height, 1.0f * Time.deltaTime);
 
         this.transform.localScale += new Vector3(0f, 0f, 0.1f * Time.deltaTime);
         //v = v0 cos(a)i + v0 sin(a)j;
