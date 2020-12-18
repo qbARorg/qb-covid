@@ -16,6 +16,11 @@ public class ARShooting : MonoBehaviour
     private Transform shootPosition;
     private bool once = true;
 
+    public LineRenderer line;
+    public LayerMask layer;
+    public int lineSegment;
+    private float flightTime = 1.0f;
+
     private ARRaycastManager _arRaycastManager;
     private Vector2 touchPosition;
 
@@ -28,6 +33,9 @@ public class ARShooting : MonoBehaviour
         offsetBottlePos = new Vector3(0f, 0.1f, 0f);
         gelBottleHead = GameObject.FindWithTag("BottleHead");
         shootPosition = gelBottleHead.transform.GetChild(0).transform;
+
+        line.positionCount = lineSegment + 1;
+        layer = default;
     }
 
 
@@ -54,6 +62,19 @@ public class ARShooting : MonoBehaviour
 
         if ((Input.touchCount > 0 || Input.GetMouseButton(0)))
         {
+            Ray camRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+
+            if (Physics.Raycast(camRay, out hit, 100f, layer))
+            {
+
+                Vector3 initialVelocity = CalculateVelocty(hit.point, shootPosition.position, flightTime);
+
+                Visualize(initialVelocity, hit.point + Vector3.up * 0.1f); //we include the cursor position as the final nodes for the line visual position
+
+                transform.rotation = Quaternion.LookRotation(initialVelocity);
+            }
+
             //Vector3.MoveTowards(gelBottleHead.transform.position, gelBottleHead.transform.position - new Vector3(0f, 0.1f, 0f), 0.01f * Time.deltaTime);
             if (once)
             {
@@ -80,6 +101,50 @@ public class ARShooting : MonoBehaviour
             Vector3 touchWorldPosition = Camera.main.ScreenToWorldPoint(touchPosition);
 
         }
+    }
+
+    private void Visualize(Vector3 initialVel, Vector3 finalPos)
+    {
+        for (int i = 0; i < lineSegment; i++)
+        {
+            Vector3 pos = CalculatePosInTime(initialVel, (i / (float)lineSegment) * flightTime);
+            line.SetPosition(i, pos);
+        }
+
+        line.SetPosition(lineSegment, finalPos);
+    }
+
+
+    private Vector3 CalculateVelocty(Vector3 target, Vector3 origin, float time)
+    {
+        Vector3 distance = target - origin;
+        Vector3 distance2D = distance;
+        distance2D.y = 0f;
+
+        float sY = distance.y;
+        float sXZ = distance2D.magnitude;
+
+        float vXZ = sXZ / time;
+        float vY = (sY / time) + (0.5f * Mathf.Abs(Physics.gravity.y) * time);
+
+        Vector3 result = distance2D.normalized;
+        result *= vXZ;
+        result.y = vY;
+
+        return result;
+    }
+
+    private Vector3 CalculatePosInTime(Vector3 initialVel, float time)
+    {
+        Vector3 vXZ = initialVel;
+        vXZ.y = 0f;
+
+        Vector3 result = shootPosition.position + initialVel * time;
+        float sY = (-0.5f * Mathf.Abs(Physics.gravity.y) * (time * time)) + (initialVel.y * time) + shootPosition.position.y;
+
+        result.y = sY;
+
+        return result;
     }
 }
  

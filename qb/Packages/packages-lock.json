@@ -128,11 +128,11 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.xr.arfoundation": {
-      "version": "3.1.5",
+      "version": "3.1.6",
       "depth": 0,
       "source": "registry",
       "dependencies": {
-        "com.unity.xr.arsubsystems": "3.1.5"
+        "com.unity.xr.arsubsystems": "3.1.6"
       },
       "url": "https://packages.unity.com"
     },
@@ -147,7 +147,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.xr.arsubsystems": {
-      "version": "3.1.5",
+      "version": "3.1.6",
       "depth": 1,
       "source": "registry",
       "dependencies": {
