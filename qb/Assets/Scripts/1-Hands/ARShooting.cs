@@ -6,21 +6,7 @@ using UnityEngine.XR.ARFoundation;
 [RequireComponent(typeof(ARRaycastManager))]
 public class ARShooting : MonoBehaviour
 {
-    #region Trash Att
-    private GameObject ARCam;
-
-    private LineRenderer line;
-    private LayerMask layer;
-    private int lineSegment;
-    private float flightTime = 1.0f;
-    private Vector3 height;
-
-    private Vector2 touchPosition;
-
-    private static List<ARRaycastHit> hits = new List<ARRaycastHit>();
-    private ARRaycastManager _arRaycastManager;
-
-    #endregion
+    #region Attributes
 
     public GameObject handsPrefab;
     public GameObject gelPrefab;
@@ -37,7 +23,7 @@ public class ARShooting : MonoBehaviour
 
     private GameObject[] points;
     public int numPoints;
-    public float force;
+    public float force = 1.0f;
 
     private Vector3 startPoint;
     private Vector3 endPoint;
@@ -46,6 +32,22 @@ public class ARShooting : MonoBehaviour
     private float distance;
     private bool isDragging;
 
+    #region Trash Att
+    private GameObject ARCam;
+
+    private LineRenderer line;
+    private LayerMask layer;
+    private int lineSegment;
+    private float flightTime = 1.0f;
+    private Vector3 height;
+
+    private Vector2 touchPosition;
+
+    private static List<ARRaycastHit> hits = new List<ARRaycastHit>();
+    private ARRaycastManager _arRaycastManager;
+
+    #endregion
+    #endregion
 
     // Start is called before the first frame update
     void Awake()
