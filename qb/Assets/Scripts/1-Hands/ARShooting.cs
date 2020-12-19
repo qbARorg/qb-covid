@@ -89,6 +89,13 @@ public class ARShooting : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if (hands == null)
+        {
+            hands = Instantiate(handsPrefab, handsPrefab.transform.position, handsPrefab.transform.rotation);
+            hands.transform.parent = GameObject.FindGameObjectWithTag("MainCamera").transform;
+        }
+
         if (Input.GetMouseButton(0) || Input.touchCount > 0)
         {
             isDragging = true;
@@ -136,7 +143,7 @@ public class ARShooting : MonoBehaviour
 
     }
 
-    private Vector3 PosInTime(float t)
+    public Vector3 PosInTime(float t)
     {
         return shootPosition.position + (direction.normalized * force * t) + 0.5f * Physics.gravity * t * t;
     }
@@ -150,11 +157,6 @@ public class ARShooting : MonoBehaviour
     //}
 
     //height is min (0f, 0.5f, 0f);
-
-    //if (hands == null)
-    //{
-    //    hands = Instantiate(handsPrefab, handsPrefab.transform.position, handsPrefab.transform.rotation);
-    //}
 
     ////if (!TryGetTouchPosition(out Vector2 touchPosition)) return;
 
