@@ -22,7 +22,7 @@ public class MaskSceneBehaviour : MonoBehaviour
     [SerializeField]
     private GameObject mask;
 
-    private GameObject maskInstance;
+    private GameObject headInstance;
     private Camera mainCamera;
     
     #endregion
@@ -86,18 +86,11 @@ public class MaskSceneBehaviour : MonoBehaviour
 
     private void HandleImageUpdate(ARTrackedImage trackedImage)
     {
-        if (trackedImage.trackingState != TrackingState.None && !maskInstance)
+        if (trackedImage.trackingState != TrackingState.None && !headInstance)
         {
-            //var head = FindObjectOfType<Head>();
-            //if (!head) return;
-            // The image extents is only valid when the image is being tracked
-            //trackedImage.transform.localScale = new Vector3(trackedImage.size.x, 1f, trackedImage.size.y);
-            //head.transform.position = trackedImage.transform.position;
-            
             Debug.Log("INSTANTIATING");
-            maskInstance = Instantiate(head, trackedImage.transform).gameObject;
+            headInstance = Instantiate(head, trackedImage.transform).gameObject;
             transform.localPosition = new Vector3(0f,0f, 0f);
-        
         }
     }
 
@@ -109,6 +102,21 @@ public class MaskSceneBehaviour : MonoBehaviour
         mask.transform.LookAt(mainCamera.transform);
         mask.transform.position = v3;
 
+        if (headInstance)
+        {
+            Vector3 headPosition = headInstance.transform.position;
+            float distanceLook = Vector3.Distance(
+                    headInstance.transform.forward.normalized,
+                    mask.transform.forward.normalized
+            );
+            Debug.Log($"rotation dist: {distanceLook}");
+            if (Vector3.Distance(headPosition, v3) <= 0.1f && distanceLook <= 0.45f)
+            {
+                mask.SetActive(false);
+                headInstance.GetComponent<Head>().ChangeMask(true);
+            }
+        }
+        
     }
     #endregion
     

@@ -4,15 +4,12 @@ using UnityEngine;
 
 public class Head : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private GameObject mask;
 
-    // Update is called once per frame
-    void Update()
+    
+    
+    public void ChangeMask(bool active)
     {
-        
+        mask.gameObject.SetActive(active);
     }
 }
