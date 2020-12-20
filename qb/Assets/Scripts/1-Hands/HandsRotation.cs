@@ -3,12 +3,13 @@
 public class HandsRotation : MonoBehaviour
 {
     #region Attributes
+
     private Vector3 startPoint;
     private Transform bottleHead;
+    private int alpha = 0;
 
     [SerializeField] [Range(0f, 20f)] public float zAxisDiagonal = 5f;
     [SerializeField] [Range(0f, 30f)] public float xAxisDiagonal = 10f;
-    private int alpha = 0;
 
     #endregion
 
