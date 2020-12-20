@@ -51,7 +51,6 @@ public class ARShooting : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        _arRaycastManager = GetComponent<ARRaycastManager>();
         gelBottleHead = GameObject.FindWithTag("BottleHead");
         shootPosition = gelBottleHead.transform.GetChild(0).transform;
 
