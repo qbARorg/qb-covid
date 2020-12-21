@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - BottleHead
+  - CanBeGrabben
   layers:
   - Default
   - TransparentFX

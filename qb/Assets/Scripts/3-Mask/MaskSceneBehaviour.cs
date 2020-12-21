@@ -113,7 +113,7 @@ public class MaskSceneBehaviour : MonoBehaviour
             if (Vector3.Distance(headPosition, v3) <= 0.1f && distanceLook <= 0.45f)
             {
                 mask.SetActive(false);
-                headInstance.GetComponent<Head>().ChangeMask(true);
+                headInstance.GetComponent<Head>().ChangeState(Head.State.AwaitingStrings);
             }
         }
         

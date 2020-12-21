@@ -15,6 +15,7 @@
           <e p="3-Mask" t="Include">
             <e p="Head.cs" t="Include" />
             <e p="MaskSceneBehaviour.cs" t="Include" />
+            <e p="RopeSpawn.cs" t="Include" />
           </e>
           <e p="ARTapToPlaceObject.cs" t="Include" />
           <e p="LightEstimation.cs" t="Include" />
