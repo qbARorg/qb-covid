@@ -18,7 +18,9 @@
             <e p="RopeSpawn.cs" t="Include" />
           </e>
           <e p="ARTapToPlaceObject.cs" t="Include" />
+          <e p="ARTrackerManager.cs" t="Include" />
           <e p="LightEstimation.cs" t="Include" />
+          <e p="TrackerListener.cs" t="Include" />
         </e>
       </e>
       <e p="obj" t="ExcludeRecursive" />

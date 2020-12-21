@@ -4,8 +4,8 @@ using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 
-[RequireComponent(typeof(ARRaycastManager))]
-public class MaskSceneBehaviour : MonoBehaviour
+
+public class MaskSceneBehaviour : TrackerListener
 {
     
     #region Public
@@ -17,8 +17,7 @@ public class MaskSceneBehaviour : MonoBehaviour
     [SerializeField] private Head head;
     
     private ARRaycastManager raycastManager;
-    private ARTrackedImageManager imageManager;
-    
+
     [SerializeField]
     private GameObject mask;
 
@@ -29,7 +28,7 @@ public class MaskSceneBehaviour : MonoBehaviour
 
     #region Callbacks
 
-    
+    /*
 
     void OnDisable() => imageManager.trackedImagesChanged -= OnChanged;
 
@@ -60,22 +59,31 @@ public class MaskSceneBehaviour : MonoBehaviour
         }
     }
     
-
+    */
     #endregion
     
     
     #region Unity3D
-    
-    void Awake()
+
+    public override void OnDetectedStart(ARTrackedImage img)
     {
         raycastManager = GetComponent<ARRaycastManager>();
-        imageManager = GetComponent<ARTrackedImageManager>();
-        imageManager.trackedImagesChanged += OnChanged;
         mainCamera = Camera.main;
+        mask.SetActive(true);
+        mask.transform.localPosition = Vector3.zero;
+        mask.transform.SetParent(mainCamera.transform);
     }
 
-    
-    void Update()
+    public override void OnDetectedUpdate(ARTrackedImage img)
+    {
+        if (img.trackingState != TrackingState.None && !headInstance)
+        {
+            headInstance = Instantiate(head, img.transform).gameObject;
+            transform.localPosition = new Vector3(0f, 0f, 0f);
+        }
+    }
+
+    public override void ARUpdate()
     {
         HandleUpdate(Time.deltaTime);
     }
@@ -99,6 +107,7 @@ public class MaskSceneBehaviour : MonoBehaviour
         if (Input.touches.Length != 1) return;
         Vector3 v3 = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0.2f);
         v3 = mainCamera.ScreenToWorldPoint(v3);
+        
         mask.transform.LookAt(mainCamera.transform);
         mask.transform.position = v3;
 
@@ -118,10 +127,12 @@ public class MaskSceneBehaviour : MonoBehaviour
         }
         
     }
+    
     #endregion
     
     #region Public Methods
 
+    
 
     #endregion
 }
