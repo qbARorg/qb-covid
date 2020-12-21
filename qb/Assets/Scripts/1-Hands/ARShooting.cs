@@ -1,8 +1,11 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.ARFoundation;
+using UnityEngine.XR.ARSubsystems;
 
+[RequireComponent(typeof(ARTrackedImageManager))]
 public class ARShooting : MonoBehaviour
 {
     #region Attributes
@@ -10,11 +13,14 @@ public class ARShooting : MonoBehaviour
     public GameObject handsPrefab;
     public GameObject gelPrefab;
     public GameObject ballParent;
+    public GameObject scenePrefab;
 
     [SerializeField] [Range(0.001f, 0.1f)] float distanceBtwDots;
 
+    private GameObject scene = null;
     private GameObject hands;
     private GameObject gel;
+    private GameObject gelBottle;
     private GameObject gelBottleHead;
     private Transform shootPosition;
     private Vector3 offsetBottlePos;
@@ -30,6 +36,8 @@ public class ARShooting : MonoBehaviour
     private Vector3 force3;
     private float distance;
     private bool isDragging;
+
+    private ARTrackedImageManager imageManager;
 
     #region Trash Att
     private GameObject ARCam;
@@ -49,12 +57,12 @@ public class ARShooting : MonoBehaviour
     #endregion
 
     // Start is called before the first frame update
-    void Awake()
+    private void Awake()
     {
-        gelBottleHead = GameObject.FindWithTag("BottleHead");
-        shootPosition = gelBottleHead.transform.GetChild(0).transform;
-
+        imageManager = this.GetComponent<ARTrackedImageManager>();
         offsetBottlePos = new Vector3(0f, 0.1f, 0f);
+
+        imageManager.trackedImagesChanged += OnChanged;
 
         points = new GameObject[numPoints];
         for(int i = 0; i<numPoints; i++)
@@ -64,13 +72,13 @@ public class ARShooting : MonoBehaviour
         }
     }
 
-    void OnDragStart()
+    private void OnDragStart()
     {
         startPoint = Input.mousePosition;
         if(Input.touchCount > 0) startPoint = Input.GetTouch(0).position;
     }
 
-    void OnDrag()
+    private void OnDrag()
     {
         Ray camRay = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
@@ -82,20 +90,32 @@ public class ARShooting : MonoBehaviour
             direction = (startPoint - endPoint).normalized;
             force3 = direction * distance * force;
         }
-
+        //Debug
         Debug.DrawLine(startPoint, endPoint);
+    }
+
+    private void SetVariables()
+    {
+        gelBottleHead = GameObject.FindGameObjectWithTag("BottleHead");
+        gelBottle = gelBottleHead.transform.parent.gameObject;
+        shootPosition = gelBottleHead.transform.GetChild(0).transform;
     }
 
     // Update is called once per frame
     void Update()
     {
-
-        if (hands == null)
+        if (!scene)
+        {
+            scene = GameObject.FindGameObjectWithTag("MainCamera").transform.GetChild(0).gameObject;
+            if (scene != null) {
+                SetVariables();
+            }
+        }
+        if (!hands)
         {
             hands = Instantiate(handsPrefab, handsPrefab.transform.position, handsPrefab.transform.rotation);
-            hands.transform.parent = GameObject.FindGameObjectWithTag("MainCamera").transform;
+            //hands.transform.parent = GameObject.FindGameObjectWithTag("MainCamera").transform;
         }
-
         if (Input.GetMouseButton(0) || Input.touchCount > 0)
         {
             isDragging = true;
@@ -111,26 +131,33 @@ public class ARShooting : MonoBehaviour
         {
             if(Input.touchCount <= 0)
             {
-                gelBottleHead.transform.position = gelBottleHead.transform.parent.transform.position;
-                once = true;
-                isDragging = false;
+                if (!once)
+                {
+                    gelBottleHead.transform.position += offsetBottlePos;
+                    once = true;
+                    isDragging = false;
+                }
             }
         }
         else
         {
             if (Input.GetMouseButtonUp(0))
             {
-                gelBottleHead.transform.position = gelBottleHead.transform.parent.transform.position;
-                once = true;
-                isDragging = false;
+                if (!once)
+                {
+                    gelBottleHead.transform.position += offsetBottlePos;
+                    once = true;
+                    isDragging = false;
+                }
             }
         }
 
         if (isDragging)
         {
             ballParent.SetActive(true);
+            //Vector3 d = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            //gelBottle.transform.position = new Vector3(d.x, gelBottle.transform.position.y, gelBottle.transform.position.z);
             OnDrag();
-
             for (int i = 0; i < numPoints; i++)
             {
                 points[i].transform.position = PosInTime(i * distanceBtwDots);
@@ -141,6 +168,19 @@ public class ARShooting : MonoBehaviour
             ballParent.SetActive(false);
         }
 
+    }
+
+    void OnDisable() => imageManager.trackedImagesChanged -= OnChanged;
+
+    void OnChanged(ARTrackedImagesChangedEventArgs eventArgs)
+    {
+        foreach (var trackedImage in eventArgs.added)
+        {
+            if (trackedImage.trackingState != TrackingState.None)
+            {
+                scene.SetActive(true);
+            }
+        }
     }
 
     public Vector3 PosInTime(float t)

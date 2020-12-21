@@ -5,7 +5,7 @@ public class HandsRotation : MonoBehaviour
     #region Attributes
 
     private Vector3 startPoint;
-    private Transform bottleHead;
+    public Transform bottleHead;
     private int alpha = 0;
 
     [SerializeField] [Range(0f, 20f)] public float zAxisDiagonal = 5f;
@@ -16,8 +16,8 @@ public class HandsRotation : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        startPoint = GameObject.FindGameObjectWithTag("Points").transform.GetChild(0).transform.position;
-        bottleHead = GameObject.FindGameObjectWithTag("BottleHead").transform;
+        //startPoint = GameObject.FindGameObjectWithTag("Points").transform.GetChild(0).transform.position;
+        //bottleHead = GameObject.FindGameObjectWithTag("BottleHead").transform;
     }
 
     // Update is called once per frame
@@ -26,12 +26,12 @@ public class HandsRotation : MonoBehaviour
         alpha += 1; //Update angle
 
         //Positions of elliptical orbit
-        float xAxis = bottleHead.position.x + (xAxisDiagonal * Mathf.Sin(Mathf.Deg2Rad * alpha));
-        float zAxis = bottleHead.position.z + (zAxisDiagonal * Mathf.Cos(Mathf.Deg2Rad * alpha));
+        float xAxis = /*bottleHead.position.x +*/ (xAxisDiagonal * Mathf.Sin(Mathf.Deg2Rad * alpha));
+        float zAxis = /*bottleHead.position.z +*/ (zAxisDiagonal * Mathf.Cos(Mathf.Deg2Rad * alpha));
 
-        transform.position = new Vector3(xAxis, bottleHead.transform.parent.transform.position.y, zAxis);
-        
-        this.transform.LookAt(startPoint);
+        //transform.position = new Vector3(xAxis, bottleHead.transform.parent.transform.position.y, zAxis);
+
+        this.transform.LookAt(Camera.main.transform);
     }
 
     #region Trash

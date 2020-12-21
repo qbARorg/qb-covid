@@ -11,6 +11,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/1-Hands.unity
     guid: 882b0d14059dd73498d2edbee3f5d35a
+  - enabled: 0
+    path: Assets/Scenes/1-Hands 1.unity
+    guid: 8a129cf41dfeb204281ad88fa8927241
   m_configObjects:
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: c7b46cefd5cbd104e985282043e2b3a4, type: 2}
     UnityEditor.XR.ARKit.ARKitSettings: {fileID: 11400000, guid: 34924b707f20a3946819a0984579d2e6, type: 2}
