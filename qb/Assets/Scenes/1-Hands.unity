@@ -257,7 +257,7 @@ MonoBehaviour:
   handsPrefab: {fileID: 4766498102333236125, guid: 159319eb617b80048a77105856e571a4, type: 3}
   gelPrefab: {fileID: 4706719282706785143, guid: 84a4f5a9772f5fe4ea5af806ff095f5e, type: 3}
   ballParent: {fileID: 719464729}
-  scenePrefab: {fileID: 0}
+  scenePrefab: {fileID: 1186436309493768362, guid: 17cd1cdb7ca05c9488ce7f9b67263fe5, type: 3}
   distanceBtwDots: 0.05
   numPoints: 20
   force: 10
