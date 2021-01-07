@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 9161673005483604105}
   - component: {fileID: 1563448748539251687}
   m_Layer: 0
-  m_Name: polySurface20_polySurface18polySurface24
+  m_Name: Hand visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -125,5 +125,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 053eb325f162f084aa91c8396ddf6ac4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bottleHead: {fileID: 0}
   zAxisDiagonal: 0.3
   xAxisDiagonal: 0.6
