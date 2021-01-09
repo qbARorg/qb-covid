@@ -11,114 +11,91 @@ public class ARShooting : MonoBehaviour
     #region Attributes
     [Header("Prefabs")]
     public GameObject handsPrefab;
-    public GameObject gelPrefab;
-    public GameObject gelParent;
     public GameObject scenePrefab;
 
     private GameObject scene = null;
-    private GameObject gelBottle;
     private GameObject gelBottleHead;
+    private GameObject gelBottle;
     private Transform shootPosition;
 
-    [Header("Bottle animation")]
+    [Header("Bottle head animation")]
     private Vector3 offsetBottlePos;
     private enum Animate { up = 1, down = 0 };
     private bool finishDownAnimation = false;
 
-    [Header("Gel")]
-    public int numPoints;
-    private GameObject[] points;
-    [SerializeField] [Range(4f, 10f)] private float force = 6.0f;
-    [SerializeField] [Range(0.001f, 0.1f)] private float distanceBtwPoints;
+    [Header("Bottle movement")]
+    private Vector3 localBottlePos;
 
-    private Vector3 startPoint;
-    private Vector3 endPoint;
-    private Vector3 direction;
+    [Header("Gel")]
+    public ParticleSystem mainParticleSyst;
+    public ParticleSystem splatterParticleSyst;
+    private ParticleSystem.ForceOverLifetimeModule gelForceModule;
 
     private bool isDragging;
 
     private ARTrackedImageManager imageManager;
-    
     #endregion
 
-    // Start is called before the first frame update
+    #region Main Methods
     private void Awake()
     {
+        gelForceModule = mainParticleSyst.forceOverLifetime;
         offsetBottlePos = new Vector3(0f, 0.1f, 0f);
+    }
 
-        points = new GameObject[numPoints];
-        for(int i = 0; i<numPoints; i++)
+    void Update()
+    {
+        if (!scene)
         {
-            points[i] = Instantiate(gelPrefab, transform.position, Quaternion.identity);
-            points[i].transform.SetParent(gelParent.transform);
+            scene = Camera.main.transform.GetChild(0).gameObject;   //Set scene
+            if (scene != null) SetVariables();
+            else return;
         }
+        //Press
+        if (Input.GetMouseButton(0) || Input.touchCount > 0)
+        {
+            isDragging = true;
+            if (!finishDownAnimation) AnimateBottle(Animate.down);  //Animate bottle
+        }
+        //Release
+        if (Input.GetMouseButtonUp(0)) /*if (Input.touchCount <= 0)*/
+        {
+            isDragging = false;
+            if (finishDownAnimation) AnimateBottle(Animate.up);     //Animate bottle
+        }
+        if (isDragging) OnDrag();
     }
+    #endregion
 
-    private void OnDragStart()
-    {
-        endPoint = Input.mousePosition;
-        endPoint.z = 10;
-        endPoint = Camera.main.ScreenToWorldPoint(endPoint);
-        if(Input.touchCount > 0) endPoint = Input.GetTouch(0).position;
-    }
-
-    private void OnDrag()
-    {
-        direction = endPoint - startPoint;
-        //Debug
-        Debug.Log($"start {startPoint}, end {endPoint}");
-        Debug.DrawLine(startPoint, endPoint);
-    }
-
+    #region Custom Methods
+    
     private void SetVariables()
     {
         gelBottleHead = GameObject.FindGameObjectWithTag("BottleHead");
         gelBottle = gelBottleHead.transform.parent.gameObject;
         shootPosition = gelBottleHead.transform.GetChild(0).transform;
+        localBottlePos = gelBottle.transform.localPosition;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnDrag()
     {
-        if (!scene)
-        {
-            scene = Camera.main.transform.GetChild(0).gameObject;
-            if (scene != null) {
-                SetVariables();
-            }
-        }
-        if (Input.GetMouseButton(0) || Input.touchCount > 0)
-        {
-            isDragging = true;
-            OnDragStart();
+        //Move bottle
+        Vector3 touchPos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 1f);
+        touchPos = Camera.main.ScreenToWorldPoint(touchPos);
+        gelBottle.transform.position = new Vector3(touchPos.x, gelBottle.transform.position.y, gelBottle.transform.position.z);
+        gelBottle.transform.localPosition = new Vector3(gelBottle.transform.localPosition.x, localBottlePos.y, localBottlePos.z);
 
-            //Animate bottle
-            if (!finishDownAnimation) AnimateBottle(Animate.down);
-        }
+        //Emit one particle at a time
+        mainParticleSyst.Emit(1);
 
-        if (Input.GetMouseButtonUp(0)) /*if (Input.touchCount <= 0)*/
-        {
-            if (finishDownAnimation) AnimateBottle(Animate.up);
-            isDragging = false;
-        }
+        //Set height of mainParticleSyst
+        float height = Mathf.Clamp(touchPos.y - shootPosition.position.y, 0f, 1f);
+        gelForceModule.yMultiplier = Mathf.Lerp(0.001f, 15f, height);
 
-        if (isDragging)
-        {
-            //Show points
-            gelParent.SetActive(true);
-            OnDrag();
-            //Calculate each points' position
-            for (int i = 0; i < numPoints; i++)
-            {
-                points[i].transform.position = PosInTime(i * distanceBtwPoints);
-            }
-        }
-        else gelParent.SetActive(false);
-    }
-
-    public Vector3 PosInTime(float t)
-    {
-        return shootPosition.position + (direction.normalized * force * t) + 0.5f * Physics.gravity * t * t;
+        //Debug
+        Debug.Log($"multiplier: {gelForceModule.yMultiplier}");
+        Vector3 endPoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 8);
+        Debug.DrawLine(Vector3.zero, Camera.main.ScreenToWorldPoint(endPoint));
     }
 
     private void AnimateBottle(Animate direction)
@@ -134,4 +111,5 @@ public class ARShooting : MonoBehaviour
             finishDownAnimation = true;
         }
     }
+    #endregion
 }
