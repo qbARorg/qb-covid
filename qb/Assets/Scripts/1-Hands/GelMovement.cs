@@ -8,7 +8,6 @@ public class GelMovement : MonoBehaviour
     private ParticleSystem splatterParticleSyst;
     private List<ParticleCollisionEvent> collisionEvents;
 
-
     #endregion
 
     // Start is called before the first frame update
@@ -26,6 +25,7 @@ public class GelMovement : MonoBehaviour
 
     private void OnParticleCollision(GameObject other)
     {
+        Debug.Log("Let's emit");
         ParticlePhysicsExtensions.GetCollisionEvents(mainParticleSyst, other, collisionEvents);
         for (int i = 0; i < collisionEvents.Count; i++)
         {
