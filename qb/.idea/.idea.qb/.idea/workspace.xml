@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ff6fbf99-ed08-41f8-b783-27e6d83a2798" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.qb/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.qb/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.qb/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.qb/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/3-mask.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/3-mask.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/3-Mask/MaskSceneBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/3-Mask/MaskSceneBehaviour.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/obj/Debug/Assembly-CSharp.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/Assembly-CSharp.csprojAssemblyReference.cache" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -16,7 +14,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Assets/Scripts/TrackerListener.cs">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="380">
@@ -33,7 +31,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Assets/Scripts/3-Mask/MaskSceneBehaviour.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="101">
+            <state relative-caret-position="1460">
               <caret line="73" column="55" selection-start-line="73" selection-start-column="55" selection-end-line="73" selection-end-column="55" />
               <folding>
                 <marker date="1608580823051" expanded="true" signature="6:148" ph="..." />
@@ -59,11 +57,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Assets/Scripts/ARTrackerManager.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="328">
-              <caret line="42" column="53" lean-forward="true" selection-start-line="42" selection-start-column="53" selection-end-line="42" selection-end-column="53" />
+            <state relative-caret-position="840">
+              <caret line="42" column="53" selection-start-line="42" selection-start-column="53" selection-end-line="42" selection-end-column="53" />
               <folding>
                 <marker date="1608581391977" expanded="true" signature="6:222" ph="..." />
                 <marker date="1608581391977" expanded="true" signature="269:2563" ph="{...}" />
@@ -127,12 +125,12 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="FileSystemExplorer" />
+      <pane id="AssemblyExplorer" />
       <pane id="UnityExplorer">
         <option name="show-hidden-items" value="false" />
         <option name="show-project-names" value="true" />
       </pane>
-      <pane id="AssemblyExplorer" />
-      <pane id="FileSystemExplorer" />
       <pane id="SolutionExplorer">
         <option name="show-all-files" value="false" />
       </pane>
@@ -188,12 +186,13 @@
       <workItem from="1608426182985" duration="930000" />
       <workItem from="1608509099512" duration="2672000" />
       <workItem from="1608567665059" duration="99000" />
-      <workItem from="1608570440332" duration="3875000" />
+      <workItem from="1608570440332" duration="4094000" />
+      <workItem from="1608727963980" duration="246000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="17552000" />
+    <option name="totallyTimeSpent" value="18017000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -208,7 +207,7 @@
     <frame x="0" y="23" width="1920" height="1177" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2603834" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2630458" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -319,21 +318,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Scripts/TrackerListener.cs">
+    <entry file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/ACF1992D-82B2-46CD-8350-B49B43F24745/d2/42232f03/TrackingState.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="19" column="8" selection-start-line="19" selection-start-column="8" selection-end-line="19" selection-end-column="8" />
-          <folding>
-            <marker date="1608579945988" expanded="true" signature="6:113" ph="..." />
-            <marker date="1608579945988" expanded="true" signature="159:479" ph="{...}" />
-            <marker date="1608579945988" expanded="true" signature="451:472" ph="{...}" />
-          </folding>
+        <state relative-caret-position="220">
+          <caret line="11" column="4" selection-start-line="11" selection-start-column="4" selection-end-line="11" selection-end-column="4" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Assets/Scripts/3-Mask/MaskSceneBehaviour.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="101">
+        <state relative-caret-position="1460">
           <caret line="73" column="55" selection-start-line="73" selection-start-column="55" selection-end-line="73" selection-end-column="55" />
           <folding>
             <marker date="1608580823051" expanded="true" signature="6:148" ph="..." />
@@ -358,17 +352,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/ACF1992D-82B2-46CD-8350-B49B43F24745/d2/42232f03/TrackingState.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="11" column="4" selection-start-line="11" selection-start-column="4" selection-end-line="11" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Assets/Scripts/ARTrackerManager.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="328">
-          <caret line="42" column="53" lean-forward="true" selection-start-line="42" selection-start-column="53" selection-end-line="42" selection-end-column="53" />
+        <state relative-caret-position="840">
+          <caret line="42" column="53" selection-start-line="42" selection-start-column="53" selection-end-line="42" selection-end-column="53" />
           <folding>
             <marker date="1608581391977" expanded="true" signature="6:222" ph="..." />
             <marker date="1608581391977" expanded="true" signature="269:2563" ph="{...}" />
@@ -382,6 +369,18 @@
             <marker date="1608581391977" expanded="true" signature="2220:2429" ph="{...}" />
             <marker date="1608581391977" expanded="true" signature="2462:2561" ph="{...}" />
             <marker date="1608581391977" expanded="true" signature="2496:2555" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/TrackerListener.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="19" column="8" selection-start-line="19" selection-start-column="8" selection-end-line="19" selection-end-column="8" />
+          <folding>
+            <marker date="1608579945988" expanded="true" signature="6:113" ph="..." />
+            <marker date="1608579945988" expanded="true" signature="159:479" ph="{...}" />
+            <marker date="1608579945988" expanded="true" signature="451:472" ph="{...}" />
           </folding>
         </state>
       </provider>
