@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Numerics;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 using Vector3 = UnityEngine.Vector3;
@@ -14,9 +15,10 @@ public class ARTrackerManager : MonoBehaviour
     private ARTrackedImageManager imageManager;
 
     [SerializeField] private TrackerListener[] listeners;
-
-
+    
     private TrackerListener currentTracker;
+
+    [SerializeField] private Button buttonExitScene;
 
     private Dictionary<XRReferenceImage, TrackerListener> hashListeners;
     
@@ -109,7 +111,12 @@ public class ARTrackerManager : MonoBehaviour
     {
         if (currentTracker)
         {
+            buttonExitScene.gameObject.SetActive(true);
             currentTracker.ARUpdate();
+        }
+        else
+        {
+            buttonExitScene.gameObject.SetActive(false);
         }
     }
 
