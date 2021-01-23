@@ -2,9 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a8dae9c4-ce39-4154-9caa-f592794cd2e3" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.qb/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.qb/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/3-mask__.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/3-mask__.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/3-Mask/lib.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/3-Mask/lib.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/ARTrackerManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ARTrackerManager.cs" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -32,26 +29,26 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Assets/Scripts/ARTrackerManager.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="583">
-              <caret line="118" column="56" lean-forward="true" selection-start-line="118" selection-start-column="56" selection-end-line="118" selection-end-column="56" />
+            <state relative-caret-position="329">
+              <caret line="111" column="52" selection-start-line="111" selection-start-column="52" selection-end-line="111" selection-end-column="52" />
               <folding>
-                <marker date="1611423676491" expanded="true" signature="6:244" ph="..." />
-                <marker date="1611423676491" expanded="true" signature="291:4699" ph="{...}" />
-                <marker date="1611423676491" expanded="true" signature="617:849" ph="{...}" />
-                <marker date="1611423676491" expanded="true" signature="855:958" ph="/// TODO: Properly delete ... " />
-                <marker date="1611423676491" expanded="true" signature="1028:3878" ph="{...}" />
-                <marker date="1611423676491" expanded="true" signature="1097:2387" ph="{...}" />
-                <marker date="1611423676491" expanded="true" signature="1586:1960" ph="/* Check if it's another tracked image, delete previous ... */" />
-                <marker date="1611423676491" expanded="true" signature="2444:3525" ph="{...}" />
-                <marker date="1611423676491" expanded="true" signature="2524:3501" ph="{...}" />
-                <marker date="1611423676491" expanded="true" signature="2665:3424" ph="{...}" />
-                <marker date="1611423676491" expanded="true" signature="3582:3872" ph="{...}" />
-                <marker date="1611423676491" expanded="true" signature="3904:4176" ph="{...}" />
-                <marker date="1611423676491" expanded="true" signature="3961:4170" ph="{...}" />
-                <marker date="1611423676491" expanded="true" signature="4203:4448" ph="{...}" />
-                <marker date="1611423676491" expanded="true" signature="4237:4352" ph="{...}" />
-                <marker date="1611423676491" expanded="true" signature="4365:4442" ph="{...}" />
-                <marker date="1611423676491" expanded="true" signature="4483:4697" ph="{...}" />
+                <marker date="1611425206196" expanded="true" signature="6:244" ph="..." />
+                <marker date="1611425206196" expanded="true" signature="291:4725" ph="{...}" />
+                <marker date="1611425206196" expanded="true" signature="617:849" ph="{...}" />
+                <marker date="1611425206196" expanded="true" signature="855:958" ph="/// TODO: Properly delete ... " />
+                <marker date="1611425206196" expanded="true" signature="1028:3878" ph="{...}" />
+                <marker date="1611425206196" expanded="true" signature="1097:2387" ph="{...}" />
+                <marker date="1611425206196" expanded="true" signature="1586:1960" ph="/* Check if it's another tracked image, delete previous ... */" />
+                <marker date="1611425206196" expanded="true" signature="2444:3525" ph="{...}" />
+                <marker date="1611425206196" expanded="true" signature="2524:3501" ph="{...}" />
+                <marker date="1611425206196" expanded="true" signature="2665:3424" ph="{...}" />
+                <marker date="1611425206196" expanded="true" signature="3582:3872" ph="{...}" />
+                <marker date="1611425206196" expanded="true" signature="3904:4176" ph="{...}" />
+                <marker date="1611425206196" expanded="true" signature="3961:4170" ph="{...}" />
+                <marker date="1611425206196" expanded="true" signature="4203:4474" ph="{...}" />
+                <marker date="1611425206196" expanded="true" signature="4263:4378" ph="{...}" />
+                <marker date="1611425206196" expanded="true" signature="4391:4468" ph="{...}" />
+                <marker date="1611425206196" expanded="true" signature="4509:4723" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -183,12 +180,12 @@
       <option name="presentableId" value="Default" />
       <updated>1611421233855</updated>
       <workItem from="1611421238900" duration="182000" />
-      <workItem from="1611421805405" duration="2013000" />
+      <workItem from="1611421805405" duration="2437000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2195000" />
+    <option name="totallyTimeSpent" value="2619000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -295,26 +292,26 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Assets/Scripts/ARTrackerManager.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="583">
-          <caret line="118" column="56" lean-forward="true" selection-start-line="118" selection-start-column="56" selection-end-line="118" selection-end-column="56" />
+        <state relative-caret-position="329">
+          <caret line="111" column="52" selection-start-line="111" selection-start-column="52" selection-end-line="111" selection-end-column="52" />
           <folding>
-            <marker date="1611423676491" expanded="true" signature="6:244" ph="..." />
-            <marker date="1611423676491" expanded="true" signature="291:4699" ph="{...}" />
-            <marker date="1611423676491" expanded="true" signature="617:849" ph="{...}" />
-            <marker date="1611423676491" expanded="true" signature="855:958" ph="/// TODO: Properly delete ... " />
-            <marker date="1611423676491" expanded="true" signature="1028:3878" ph="{...}" />
-            <marker date="1611423676491" expanded="true" signature="1097:2387" ph="{...}" />
-            <marker date="1611423676491" expanded="true" signature="1586:1960" ph="/* Check if it's another tracked image, delete previous ... */" />
-            <marker date="1611423676491" expanded="true" signature="2444:3525" ph="{...}" />
-            <marker date="1611423676491" expanded="true" signature="2524:3501" ph="{...}" />
-            <marker date="1611423676491" expanded="true" signature="2665:3424" ph="{...}" />
-            <marker date="1611423676491" expanded="true" signature="3582:3872" ph="{...}" />
-            <marker date="1611423676491" expanded="true" signature="3904:4176" ph="{...}" />
-            <marker date="1611423676491" expanded="true" signature="3961:4170" ph="{...}" />
-            <marker date="1611423676491" expanded="true" signature="4203:4448" ph="{...}" />
-            <marker date="1611423676491" expanded="true" signature="4237:4352" ph="{...}" />
-            <marker date="1611423676491" expanded="true" signature="4365:4442" ph="{...}" />
-            <marker date="1611423676491" expanded="true" signature="4483:4697" ph="{...}" />
+            <marker date="1611425206196" expanded="true" signature="6:244" ph="..." />
+            <marker date="1611425206196" expanded="true" signature="291:4725" ph="{...}" />
+            <marker date="1611425206196" expanded="true" signature="617:849" ph="{...}" />
+            <marker date="1611425206196" expanded="true" signature="855:958" ph="/// TODO: Properly delete ... " />
+            <marker date="1611425206196" expanded="true" signature="1028:3878" ph="{...}" />
+            <marker date="1611425206196" expanded="true" signature="1097:2387" ph="{...}" />
+            <marker date="1611425206196" expanded="true" signature="1586:1960" ph="/* Check if it's another tracked image, delete previous ... */" />
+            <marker date="1611425206196" expanded="true" signature="2444:3525" ph="{...}" />
+            <marker date="1611425206196" expanded="true" signature="2524:3501" ph="{...}" />
+            <marker date="1611425206196" expanded="true" signature="2665:3424" ph="{...}" />
+            <marker date="1611425206196" expanded="true" signature="3582:3872" ph="{...}" />
+            <marker date="1611425206196" expanded="true" signature="3904:4176" ph="{...}" />
+            <marker date="1611425206196" expanded="true" signature="3961:4170" ph="{...}" />
+            <marker date="1611425206196" expanded="true" signature="4203:4474" ph="{...}" />
+            <marker date="1611425206196" expanded="true" signature="4263:4378" ph="{...}" />
+            <marker date="1611425206196" expanded="true" signature="4391:4468" ph="{...}" />
+            <marker date="1611425206196" expanded="true" signature="4509:4723" ph="{...}" />
           </folding>
         </state>
       </provider>

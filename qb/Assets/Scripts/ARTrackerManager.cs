@@ -109,7 +109,7 @@ public class ARTrackerManager : MonoBehaviour
 
     private void Update()
     {
-        if (currentTracker)
+        if (currentTracker && currentTracker.Showing)
         {
             buttonExitScene.gameObject.SetActive(true);
             currentTracker.ARUpdate();

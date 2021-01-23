@@ -123,71 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1001 &46094705
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 211526835}
-    m_Modifications:
-    - target: {fileID: 1227738124729092989, guid: 311836640aa2b4e928d84d14a74553cd, type: 3}
-      propertyPath: m_Name
-      value: headManager (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 1227738124729092989, guid: 311836640aa2b4e928d84d14a74553cd, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2821627641876508063, guid: 311836640aa2b4e928d84d14a74553cd, type: 3}
-      propertyPath: imageIndex
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5127451944194164322, guid: 311836640aa2b4e928d84d14a74553cd, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5127451944194164322, guid: 311836640aa2b4e928d84d14a74553cd, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -1.3149208
-      objectReference: {fileID: 0}
-    - target: {fileID: 5127451944194164322, guid: 311836640aa2b4e928d84d14a74553cd, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.0385803
-      objectReference: {fileID: 0}
-    - target: {fileID: 5127451944194164322, guid: 311836640aa2b4e928d84d14a74553cd, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5127451944194164322, guid: 311836640aa2b4e928d84d14a74553cd, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5127451944194164322, guid: 311836640aa2b4e928d84d14a74553cd, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5127451944194164322, guid: 311836640aa2b4e928d84d14a74553cd, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5127451944194164322, guid: 311836640aa2b4e928d84d14a74553cd, type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5127451944194164322, guid: 311836640aa2b4e928d84d14a74553cd, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5127451944194164322, guid: 311836640aa2b4e928d84d14a74553cd, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5127451944194164322, guid: 311836640aa2b4e928d84d14a74553cd, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 311836640aa2b4e928d84d14a74553cd, type: 3}
 --- !u!1 &119164651
 GameObject:
   m_ObjectHideFlags: 0
@@ -267,11 +202,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 119164651}
   m_CullTransparentMesh: 0
---- !u!4 &211526835 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6155274031864111184, guid: d53b83fcad53a458fa739ab9ddf65632, type: 3}
-  m_PrefabInstance: {fileID: 6155274031688668984}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &503822789
 GameObject:
   m_ObjectHideFlags: 0
@@ -413,6 +343,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0865bf79691824d2c89c6462c3122c49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1243605533 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8233568007100228566, guid: d53b83fcad53a458fa739ab9ddf65632, type: 3}
+  m_PrefabInstance: {fileID: 6155274031688668984}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80e1ffaced48e40e89c51a57828002c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!224 &1248001835 stripped
@@ -700,9 +641,17 @@ PrefabInstance:
       value: AR Session Origin
       objectReference: {fileID: 0}
     - target: {fileID: 6155274031550024908, guid: d53b83fcad53a458fa739ab9ddf65632, type: 3}
+      propertyPath: listeners.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6155274031550024908, guid: d53b83fcad53a458fa739ab9ddf65632, type: 3}
       propertyPath: buttonExitScene
       value: 
       objectReference: {fileID: 503822791}
+    - target: {fileID: 6155274031550024908, guid: d53b83fcad53a458fa739ab9ddf65632, type: 3}
+      propertyPath: listeners.Array.data[1]
+      value: 
+      objectReference: {fileID: 1243605533}
     - target: {fileID: 6155274031550024910, guid: d53b83fcad53a458fa739ab9ddf65632, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
