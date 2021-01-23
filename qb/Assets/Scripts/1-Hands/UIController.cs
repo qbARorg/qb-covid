@@ -5,23 +5,25 @@ using UnityEngine.UI;
 
 public class UIController : MonoBehaviour
 {
-    public ARShooting _ARShooting;
-    public RectTransform pivotGel;
-    public Text handsText;
-
+    private HandsSceneManager sceneManager;
+    private RectTransform pivotGel;
     private float gelAmount;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        sceneManager = GetComponentInParent<HandsSceneManager>();
+        pivotGel = GameObject.FindGameObjectWithTag("Hud").GetComponent<RectTransform>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        gelAmount = _ARShooting.GetGelAmountNormalized();
+        if(sceneManager) gelAmount = sceneManager.GetGelAmountNormalized();
         if (gelAmount < 0) return;
-        pivotGel.localScale = new Vector3(gelAmount, pivotGel.localScale.y, pivotGel.localScale.y);
+        if (pivotGel)
+        {
+            pivotGel.localScale = new Vector3(gelAmount, pivotGel.localScale.y, pivotGel.localScale.y);
+        }
     }
 }

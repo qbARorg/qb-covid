@@ -4,7 +4,8 @@ using UnityEngine;
 public class GelController : MonoBehaviour
 {
     #region Attributes
-    private ParticleSystem splatterParticleSyst;
+    public ParticleSystem splatterParticleSyst;
+
     private ParticleSystem mainParticleSyst;
     private List<ParticleCollisionEvent> collisionEvents;
 
@@ -13,7 +14,6 @@ public class GelController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        splatterParticleSyst = GameObject.FindGameObjectWithTag("ParticleSyst").GetComponent<ParticleSystem>();
         collisionEvents = new List<ParticleCollisionEvent>();
         mainParticleSyst = this.GetComponent<ParticleSystem>();
     }
@@ -44,6 +44,6 @@ public class GelController : MonoBehaviour
     {
         splatterParticleSyst.transform.position = particleCollisionEvent.intersection;
         splatterParticleSyst.transform.rotation = Quaternion.LookRotation(particleCollisionEvent.normal);
-        splatterParticleSyst.Play();
+        splatterParticleSyst.Emit(1);
     }
 }

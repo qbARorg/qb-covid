@@ -1,50 +1,80 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 
-[RequireComponent(typeof(ARTrackedImageManager))]
-public class ARShooting : MonoBehaviour
+public class HandsSceneManager : TrackerListener
 {
     #region Attributes
-    private GameObject gelBottleHead;   //For animating
-    private GameObject gelBottle;       
-    private Transform shootPosition;
+    [Header("Prefabs")]
+    [SerializeField] private GameObject handPrefab;
+    [SerializeField] private GameObject hudPrefab;
 
-    [Header("Bottle head animation")]
+    private GameObject handsInstance;
+    private GameObject hudInstance;
+    private GameObject gelBottleHead;       //Animating head
+    private GameObject gelBottle;           //Moving in X axis 
+    private Transform shootPosition;        //Shoot particle syst
+    private Vector3 localBottlePos;
+
+    [Header("Head animation")]
     private Vector3 offsetBottlePos;
     private enum Animate { up = 1, down = 0 };
     private bool finishDownAnimation = false;
 
-    [Header("Bottle movement")]
-    private Vector3 localBottlePos;
-
     [Header("Gel")]
-    public Animator emptyAnimation;
-    public float maxAmountGel = 100f;
-    private float gelAmount;
-    private bool doPuff = false;
     public ParticleSystem mainParticleSyst;
     public ParticleSystem splatterParticleSyst;
+    public Animator emptyAnimation;
+    public float maxAmountGel = 100f;
+
+    private float gelAmount;
+    private bool doPuff = false;
     private ParticleSystem.ForceOverLifetimeModule gelForceModule;
 
     private bool isDragging;
-
-    private ARTrackedImageManager imageManager;
+    
     #endregion
 
-    #region Main Methods
-    private void Awake()
+    #region Unity3D
+
+    public override void OnDetectedStart(ARTrackedImage img)
     {
-        gelAmount = maxAmountGel;
-        gelForceModule = mainParticleSyst.forceOverLifetime;
-        offsetBottlePos = new Vector3(0f, 0.1f, 0f);
-        //SetVariables();
+        //Activate scene
+        gameObject.SetActive(true);
+        transform.localPosition = Vector3.zero;
+        transform.SetParent(Camera.main.transform);
+        
+        SetVariables();
     }
 
-    void Update()
+    public override void OnDetectedUpdate(ARTrackedImage img)
+    {
+        if (img.trackingState != TrackingState.None && !handsInstance)
+        {
+            //Instantiate hands
+            handsInstance = Instantiate(handPrefab, img.transform).gameObject;
+            handsInstance.transform.localPosition = new Vector3(0f, 0f, 0f);
+        }
+    }
+
+    public override void OnStoppingDetection()
+    {
+        gameObject.SetActive(false);
+        Destroy(handsInstance);
+    }
+
+    public override void ARUpdate()
+    {
+        HandleUpdate();
+    }
+
+    #endregion
+
+    #region Private Methods
+
+    private void HandleUpdate()
     {
         //Press
         if (Input.GetMouseButton(0) || Input.touchCount == 1)
@@ -60,16 +90,14 @@ public class ARShooting : MonoBehaviour
         }
         if (isDragging) OnDrag();
     }
-    #endregion
 
-    #region Custom Methods
-    
     private void SetVariables()
     {
         gelBottleHead = GameObject.FindGameObjectWithTag("BottleHead");
         gelBottle = gelBottleHead.transform.parent.gameObject;
         shootPosition = gelBottleHead.transform.GetChild(0).transform;
         localBottlePos = gelBottle.transform.localPosition;
+        if (!hudInstance) hudInstance = Instantiate(hudPrefab, hudPrefab.transform).gameObject;
     }
 
     private void OnDrag()
@@ -89,15 +117,11 @@ public class ARShooting : MonoBehaviour
             //Set height of mainParticleSyst
             float height = Mathf.Clamp(touchPos.y - shootPosition.position.y, 0f, 1f);
             gelForceModule.yMultiplier = Mathf.Lerp(0.001f, 15f, height);
-            //Debug.Log($"multiplier: {gelForceModule.yMultiplier}");
         }
-        else
+        else if(!doPuff)
         {
-            if (!doPuff)
-            {
-                emptyAnimation.gameObject.GetComponent<Transform>().position = shootPosition.position;
-                doPuff = true;
-            }
+            emptyAnimation.gameObject.GetComponent<Transform>().position = shootPosition.position;
+            doPuff = true;
         }
     }
 
@@ -121,6 +145,10 @@ public class ARShooting : MonoBehaviour
         }
     }
 
+    #endregion
+
+    #region Public Methods
+
     public float GetGelAmount()
     {
         return gelAmount;
@@ -130,5 +158,6 @@ public class ARShooting : MonoBehaviour
     {
         return gelAmount / maxAmountGel;
     }
+
     #endregion
 }
