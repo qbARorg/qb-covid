@@ -6,6 +6,8 @@ TagManager:
   tags:
   - BottleHead
   - Points
+  - Virus
+  - ParticleSyst
   layers:
   - Default
   - TransparentFX

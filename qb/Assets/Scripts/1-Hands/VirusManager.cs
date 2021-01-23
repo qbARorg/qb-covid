@@ -2,21 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Virus : MonoBehaviour
+public class VirusManager : MonoBehaviour
 {
     public GameObject hands;
     public GameObject virusPrefab;
 
     private new Collider collider;
     private RaycastHit[] hits;
-    private int numHits = 10;
+    private int numViruses = 10;
     private GameObject[] virusInstances;
 
     private void Awake()
     {
         collider = hands.GetComponent<Collider>();
-        hits = new RaycastHit[numHits];
-        for(int i = 0; i<numHits; i++)
+        hits = new RaycastHit[numViruses];
+        for(int i = 0; i<numViruses; i++)
         {
             hits[i] = GetPointOnMesh();
         }
@@ -46,4 +46,17 @@ public class Virus : MonoBehaviour
         return hit;
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log($"Collision with {collision.collider.name}");
+        if(collision.collider.name == "ShootingPos")
+        {
+            this.gameObject.SetActive(false);
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log($"Collision with {other.name}");
+    }
 }

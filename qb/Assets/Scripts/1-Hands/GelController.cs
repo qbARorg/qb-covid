@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class GelMovement : MonoBehaviour
+public class GelController : MonoBehaviour
 {
     #region Attributes
-    public ParticleSystem mainParticleSyst;
     private ParticleSystem splatterParticleSyst;
+    private ParticleSystem mainParticleSyst;
     private List<ParticleCollisionEvent> collisionEvents;
 
     #endregion
@@ -13,8 +13,9 @@ public class GelMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        splatterParticleSyst = GameObject.FindGameObjectWithTag("ParticleSyst").GetComponent<ParticleSystem>();
         collisionEvents = new List<ParticleCollisionEvent>();
-        splatterParticleSyst = this.GetComponent<ParticleSystem>();
+        mainParticleSyst = this.GetComponent<ParticleSystem>();
     }
 
     // Update is called once per frame
@@ -25,12 +26,17 @@ public class GelMovement : MonoBehaviour
 
     private void OnParticleCollision(GameObject other)
     {
-        Debug.Log("Let's emit");
+        Debug.Log("Deactivate");
         ParticlePhysicsExtensions.GetCollisionEvents(mainParticleSyst, other, collisionEvents);
         for (int i = 0; i < collisionEvents.Count; i++)
         {
-            Debug.Log("Let's emit");
             EmitAtLocation(collisionEvents[i]);
+        }
+
+        if(other.transform.parent.name.StartsWith("Controller"))
+        {
+            Debug.Log("Deactivate");
+            other.SetActive(false);
         }
     }
 
