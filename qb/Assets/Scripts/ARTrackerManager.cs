@@ -37,11 +37,24 @@ public class ARTrackerManager : MonoBehaviour
         
         foreach (var trackedImage in eventArgs.added)
         {
+            // Get the tracked image transform etc.
             Transform transformTracked = trackedImage.transform;
-            // Handle added event
             transformTracked.localScale = new Vector3(0.25f, 0.25f, 0.25f);
             transformTracked.position = Vector3.zero;
-            currentTracker = hashListeners[trackedImage.referenceImage];
+            
+            // Handle image listener
+            TrackerListener nextTracker = hashListeners[trackedImage.referenceImage];
+            // Check if it's another tracked image, delete previous
+            if (currentTracker && nextTracker != currentTracker)
+            {
+                currentTracker.OnStoppingDetection();
+                currentTracker.Showing = false;
+                currentTracker.gameObject.SetActive(false);
+            }
+            
+            // Update everything
+            currentTracker = nextTracker;
+            currentTracker.Showing = true;
             currentTracker.gameObject.transform.SetParent(Camera.main.transform);
             currentTracker.gameObject.transform.localPosition = Vector3.zero;
             currentTracker.gameObject.SetActive(true);

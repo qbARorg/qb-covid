@@ -7,6 +7,14 @@ public class TrackerListener : MonoBehaviour
 {
     public int imageIndex;
 
+    private bool _showing = false;
+
+    public bool Showing
+    {
+        get => _showing;
+        set => _showing = value;
+    }
+    
     public virtual void OnDetectedUpdate(ARTrackedImage img) {}
     
     public virtual void OnStoppingDetection() {}
