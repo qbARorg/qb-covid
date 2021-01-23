@@ -25,6 +25,9 @@
             <e p="ClassroomCanvasController.cs" t="Include" />
             <e p="ClassroomController.cs" t="Include" />
           </e>
+          <e p="Game" t="Include">
+            <e p="ARTrackerClassRoom.cs" t="Include" />
+          </e>
           <e p="LightEstimation.cs" t="Include" />
           <e p="TrackerListener.cs" t="Include" />
         </e>
