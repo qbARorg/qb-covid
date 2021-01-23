@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class VirusManager : MonoBehaviour
 {
+    #region Attributes
+
     public GameObject hands;
     public GameObject virusPrefab;
 
@@ -11,6 +13,10 @@ public class VirusManager : MonoBehaviour
     private RaycastHit[] hits;
     private int numViruses = 10;
     private GameObject[] virusInstances;
+
+    #endregion
+
+    #region Unity3D
 
     private void Awake()
     {
@@ -38,18 +44,10 @@ public class VirusManager : MonoBehaviour
         
     }
 
-    private RaycastHit GetPointOnMesh(){
-        float length = 50f;
-        Vector3 direction = Random.onUnitSphere;
-        Ray ray = new Ray(transform.position + (direction * length), -direction);
-        collider.Raycast(ray, out RaycastHit hit, length * 2);
-        return hit;
-    }
-
     private void OnCollisionEnter(Collision collision)
     {
         Debug.Log($"Collision with {collision.collider.name}");
-        if(collision.collider.name == "ShootingPos")
+        if (collision.collider.name == "ShootingPos")
         {
             this.gameObject.SetActive(false);
         }
@@ -59,4 +57,19 @@ public class VirusManager : MonoBehaviour
     {
         Debug.Log($"Collision with {other.name}");
     }
+
+    #endregion
+
+    #region Private Methods
+
+    private RaycastHit GetPointOnMesh()
+    {
+        float length = 50f;
+        Vector3 direction = Random.onUnitSphere;
+        Ray ray = new Ray(transform.position + (direction * length), -direction);
+        collider.Raycast(ray, out RaycastHit hit, length * 2);
+        return hit;
+    }
+
+    #endregion
 }

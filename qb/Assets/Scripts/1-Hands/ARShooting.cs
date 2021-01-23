@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.XR.ARFoundation;
-using UnityEngine.XR.ARSubsystems;
+﻿using UnityEngine;
 
-[RequireComponent(typeof(ARTrackedImageManager))]
 public class ARShooting : MonoBehaviour
 {
     #region Attributes
+
     private GameObject gelBottleHead;   //For animating
     private GameObject gelBottle;       
     private Transform shootPosition;
@@ -32,10 +27,10 @@ public class ARShooting : MonoBehaviour
 
     private bool isDragging;
 
-    private ARTrackedImageManager imageManager;
     #endregion
 
-    #region Main Methods
+    #region Unity3D
+
     private void Awake()
     {
         gelAmount = maxAmountGel;
@@ -60,9 +55,10 @@ public class ARShooting : MonoBehaviour
         }
         if (isDragging) OnDrag();
     }
+
     #endregion
 
-    #region Custom Methods
+    #region Private Methods
     
     private void SetVariables()
     {
@@ -121,6 +117,10 @@ public class ARShooting : MonoBehaviour
         }
     }
 
+    #endregion
+
+    #region Public Methods
+
     public float GetGelAmount()
     {
         return gelAmount;
@@ -130,5 +130,6 @@ public class ARShooting : MonoBehaviour
     {
         return gelAmount / maxAmountGel;
     }
+
     #endregion
 }

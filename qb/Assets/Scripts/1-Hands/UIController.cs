@@ -1,13 +1,16 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine;
 
 public class UIController : MonoBehaviour
 {
+    #region Attributes
+
     private HandsSceneManager sceneManager;
     private RectTransform pivotGel;
     private float gelAmount;
+
+    #endregion
+
+    #region Unity3D
 
     // Start is called before the first frame update
     void Start()
@@ -26,4 +29,6 @@ public class UIController : MonoBehaviour
             pivotGel.localScale = new Vector3(gelAmount, pivotGel.localScale.y, pivotGel.localScale.y);
         }
     }
+
+    #endregion
 }

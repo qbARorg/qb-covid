@@ -4,6 +4,7 @@ using UnityEngine;
 public class GelController : MonoBehaviour
 {
     #region Attributes
+
     public ParticleSystem splatterParticleSyst;
 
     private ParticleSystem mainParticleSyst;
@@ -11,17 +12,12 @@ public class GelController : MonoBehaviour
 
     #endregion
 
-    // Start is called before the first frame update
+    #region Unity3D
+
     void Start()
     {
         collisionEvents = new List<ParticleCollisionEvent>();
         mainParticleSyst = this.GetComponent<ParticleSystem>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     private void OnParticleCollision(GameObject other)
@@ -40,10 +36,16 @@ public class GelController : MonoBehaviour
         }
     }
 
+    #endregion
+
+    #region Private Methods
+
     private void EmitAtLocation(ParticleCollisionEvent particleCollisionEvent)
     {
         splatterParticleSyst.transform.position = particleCollisionEvent.intersection;
         splatterParticleSyst.transform.rotation = Quaternion.LookRotation(particleCollisionEvent.normal);
         splatterParticleSyst.Emit(1);
     }
+
+    #endregion
 }

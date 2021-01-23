@@ -7,6 +7,7 @@ using UnityEngine.XR.ARSubsystems;
 public class HandsSceneManager : TrackerListener
 {
     #region Attributes
+
     [Header("Prefabs")]
     [SerializeField] private GameObject handPrefab;
     [SerializeField] private GameObject hudPrefab;
