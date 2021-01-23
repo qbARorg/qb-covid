@@ -76,11 +76,17 @@ public class MaskSceneBehaviour : TrackerListener
 
     public override void OnDetectedUpdate(ARTrackedImage img)
     {
-        if (img.trackingState != TrackingState.None && !headInstance)
+        if (!headInstance)
         {
             headInstance = Instantiate(head, img.transform).gameObject;
             transform.localPosition = new Vector3(0f, 0f, 0f);
         }
+    }
+
+    public override void OnStoppingDetection()
+    {
+        mask.SetActive(false);
+        Destroy(headInstance);
     }
 
     public override void ARUpdate()
