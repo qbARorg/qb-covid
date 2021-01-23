@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a8dae9c4-ce39-4154-9caa-f592794cd2e3" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ARTrackerManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ARTrackerManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/3-mask__.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/3-mask__.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Demo/AR Session Origin.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Demo/AR Session Origin.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -26,10 +28,10 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Assets/Scripts/ARTrackerManager.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="329">
+            <state relative-caret-position="1710">
               <caret line="111" column="52" selection-start-line="111" selection-start-column="52" selection-end-line="111" selection-end-column="52" />
               <folding>
                 <marker date="1611425206196" expanded="true" signature="6:244" ph="..." />
@@ -54,10 +56,26 @@
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Assets/Scripts/Game/ARTrackerClassRoom.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="252">
+              <caret line="14" column="48" selection-start-line="14" selection-start-column="48" selection-end-line="14" selection-end-column="48" />
+              <folding>
+                <marker date="1611425828277" expanded="true" signature="6:113" ph="..." />
+                <marker date="1611425828277" expanded="true" signature="164:654" ph="{...}" />
+                <marker date="1611425828277" expanded="true" signature="318:449" ph="{...}" />
+                <marker date="1611425828277" expanded="true" signature="512:560" ph="{...}" />
+                <marker date="1611425828277" expanded="true" signature="608:652" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Assets/Scripts/3-Mask/MaskSceneBehaviour.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="853">
+            <state relative-caret-position="1008">
               <caret line="90" selection-start-line="90" selection-end-line="90" />
               <folding>
                 <marker date="1611423013738" expanded="false" signature="6:148" ph="..." />
@@ -94,12 +112,14 @@
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.xr.arkit@3.1.7/Editor/ARKitReferenceImageLibraryBuildProcessor.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/TrackerListener.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/3-Mask/MaskSceneBehaviour.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Game/ARTrackerClassRoom.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/Assets/Scripts/3-Mask/MaskSceneBehaviour.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/ARTrackerManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Game/ARTrackerClassRoom.cs" />
       </list>
     </option>
   </component>
@@ -121,15 +141,15 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AssemblyExplorer" />
-      <pane id="FileSystemExplorer" />
       <pane id="SolutionExplorer">
         <option name="show-all-files" value="false" />
       </pane>
+      <pane id="AssemblyExplorer" />
       <pane id="UnityExplorer">
         <option name="show-hidden-items" value="false" />
         <option name="show-project-names" value="true" />
       </pane>
+      <pane id="FileSystemExplorer" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -181,11 +201,12 @@
       <updated>1611421233855</updated>
       <workItem from="1611421238900" duration="182000" />
       <workItem from="1611421805405" duration="2437000" />
+      <workItem from="1611425455640" duration="961000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2619000" />
+    <option name="totallyTimeSpent" value="3580000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -200,7 +221,7 @@
     <frame x="0" y="23" width="1680" height="1027" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25274727" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25579977" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -264,7 +285,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Assets/Scripts/3-Mask/MaskSceneBehaviour.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="853">
+        <state relative-caret-position="1008">
           <caret line="90" selection-start-line="90" selection-end-line="90" />
           <folding>
             <marker date="1611423013738" expanded="false" signature="6:148" ph="..." />
@@ -292,7 +313,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Assets/Scripts/ARTrackerManager.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="329">
+        <state relative-caret-position="1710">
           <caret line="111" column="52" selection-start-line="111" selection-start-column="52" selection-end-line="111" selection-end-column="52" />
           <folding>
             <marker date="1611425206196" expanded="true" signature="6:244" ph="..." />
@@ -312,6 +333,20 @@
             <marker date="1611425206196" expanded="true" signature="4263:4378" ph="{...}" />
             <marker date="1611425206196" expanded="true" signature="4391:4468" ph="{...}" />
             <marker date="1611425206196" expanded="true" signature="4509:4723" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/Game/ARTrackerClassRoom.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="14" column="48" selection-start-line="14" selection-start-column="48" selection-end-line="14" selection-end-column="48" />
+          <folding>
+            <marker date="1611425828277" expanded="true" signature="6:113" ph="..." />
+            <marker date="1611425828277" expanded="true" signature="164:654" ph="{...}" />
+            <marker date="1611425828277" expanded="true" signature="318:449" ph="{...}" />
+            <marker date="1611425828277" expanded="true" signature="512:560" ph="{...}" />
+            <marker date="1611425828277" expanded="true" signature="608:652" ph="{...}" />
           </folding>
         </state>
       </provider>
