@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="$USER_HOME$/Library/Caches/Rider2019.1/extResources" t="IncludeRecursive" />
+    <e p="$USER_HOME$/Library/Caches/Rider2019.1/resharper-host/local/Transient/ReSharperHost/v191/SolutionCaches/_qb.1132213962.00" t="ExcludeRecursive" />
+    <e p="$PROJECT_DIR$" t="IncludeRecursive">
+      <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
+      <e p="Assets" t="Include">
+        <e p="Scripts" t="Include">
+          <e p="1-Hands" t="Include">
+            <e p="ARShooting.cs" t="Include" />
+            <e p="GelController.cs" t="Include" />
+            <e p="HandsRotation.cs" t="Include" />
+            <e p="UIController.cs" t="Include" />
+            <e p="VirusManager.cs" t="Include" />
+          </e>
+          <e p="3-Mask" t="Include">
+            <e p="Head.cs" t="Include" />
+            <e p="MaskSceneBehaviour.cs" t="Include" />
+            <e p="RopeSpawn.cs" t="Include" />
+          </e>
+          <e p="ARTapToPlaceObject.cs" t="Include" />
+          <e p="ARTrackerManager.cs" t="Include" />
+          <e p="Classroom" t="Include">
+            <e p="ClassroomCanvasController.cs" t="Include" />
+            <e p="ClassroomController.cs" t="Include" />
+          </e>
+          <e p="LightEstimation.cs" t="Include" />
+          <e p="TrackerListener.cs" t="Include" />
+        </e>
+      </e>
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="Packages" t="ExcludeRecursive" />
+      <e p="qb.sln" t="IncludeFlat" />
+      <e p="Temp/bin" t="ExcludeRecursive" />
+    </e>
+  </component>
+</project>

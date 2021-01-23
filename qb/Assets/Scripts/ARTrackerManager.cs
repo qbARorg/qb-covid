@@ -37,20 +37,20 @@ public class ARTrackerManager : MonoBehaviour
         
         foreach (var trackedImage in eventArgs.added)
         {
-            // Get the tracked image transform etc.
             Transform transformTracked = trackedImage.transform;
             transformTracked.localScale = new Vector3(0.25f, 0.25f, 0.25f);
             transformTracked.position = Vector3.zero;
-            
+            if (trackedImage.trackingState != TrackingState.Tracking) continue;
+            if (currentTracker && currentTracker.Showing) continue;
             // Handle image listener
             TrackerListener nextTracker = hashListeners[trackedImage.referenceImage];
             // Check if it's another tracked image, delete previous
-            if (currentTracker && nextTracker != currentTracker)
-            {
-                currentTracker.OnStoppingDetection();
-                currentTracker.Showing = false;
-                currentTracker.gameObject.SetActive(false);
-            }
+            // if (currentTracker && nextTracker != currentTracker)
+            // {
+               //  currentTracker.OnStoppingDetection();
+                // currentTracker.Showing = false;
+                // currentTracker.gameObject.SetActive(false);
+            // }
             
             // Update everything
             currentTracker = nextTracker;
@@ -60,12 +60,30 @@ public class ARTrackerManager : MonoBehaviour
             currentTracker.gameObject.SetActive(true);
             currentTracker.OnDetectedStart(trackedImage);
             currentTracker.OnDetectedUpdate(trackedImage);
-            
         }
 
         foreach (var updatedImage in eventArgs.updated)
         {
-            currentTracker.OnDetectedUpdate(updatedImage);
+            if (updatedImage.trackingState == TrackingState.Tracking)
+            {
+                // TODO: Put this in a function
+                if (currentTracker == null || currentTracker.Showing == false)
+                {
+                    Transform transformTracked = updatedImage.transform;
+                    transformTracked.localScale = new Vector3(0.25f, 0.25f, 0.25f);
+                    transformTracked.position = Vector3.zero;
+                    currentTracker = hashListeners[updatedImage.referenceImage];
+                    currentTracker.Showing = true;
+                    currentTracker.gameObject.transform.SetParent(Camera.main.transform);
+                    currentTracker.gameObject.transform.localPosition = Vector3.zero;
+                    currentTracker.gameObject.SetActive(true);
+                    currentTracker.OnDetectedStart(updatedImage);
+                    currentTracker.OnDetectedUpdate(updatedImage);
+                }
+                currentTracker.OnDetectedUpdate(updatedImage);
+            }
+
+            
         }
 
         foreach (var removedImage in eventArgs.removed)
@@ -73,7 +91,7 @@ public class ARTrackerManager : MonoBehaviour
             // Handle removed event
             hashListeners[removedImage.referenceImage].OnStoppingDetection();
             hashListeners[removedImage.referenceImage].gameObject.SetActive(false);
-            currentTracker = null;
+            hashListeners[removedImage.referenceImage].Showing = false;
         }
     }
 
@@ -93,5 +111,13 @@ public class ARTrackerManager : MonoBehaviour
         {
             currentTracker.ARUpdate();
         }
+    }
+
+    public void StopCurrentFace()
+    {
+        if (!currentTracker || !currentTracker.Showing) return;
+        currentTracker.OnStoppingDetection();
+        currentTracker.gameObject.SetActive(false);
+        currentTracker.Showing = false;
     }
 }
