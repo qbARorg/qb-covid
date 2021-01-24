@@ -4,7 +4,7 @@ public class UIController : MonoBehaviour
 {
     #region Attributes
 
-    private HandsSceneManager sceneManager;
+    private ARShooting _ARShooting;
     private RectTransform pivotGel;
     private float gelAmount;
 
@@ -15,14 +15,14 @@ public class UIController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        sceneManager = GetComponentInParent<HandsSceneManager>();
-        pivotGel = GameObject.FindGameObjectWithTag("Hud").GetComponent<RectTransform>();
+        _ARShooting = GetComponentInParent<ARShooting>();
+        pivotGel = GameObject.FindGameObjectWithTag("Hud").transform.Find("GelVisualizer").GetComponent<RectTransform>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(sceneManager) gelAmount = sceneManager.GetGelAmountNormalized();
+        if(_ARShooting) gelAmount = _ARShooting.GetGelAmountNormalized();
         if (gelAmount < 0) return;
         if (pivotGel)
         {

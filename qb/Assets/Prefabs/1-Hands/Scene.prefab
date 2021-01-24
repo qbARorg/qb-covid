@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1186436309493768365}
+  - component: {fileID: 6069246030598315750}
   m_Layer: 0
   m_Name: Scene
   m_TagString: Untagged
@@ -34,6 +35,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6069246030598315750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1186436309493768362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58b55a1809b34474f891e9eedbe80942, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animatorPrefab: {fileID: 4897047062983603109, guid: dfc3dabbc77d7044fb3ebb4d3610f102, type: 3}
+  maxAmountGel: 100
 --- !u!1001 &2636883665250919494
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -88,6 +103,10 @@ PrefabInstance:
     - target: {fileID: 1500196183503730170, guid: a5201ef520e487f4d86f7eb5f5502fc9, type: 3}
       propertyPath: m_Name
       value: SplatterPS
+      objectReference: {fileID: 0}
+    - target: {fileID: 1500196183503730170, guid: a5201ef520e487f4d86f7eb5f5502fc9, type: 3}
+      propertyPath: m_TagString
+      value: ParticleSyst
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a5201ef520e487f4d86f7eb5f5502fc9, type: 3}
@@ -213,6 +232,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Puff
       objectReference: {fileID: 0}
+    - target: {fileID: 4897047062983603109, guid: dfc3dabbc77d7044fb3ebb4d3610f102, type: 3}
+      propertyPath: m_TagString
+      value: Animator
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dfc3dabbc77d7044fb3ebb4d3610f102, type: 3}
 --- !u!4 &1365853319264604347 stripped
@@ -245,7 +268,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4839110571917201374, guid: a34959665ff79dd42abb2dd236483fff, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 4
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 4839110571917201374, guid: a34959665ff79dd42abb2dd236483fff, type: 3}
       propertyPath: m_LocalRotation.x
@@ -281,7 +304,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4839110571917201374, guid: a34959665ff79dd42abb2dd236483fff, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.6000001
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 4948682004721328204, guid: a34959665ff79dd42abb2dd236483fff, type: 3}
       propertyPath: m_LocalPosition.y
@@ -322,6 +345,10 @@ PrefabInstance:
     - target: {fileID: 4948682004721328204, guid: a34959665ff79dd42abb2dd236483fff, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4948682004721328207, guid: a34959665ff79dd42abb2dd236483fff, type: 3}
+      propertyPath: m_TagString
+      value: ParticleSyst
       objectReference: {fileID: 0}
     - target: {fileID: 5218591980095149412, guid: a34959665ff79dd42abb2dd236483fff, type: 3}
       propertyPath: m_Name

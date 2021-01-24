@@ -5,8 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - BottleHead
-  - Virus
   - ParticleSyst
+  - Undefined
+  - Animator
   - Hud
   layers:
   - Default

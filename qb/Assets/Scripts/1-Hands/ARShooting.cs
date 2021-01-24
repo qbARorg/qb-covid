@@ -4,26 +4,27 @@ public class ARShooting : MonoBehaviour
 {
     #region Attributes
 
-    private GameObject gelBottleHead;   //For animating
-    private GameObject gelBottle;       
-    private Transform shootPosition;
+    [Header("Prefabs")]
+    [SerializeField] private GameObject animatorPrefab;
+    
+    private GameObject gelBottleHead;       //Animating head
+    private GameObject gelBottle;           //Moving in X axis 
+    private Transform shootPosition;        //Shoot particle syst
+    private Vector3 localBottlePos;
 
-    [Header("Bottle head animation")]
+    [Header("Head animation")]
     private Vector3 offsetBottlePos;
     private enum Animate { up = 1, down = 0 };
     private bool finishDownAnimation = false;
 
-    [Header("Bottle movement")]
-    private Vector3 localBottlePos;
-
     [Header("Gel")]
-    public Animator emptyAnimation;
     public float maxAmountGel = 100f;
     private float gelAmount;
     private bool doPuff = false;
-    public ParticleSystem mainParticleSyst;
-    public ParticleSystem splatterParticleSyst;
     private ParticleSystem.ForceOverLifetimeModule gelForceModule;
+    private ParticleSystem mainParticleSyst;
+    private ParticleSystem splatterParticleSyst;
+    private Animator emptyAnimator;
 
     private bool isDragging;
 
@@ -33,22 +34,19 @@ public class ARShooting : MonoBehaviour
 
     private void Awake()
     {
-        gelAmount = maxAmountGel;
-        gelForceModule = mainParticleSyst.forceOverLifetime;
-        offsetBottlePos = new Vector3(0f, 0.1f, 0f);
-        //SetVariables();
+        SetVariables();
     }
 
     void Update()
     {
         //Press
-        if (Input.GetMouseButton(0) || Input.touchCount == 1)
+        if (/*Input.GetMouseButton(0) ||*/ Input.touchCount == 1)
         {
             isDragging = true;
             if (!finishDownAnimation) AnimateBottle(Animate.down);  //Animate bottle
         }
         //Release
-        if (Input.GetMouseButtonUp(0)) /*if (Input.touchCount <= 0)*/
+        if (Input.touchCount <= 0) /*if (Input.touchCount <= 0)*/
         {
             isDragging = false;
             if (finishDownAnimation) AnimateBottle(Animate.up);     //Animate bottle
@@ -62,16 +60,29 @@ public class ARShooting : MonoBehaviour
     
     private void SetVariables()
     {
+        gelAmount = maxAmountGel;
+        gelForceModule = mainParticleSyst.forceOverLifetime;
+        offsetBottlePos = new Vector3(0f, 0.1f, 0f);
+
         gelBottleHead = GameObject.FindGameObjectWithTag("BottleHead");
         gelBottle = gelBottleHead.transform.parent.gameObject;
         shootPosition = gelBottleHead.transform.GetChild(0).transform;
         localBottlePos = gelBottle.transform.localPosition;
+
+        GameObject[] particleSystems = GameObject.FindGameObjectsWithTag("ParticleSyst");
+        mainParticleSyst = particleSystems[0].GetComponent<ParticleSystem>();
+        splatterParticleSyst = particleSystems[1].GetComponent<ParticleSystem>();
+
+        if (!emptyAnimator)
+            emptyAnimator = Instantiate(animatorPrefab, Vector3.zero, Quaternion.identity, this.transform).GetComponent<Animator>();
     }
 
     private void OnDrag()
     {
+        if (Input.touchCount != 1) return;
         //Move bottle
-        Vector3 touchPos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 1f);
+        Vector3 touchPos = Input.touches[0].position;
+        touchPos.z = 1f;
         touchPos = Camera.main.ScreenToWorldPoint(touchPos);
         gelBottle.transform.position = new Vector3(touchPos.x, gelBottle.transform.position.y, gelBottle.transform.position.z);
         gelBottle.transform.localPosition = new Vector3(gelBottle.transform.localPosition.x, localBottlePos.y, localBottlePos.z);
@@ -85,15 +96,11 @@ public class ARShooting : MonoBehaviour
             //Set height of mainParticleSyst
             float height = Mathf.Clamp(touchPos.y - shootPosition.position.y, 0f, 1f);
             gelForceModule.yMultiplier = Mathf.Lerp(0.001f, 15f, height);
-            //Debug.Log($"multiplier: {gelForceModule.yMultiplier}");
         }
-        else
+        else if (!doPuff)
         {
-            if (!doPuff)
-            {
-                emptyAnimation.gameObject.GetComponent<Transform>().position = shootPosition.position;
-                doPuff = true;
-            }
+            emptyAnimator.gameObject.GetComponent<Transform>().position = shootPosition.position;
+            doPuff = true;
         }
     }
 
@@ -103,7 +110,7 @@ public class ARShooting : MonoBehaviour
         {
             gelBottleHead.transform.position += offsetBottlePos;
             finishDownAnimation = false;
-            emptyAnimation.gameObject.SetActive(false);
+            emptyAnimator.gameObject.SetActive(false);
         }
         else if (direction == Animate.down)
         {
@@ -111,7 +118,7 @@ public class ARShooting : MonoBehaviour
             finishDownAnimation = true;
             if (doPuff)
             {
-                emptyAnimation.gameObject.SetActive(true);
+                emptyAnimator.gameObject.SetActive(true);
                 doPuff = false;
             }
         }
