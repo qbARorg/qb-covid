@@ -11,6 +11,7 @@ public class HandsSceneManager : TrackerListener
     [SerializeField] private GameObject scene;
     [SerializeField] private GameObject hands;
     [SerializeField] private GameObject gelVisualizer;
+    [SerializeField] private GameObject UI_Controller;
     private GameObject sceneInstance;
     private GameObject handsInstance;
 
@@ -20,9 +21,11 @@ public class HandsSceneManager : TrackerListener
 
     public override void OnDetectedStart(ARTrackedImage img)
     {
+        sceneInstance = Instantiate(scene, Camera.main.transform);
         //Activate hud
         gelVisualizer.SetActive(true);
-        sceneInstance = Instantiate(scene, Camera.main.transform);
+        //Create hud controller
+        Instantiate(UI_Controller, sceneInstance.transform);
     }
 
     public override void OnDetectedUpdate(ARTrackedImage img)
@@ -34,6 +37,11 @@ public class HandsSceneManager : TrackerListener
             handsInstance.transform.localPosition = Vector3.zero;
             handsInstance.transform.LookAt(sceneInstance.transform);
         }
+    }
+
+    public override void ARUpdate()
+    {
+        sceneInstance.GetComponent<ARShooting>().Update();
     }
 
     public override void OnStoppingDetection()

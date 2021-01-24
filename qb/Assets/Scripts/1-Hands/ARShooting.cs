@@ -37,16 +37,16 @@ public class ARShooting : MonoBehaviour
         SetVariables();
     }
 
-    void Update()
+    public void Update()
     {
         //Press
-        if (/*Input.GetMouseButton(0) ||*/ Input.touchCount == 1)
+        if (Input.GetMouseButtonDown(0) || Input.touchCount == 1)
         {
             isDragging = true;
             if (!finishDownAnimation) AnimateBottle(Animate.down);  //Animate bottle
         }
         //Release
-        if (Input.touchCount <= 0) /*if (Input.touchCount <= 0)*/
+        if (/*Input.GetMouseButtonUp(0)*/ Input.touchCount <= 0)
         {
             isDragging = false;
             if (finishDownAnimation) AnimateBottle(Animate.up);     //Animate bottle
@@ -60,10 +60,6 @@ public class ARShooting : MonoBehaviour
     
     private void SetVariables()
     {
-        gelAmount = maxAmountGel;
-        gelForceModule = mainParticleSyst.forceOverLifetime;
-        offsetBottlePos = new Vector3(0f, 0.1f, 0f);
-
         gelBottleHead = GameObject.FindGameObjectWithTag("BottleHead");
         gelBottle = gelBottleHead.transform.parent.gameObject;
         shootPosition = gelBottleHead.transform.GetChild(0).transform;
@@ -75,6 +71,10 @@ public class ARShooting : MonoBehaviour
 
         if (!emptyAnimator)
             emptyAnimator = Instantiate(animatorPrefab, Vector3.zero, Quaternion.identity, this.transform).GetComponent<Animator>();
+
+        gelAmount = maxAmountGel;
+        gelForceModule = mainParticleSyst.forceOverLifetime;
+        offsetBottlePos = new Vector3(0f, 0.1f, 0f);
     }
 
     private void OnDrag()
@@ -82,7 +82,7 @@ public class ARShooting : MonoBehaviour
         if (Input.touchCount != 1) return;
         //Move bottle
         Vector3 touchPos = Input.touches[0].position;
-        touchPos.z = 1f;
+        touchPos.z = 1.2f;
         touchPos = Camera.main.ScreenToWorldPoint(touchPos);
         gelBottle.transform.position = new Vector3(touchPos.x, gelBottle.transform.position.y, gelBottle.transform.position.z);
         gelBottle.transform.localPosition = new Vector3(gelBottle.transform.localPosition.x, localBottlePos.y, localBottlePos.z);
