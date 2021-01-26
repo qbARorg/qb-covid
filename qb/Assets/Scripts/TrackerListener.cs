@@ -5,7 +5,7 @@ using UnityEngine.XR.ARFoundation;
 
 public class TrackerListener : MonoBehaviour
 {
-    public int imageIndex;
+    public string imageName;
 
     private bool _showing = false;
 
