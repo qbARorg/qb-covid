@@ -817,6 +817,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9879fe2e224eb4f5bbf32995c6b97e5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentScore: {fileID: 4700379776477461772}
+  maxScore: {fileID: 8178910891203571032}
   timeUI: {fileID: 2205334945739745806}
   activateOnAwaitingMask:
   - {fileID: 8321945523497586603}

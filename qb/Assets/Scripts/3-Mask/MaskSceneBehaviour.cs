@@ -80,8 +80,7 @@ public class MaskSceneBehaviour : TrackerListener
     {
         this.img = img;
         if (!headInstance)
-        {
-            
+        {            
             timeLeft = timeLeftInitial;
             headInstance = Instantiate(head, img.transform).gameObject;
             headInstanceComponent = headInstance.GetComponent<Head>();
@@ -134,6 +133,7 @@ public class MaskSceneBehaviour : TrackerListener
                 {
                     SaveSystem.Save(ConfigFileName, new Scores(currentScore));
                     Debug.Log($"[MASK SCENE] Saved successfully score: {currentScore}");
+                    maximumScore = currentScore;
                 }
                 timeLeft /= factorTime;
                 mask.SetActive(true);
