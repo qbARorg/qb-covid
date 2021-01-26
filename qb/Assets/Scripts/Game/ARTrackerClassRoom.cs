@@ -12,7 +12,6 @@ public class ARTrackerClassRoom : TrackerListener
     public override void OnDetectedStart(ARTrackedImage img)
     {
         sceneInstance = Instantiate(scene, img.gameObject.transform);
-        sceneInstance.transform.localScale *= 5;
     }
 
     public override void OnDetectedUpdate(ARTrackedImage img)
