@@ -64,7 +64,10 @@ public class MaskSceneBehaviour : TrackerListener
         mask.transform.localPosition = Vector3.zero;
         mask.transform.SetParent(mainCamera.transform);
         timeLeft = timeLeftInitial;
+        Debug.Log("saving...");
+        SaveSystem.PersistentDataPath = Application.persistentDataPath;
         Assert.IsTrue(SaveSystem.Save("config", new Scores(1)));
+        scoreLoad = SaveSystem.LoadOnAnotherThread<Scores>("config");
     }
 
     public override void OnDetectedUpdate(ARTrackedImage img)
@@ -109,7 +112,7 @@ public class MaskSceneBehaviour : TrackerListener
     
     private void HandleUpdate(float dt)
     {
-        if (scoreLoad.loaded)
+        if (scoreLoad != null && scoreLoad.loaded)
         {
             Debug.Log("LOADED " + scoreLoad.data.maximumScore);
         }

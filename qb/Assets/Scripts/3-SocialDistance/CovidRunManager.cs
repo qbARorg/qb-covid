@@ -20,6 +20,8 @@ public class CovidRunManager : MonoBehaviour
 
     public GameObject infectedPersonPrefab;
 
+    private GameObject playerInstance;
+
     public float infectedPersonAppearRate;
 
     private Rail currentRail;
@@ -32,11 +34,24 @@ public class CovidRunManager : MonoBehaviour
     {
         currentRail = Rail.Center;
         railDist = 0.5f;
+        playerInstance = GameObject.FindGameObjectsWithTag("Player")[0];
     }
 
     public void ARUpdate()
     {
         AppearEnemies(Time.deltaTime);
+        var tap = Input.mousePosition;
+        var middle = Screen.width;
+        var dir = (int)((middle - tap.x) / Mathf.Abs(middle - tap.x));
+
+        if (dir > 0)
+        {
+            playerInstance.transform.position = GoRight();
+        }
+        else
+        {
+            playerInstance.transform.position = GoLeft();
+        }
     }
 
     private void OnDisable()
@@ -93,6 +108,32 @@ public class CovidRunManager : MonoBehaviour
         }
 
         return position;
+    }
+
+    private Vector3 GoLeft()
+    {
+        if (currentRail == Rail.Left)
+        {
+            return playerInstance.transform.position;
+        }
+        else
+        {
+            currentRail--;
+            return -railDist * playerInstance.transform.position;
+        }
+    }
+
+    private Vector3 GoRight()
+    {
+        if (currentRail == Rail.Right)
+        {
+            return playerInstance.transform.position;
+        }
+        else
+        {
+            currentRail++;
+            return railDist * playerInstance.transform.position;
+        }
     }
 
     private void InstantiateEnemy(Vector3 position)

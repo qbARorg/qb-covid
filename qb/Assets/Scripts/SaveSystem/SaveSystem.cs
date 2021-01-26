@@ -34,7 +34,11 @@ public class SaveSystem : MonoBehaviour
 
 	#region Properties
 
-	public static string PersistentDataPath => _persistentDataPath;
+	public static string PersistentDataPath
+	{
+		set { _persistentDataPath = value; }
+		get => _persistentDataPath;
+	}
 	
 	#endregion
 
@@ -105,6 +109,7 @@ public class SaveSystem : MonoBehaviour
 		    string hex = Hex.ByteArrayToHexViaLookup32(encryptedSystem);
 		    StreamWriter writer = new StreamWriter(path);
 		    writer.Write(hex);
+		    writer.Flush();
 		    writer.Close();
 		    Debug.Log($"Saved into {path}");
 		    return true;

@@ -50,14 +50,6 @@
           </e>
           <e p="TrackerListener.cs" t="Include" />
         </e>
-        <e p="StreamingAssets" t="Include">
-          <e p="HiddenARCore" t="Include">
-            <e p="49be1e5a-508a-4ceb-89b2-11c8e3ae740e.imgdb-imglist.txt" t="Include" />
-            <e p="84d08cc4-4964-4f72-a92a-9206e62966ee.imgdb-imglist.txt" t="Include" />
-            <e p="8d84859e-4da4-4131-8b6f-f36f8808174c.imgdb-imglist.txt" t="Include" />
-            <e p="e594c1ea-bf9c-4b9f-a5bc-79fa1857da4d.imgdb-imglist.txt" t="Include" />
-          </e>
-        </e>
       </e>
       <e p="obj" t="ExcludeRecursive" />
       <e p="Packages" t="ExcludeRecursive" />
