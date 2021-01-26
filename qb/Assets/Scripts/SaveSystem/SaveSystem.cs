@@ -47,6 +47,10 @@ public class SaveSystem : MonoBehaviour
 	private void Awake()
 	{
 		_persistentDataPath = Application.persistentDataPath;
+		if (!Directory.Exists(_persistentDataPath))
+		{
+			Directory.CreateDirectory(_persistentDataPath);
+		}
 	}
 
 	#endregion
@@ -163,7 +167,7 @@ public class SaveSystem : MonoBehaviour
     /// <returns></returns>
     public static bool Exists(string path)
     {
-	    path = $"{_persistentDataPath}/{path}";
+	    path = $"{_persistentDataPath}/{path}.json";
 	    return File.Exists(path);
     }
     

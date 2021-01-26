@@ -13,6 +13,9 @@ public class Head : MonoBehaviour
 
     #region Private
 
+    [SerializeField] private TextMesh currentScore;
+    [SerializeField] private TextMesh maxScore;
+
     private int numberOfRopes = 0;
 
     [SerializeField] private TextMesh timeUI;
@@ -88,6 +91,17 @@ public class Head : MonoBehaviour
             ChangeState(State.NextPerson);
         }
     }
+
+    public void SetMaxScore(int maxScoreValue)
+    {
+        maxScore.text = $"Max Score: {maxScoreValue}";
+    }
+
+    public void SetScore(int score)
+    {
+        currentScore.text = $"Current Score: {score}";
+    }
+    
 
     #endregion
     
