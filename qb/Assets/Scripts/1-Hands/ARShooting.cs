@@ -155,16 +155,6 @@ public class ARShooting : MonoBehaviour
         }
     }
 
-    private void OnParticleCollision(GameObject other)
-    {
-        Debug.Log("Me choco");
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        Debug.Log("Me choco2");
-    }
-
     #endregion
 
     #region Public Methods
