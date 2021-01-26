@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Head : MonoBehaviour
 {
@@ -14,6 +15,10 @@ public class Head : MonoBehaviour
 
     #region Private
 
+    private int numberOfRopes = 0;
+
+    [SerializeField] private Text timeUI;
+    
     [SerializeField]
     private GameObject[] activateOnAwaitingMask;
     [SerializeField]
@@ -34,6 +39,8 @@ public class Head : MonoBehaviour
     #endregion
     
     #region Public Methods
+
+    public State HeadState => state;
 
     public void ChangeState(State nextState)
     {
@@ -61,6 +68,20 @@ public class Head : MonoBehaviour
             }
         }
         
+    }
+
+    public void UpdateTimeShowcase(int timeInSeconds)
+    {
+        timeUI.text = $"You have {timeInSeconds} seconds left!";
+    }
+
+    public void OneRope()
+    {
+        numberOfRopes++;
+        if (numberOfRopes >= 2)
+        {
+            state = State.NextPerson;
+        }
     }
 
     #endregion

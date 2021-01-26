@@ -15,6 +15,7 @@ public class MaskSceneBehaviour : TrackerListener
     #region Private
 
     [SerializeField] private Head head;
+    [SerializeField] private Head headInstanceComponent;
     
     private ARRaycastManager raycastManager;
 
@@ -23,43 +24,15 @@ public class MaskSceneBehaviour : TrackerListener
 
     private GameObject headInstance;
     private Camera mainCamera;
-    
+    private float currentTimeLeft = 0.0f;
+    private float timeLeft = 0.0f;
+    private const float timeLeftInitial = 20.0f;
+    private int showcaseTime = 0;
+
+
     #endregion
 
     #region Callbacks
-
-    /*
-
-    void OnDisable() => imageManager.trackedImagesChanged -= OnChanged;
-
-    void OnChanged(ARTrackedImagesChangedEventArgs eventArgs)
-    {
-        Debug.Log("new event");
-        
-        foreach (var trackedImage in eventArgs.added)
-        {
-            Debug.Log($"tracked image {trackedImage.trackingState}");
-            // Handle added event
-            
-            trackedImage.transform.localScale = new Vector3(0.25f, 0.25f, 0.25f);
-            trackedImage.transform.position = new Vector3(0.0f, 0.0f, 0.0f);
-            HandleImageUpdate(trackedImage);
-        }
-
-        foreach (var updatedImage in eventArgs.updated)
-        {
-            Debug.Log($"tracked image {updatedImage.trackingState}");
-            // Handle updated event
-            HandleImageUpdate(updatedImage);
-        }
-
-        foreach (var removedImage in eventArgs.removed)
-        {
-            // Handle removed event
-        }
-    }
-    
-    */
     #endregion
     
     
@@ -72,13 +45,16 @@ public class MaskSceneBehaviour : TrackerListener
         mask.SetActive(true);
         mask.transform.localPosition = Vector3.zero;
         mask.transform.SetParent(mainCamera.transform);
+        timeLeft = timeLeftInitial;
     }
 
     public override void OnDetectedUpdate(ARTrackedImage img)
     {
         if (!headInstance)
         {
+            timeLeft = timeLeftInitial;
             headInstance = Instantiate(head, img.transform).gameObject;
+            headInstanceComponent = headInstance.GetComponent<Head>();
             transform.localPosition = new Vector3(0f, 0f, 0f);
         }
     }
@@ -111,26 +87,78 @@ public class MaskSceneBehaviour : TrackerListener
     private void HandleUpdate(float dt)
     {
         if (Input.touches.Length != 1) return;
-        Vector3 v3 = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0.2f);
-        v3 = mainCamera.ScreenToWorldPoint(v3);
-        
-        mask.transform.LookAt(mainCamera.transform);
-        mask.transform.position = v3;
-
-        if (headInstance)
+        Vector3 posMouse = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0.2f);
+        Vector3 v3 = mainCamera.ScreenToWorldPoint(posMouse);
+        if (mask && mask.activeSelf)
         {
-            Vector3 headPosition = headInstance.transform.position;
-            float distanceLook = Vector3.Distance(
+            // List<ARRaycastHit> hits = new List<ARRaycastHit>();
+            // raycastManager.Raycast(new Vector2(Input.mousePosition.x, Input.mousePosition.y), hits, TrackableType.All);
+            mask.transform.LookAt(mainCamera.transform);
+            mask.transform.position = v3;
+        }
+
+        if (!headInstance)
+        {
+            return;
+        }
+
+        timeLeft -= Time.deltaTime;
+        showcaseTime = (int) timeLeft;
+        
+        headInstanceComponent.UpdateTimeShowcase(showcaseTime);
+
+        switch (headInstanceComponent.HeadState)
+        {
+            case Head.State.AwaitingMask:
+            {
+                Vector3 headPosition = headInstance.transform.position;
+                float distanceLook = Vector3.Distance(
                     headInstance.transform.forward.normalized,
                     mask.transform.forward.normalized
-            );
-            Debug.Log($"rotation dist: {distanceLook}");
-            if (Vector3.Distance(headPosition, v3) <= 0.1f && distanceLook <= 0.45f)
+                );
+                
+                //Debug.Log($"rotation dist: {distanceLook}");
+                
+                if (Vector3.Distance(headPosition, v3) <= 0.1f && distanceLook <= 0.45f)
+                {
+                    mask.SetActive(false);
+                    headInstanceComponent.ChangeState(Head.State.AwaitingStrings);
+                }
+
+                break;
+            }
+
+            case Head.State.AwaitingStrings:
             {
-                mask.SetActive(false);
-                headInstance.GetComponent<Head>().ChangeState(Head.State.AwaitingStrings);
+                Ray ray = mainCamera.ScreenPointToRay(v3);
+                if (Physics.Raycast(ray, out RaycastHit info))
+                {
+                    GameObject rope = info.collider.gameObject;
+                    if (rope.CompareTag("Rope"))
+                    {
+                        Transform[] children = rope.GetComponentsInChildren<Transform>();
+                        foreach (Transform ropeChild in children)
+                        {
+                            ropeChild.gameObject.SetActive(true);
+                        }
+                        headInstanceComponent.OneRope();
+                    }
+                }
+                break;
+            }
+
+            case Head.State.NextPerson:
+            {
+                break;
+            }
+
+            default:
+            {
+                break;
             }
         }
+        
+  
         
     }
     
