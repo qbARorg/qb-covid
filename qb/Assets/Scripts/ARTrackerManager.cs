@@ -101,10 +101,23 @@ public class ARTrackerManager : MonoBehaviour
     {
         for (int i = 0; i < listeners.Length; i++)
         {
-           XRReferenceImage img = imageManager.referenceLibrary[listeners[i].imageIndex];
+           XRReferenceImage img = FindImage(listeners[i].imageName);
            hashListeners[img] = listeners[i];
            listeners[i].gameObject.SetActive(false);
         }
+    }
+
+    private XRReferenceImage FindImage(string imageName)
+    {
+        for (int i = 0; i < imageManager.referenceLibrary.count; i++)
+        {
+            if (imageManager.referenceLibrary[i].name == imageName)
+            {
+                return imageManager.referenceLibrary[i];
+            }
+        }
+
+        return imageManager.referenceLibrary[0];
     }
 
     private void Update()
