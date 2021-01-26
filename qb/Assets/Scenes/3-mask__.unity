@@ -685,5 +685,9 @@ PrefabInstance:
       propertyPath: imageIndex
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8587400885937114189, guid: d53b83fcad53a458fa739ab9ddf65632, type: 3}
+      propertyPath: layer.m_Bits
+      value: 256
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d53b83fcad53a458fa739ab9ddf65632, type: 3}

@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine;
+
 
 public class Head : MonoBehaviour
 {
@@ -11,13 +8,14 @@ public class Head : MonoBehaviour
         AwaitingMask,
         AwaitingStrings,
         NextPerson,
+        Lost
     }
 
     #region Private
 
     private int numberOfRopes = 0;
 
-    [SerializeField] private Text timeUI;
+    [SerializeField] private TextMesh timeUI;
     
     [SerializeField]
     private GameObject[] activateOnAwaitingMask;
@@ -44,6 +42,7 @@ public class Head : MonoBehaviour
 
     public void ChangeState(State nextState)
     {
+        state = nextState;
         switch (nextState)
         {
             case State.AwaitingMask:
@@ -66,6 +65,12 @@ public class Head : MonoBehaviour
                 SetActive(deactivateOnFinish, false);
                 break;
             }
+
+            case State.Lost:
+            {
+                timeUI.text = "You lost! Reset the game with the button above!";
+                break;
+            }
         }
         
     }
@@ -80,7 +85,7 @@ public class Head : MonoBehaviour
         numberOfRopes++;
         if (numberOfRopes >= 2)
         {
-            state = State.NextPerson;
+            ChangeState(State.NextPerson);
         }
     }
 

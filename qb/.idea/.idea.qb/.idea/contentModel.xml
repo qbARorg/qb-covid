@@ -11,7 +11,9 @@
             <e p="ARShooting.cs" t="Include" />
             <e p="GelController.cs" t="Include" />
             <e p="HandsRotation.cs" t="Include" />
+            <e p="HandsSceneManager.cs" t="Include" />
             <e p="UIController.cs" t="Include" />
+            <e p="Virus.cs" t="Include" />
             <e p="VirusManager.cs" t="Include" />
           </e>
           <e p="3-Mask" t="Include">

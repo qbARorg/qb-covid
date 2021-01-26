@@ -1,8 +1,12 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
 using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
+using Quaternion = UnityEngine.Quaternion;
+using Vector3 = UnityEngine.Vector3;
 
 
 public class MaskSceneBehaviour : TrackerListener
@@ -18,6 +22,9 @@ public class MaskSceneBehaviour : TrackerListener
     [SerializeField] private Head headInstanceComponent;
     
     private ARRaycastManager raycastManager;
+    
+    [SerializeField]
+    private LayerMask layer;
 
     [SerializeField]
     private GameObject mask;
@@ -25,9 +32,18 @@ public class MaskSceneBehaviour : TrackerListener
     private GameObject headInstance;
     private Camera mainCamera;
     private float currentTimeLeft = 0.0f;
+    private float factorTime = 1.0f;
     private float timeLeft = 0.0f;
     private const float timeLeftInitial = 20.0f;
+
+    private float nextPersonTimer = 0.0f;
+    private float timeForNextPerson = 3.0f;
+    
     private int showcaseTime = 0;
+
+
+    private ARTrackedImage img = null;
+    
 
 
     #endregion
@@ -40,6 +56,7 @@ public class MaskSceneBehaviour : TrackerListener
 
     public override void OnDetectedStart(ARTrackedImage img)
     {
+        factorTime = 1.0f;
         raycastManager = GetComponent<ARRaycastManager>();
         mainCamera = Camera.main;
         mask.SetActive(true);
@@ -50,6 +67,7 @@ public class MaskSceneBehaviour : TrackerListener
 
     public override void OnDetectedUpdate(ARTrackedImage img)
     {
+        this.img = img;
         if (!headInstance)
         {
             timeLeft = timeLeftInitial;
@@ -86,27 +104,51 @@ public class MaskSceneBehaviour : TrackerListener
 
     private void HandleUpdate(float dt)
     {
-        if (Input.touches.Length != 1) return;
-        Vector3 posMouse = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0.2f);
-        Vector3 v3 = mainCamera.ScreenToWorldPoint(posMouse);
-        if (mask && mask.activeSelf)
-        {
-            // List<ARRaycastHit> hits = new List<ARRaycastHit>();
-            // raycastManager.Raycast(new Vector2(Input.mousePosition.x, Input.mousePosition.y), hits, TrackableType.All);
-            mask.transform.LookAt(mainCamera.transform);
-            mask.transform.position = v3;
-        }
-
+        timeLeft -= Time.deltaTime;
+        showcaseTime = Math.Max((int) timeLeft, 0);
+        
         if (!headInstance)
         {
             return;
         }
 
-        timeLeft -= Time.deltaTime;
-        showcaseTime = (int) timeLeft;
+        if (headInstanceComponent.HeadState == Head.State.NextPerson)
+        {
+            nextPersonTimer += Time.deltaTime;
+            if (nextPersonTimer >= timeForNextPerson)
+            {
+                nextPersonTimer = 0.0f;
+                Destroy(headInstance);
+                headInstance = null;
+                Destroy(headInstanceComponent);
+                headInstanceComponent = null;
+                OnDetectedUpdate(img);
+                // 😨 🥵 😳😳😳😳😳😳😳😳😳😳😳😳😳😳😳😳😳😳😳😳😳😳😳😳😳 
+                factorTime += 0.41234567f;
+                timeLeft /= factorTime;
+                mask.SetActive(true);
+                mask.transform.localPosition = Vector3.zero;
+                mask.transform.SetParent(mainCamera.transform);
+                return;
+            }
+        }
+        else if (timeLeft <= 0f)
+        {
+            headInstanceComponent.ChangeState(Head.State.Lost);
+            return;
+        }
         
         headInstanceComponent.UpdateTimeShowcase(showcaseTime);
 
+        if (Input.touches.Length != 1) return;
+        Vector3 posMouse = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0.2f);
+        Vector3 v3 = mainCamera.ScreenToWorldPoint(posMouse);
+        if (mask && mask.activeSelf)
+        {
+            mask.transform.LookAt(mainCamera.transform);
+            mask.transform.position = v3;
+        }
+        
         switch (headInstanceComponent.HeadState)
         {
             case Head.State.AwaitingMask:
@@ -119,7 +161,7 @@ public class MaskSceneBehaviour : TrackerListener
                 
                 //Debug.Log($"rotation dist: {distanceLook}");
                 
-                if (Vector3.Distance(headPosition, v3) <= 0.1f && distanceLook <= 0.45f)
+                if (Vector3.Distance(headPosition, v3) <= 0.05f && distanceLook <= 0.45f)
                 {
                     mask.SetActive(false);
                     headInstanceComponent.ChangeState(Head.State.AwaitingStrings);
@@ -130,25 +172,26 @@ public class MaskSceneBehaviour : TrackerListener
 
             case Head.State.AwaitingStrings:
             {
-                Ray ray = mainCamera.ScreenPointToRay(v3);
-                if (Physics.Raycast(ray, out RaycastHit info))
+                if (Physics.Raycast(mainCamera.transform.position, mainCamera.transform.TransformDirection(Vector3.forward), out RaycastHit info, Mathf.Infinity)) // layerMask is 8
                 {
                     GameObject rope = info.collider.gameObject;
-                    if (rope.CompareTag("Rope"))
-                    {
-                        Transform[] children = rope.GetComponentsInChildren<Transform>();
-                        foreach (Transform ropeChild in children)
-                        {
-                            ropeChild.gameObject.SetActive(true);
-                        }
-                        headInstanceComponent.OneRope();
-                    }
+                    GameObject child = rope.transform.GetChild(0).gameObject;
+                    if (child.activeSelf) return;
+                    rope.transform.GetChild(0).gameObject.SetActive(true);
+                    headInstanceComponent.OneRope();
                 }
                 break;
             }
 
             case Head.State.NextPerson:
             {
+               
+                break;
+            }
+
+            case Head.State.Lost:
+            {
+                headInstanceComponent.ChangeState(Head.State.Lost);
                 break;
             }
 
