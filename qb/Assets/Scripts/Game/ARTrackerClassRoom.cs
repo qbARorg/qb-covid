@@ -11,7 +11,7 @@ public class ARTrackerClassRoom : TrackerListener
     
     public override void OnDetectedStart(ARTrackedImage img)
     {
-        sceneInstance = Instantiate(scene, gameObject.transform);
+        sceneInstance = Instantiate(scene, img.gameObject.transform);
     }
 
     public override void OnDetectedUpdate(ARTrackedImage img)
