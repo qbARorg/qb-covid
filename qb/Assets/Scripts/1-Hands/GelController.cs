@@ -5,10 +5,12 @@ public class GelController : MonoBehaviour
 {
     #region Attributes
 
-    public ParticleSystem splatterParticleSyst;
-
+    private ARShooting _ARShooting;
+    private GameObject[] particleSystems;
+    private ParticleSystem splatterParticleSyst;
     private ParticleSystem mainParticleSyst;
     private List<ParticleCollisionEvent> collisionEvents;
+
 
     #endregion
 
@@ -16,8 +18,17 @@ public class GelController : MonoBehaviour
 
     void Start()
     {
-        collisionEvents = new List<ParticleCollisionEvent>();
+        particleSystems = GameObject.FindGameObjectsWithTag("ParticleSyst");
+        foreach (GameObject ps in particleSystems)
+        {
+            if(ps.name.StartsWith("Splatter"))
+            {
+                splatterParticleSyst = ps.GetComponent<ParticleSystem>();
+                break;
+            }
+        }
         mainParticleSyst = this.GetComponent<ParticleSystem>();
+        collisionEvents = new List<ParticleCollisionEvent>();
     }
 
     private void OnParticleCollision(GameObject other)
@@ -33,6 +44,7 @@ public class GelController : MonoBehaviour
         {
             Debug.Log("Deactivate");
             other.SetActive(false);
+            _ARShooting.IncrementEliminatedVirus();
         }
     }
 
@@ -46,6 +58,12 @@ public class GelController : MonoBehaviour
         splatterParticleSyst.transform.rotation = Quaternion.LookRotation(particleCollisionEvent.normal);
         splatterParticleSyst.Emit(1);
     }
+
+    #endregion
+
+    #region Public Methods
+    
+    
 
     #endregion
 }

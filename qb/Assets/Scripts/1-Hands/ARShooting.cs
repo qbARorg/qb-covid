@@ -5,8 +5,8 @@ public class ARShooting : MonoBehaviour
     #region Attributes
 
     [Header("Prefabs")]
-    [SerializeField] private GameObject animatorPrefab;
-    
+    [SerializeField] private Animator emptyAnimator;
+
     private GameObject gelBottleHead;       //Animating head
     private GameObject gelBottle;           //Moving in X axis 
     private Transform shootPosition;        //Shoot particle syst
@@ -24,7 +24,7 @@ public class ARShooting : MonoBehaviour
     private ParticleSystem.ForceOverLifetimeModule gelForceModule;
     private ParticleSystem mainParticleSyst;
     private ParticleSystem splatterParticleSyst;
-    private Animator emptyAnimator;
+    private int eliminatedVirus;
 
     private bool isDragging;
 
@@ -39,27 +39,49 @@ public class ARShooting : MonoBehaviour
 
     public void Update()
     {
-        //Press
-        if (Input.GetMouseButtonDown(0) || Input.touchCount == 1)
+        if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer)
         {
-            isDragging = true;
-            if (!finishDownAnimation) AnimateBottle(Animate.down);  //Animate bottle
+            //Press
+            if (Input.touchCount == 1)
+            {
+                isDragging = true;
+                if (!finishDownAnimation) AnimateBottle(Animate.down);  //Animate bottle
+            }
+            //Release
+            if (Input.touchCount <= 0)
+            {
+                isDragging = false;
+                if (finishDownAnimation) AnimateBottle(Animate.up);     //Animate bottle
+            }
+            if (isDragging) OnDrag();
         }
-        //Release
-        if (/*Input.GetMouseButtonUp(0)*/ Input.touchCount <= 0)
+        
+        if (Application.platform == RuntimePlatform.WindowsPlayer || Application.platform == RuntimePlatform.WindowsEditor ||
+            Application.platform == RuntimePlatform.OSXPlayer || Application.platform == RuntimePlatform.OSXEditor)
         {
-            isDragging = false;
-            if (finishDownAnimation) AnimateBottle(Animate.up);     //Animate bottle
+            //Press
+            if (Input.GetMouseButtonDown(0))
+            {
+                isDragging = true;
+                if (!finishDownAnimation) AnimateBottle(Animate.down);  //Animate bottle
+            }
+            //Release
+            if (Input.GetMouseButtonUp(0))
+            {
+                isDragging = false;
+                if (finishDownAnimation) AnimateBottle(Animate.up);     //Animate bottle
+            }
+            if (isDragging) OnDrag();
         }
-        if (isDragging) OnDrag();
     }
 
     #endregion
 
     #region Private Methods
-    
+
     private void SetVariables()
     {
+        eliminatedVirus = 0;
         gelBottleHead = GameObject.FindGameObjectWithTag("BottleHead");
         gelBottle = gelBottleHead.transform.parent.gameObject;
         shootPosition = gelBottleHead.transform.GetChild(0).transform;
@@ -68,33 +90,42 @@ public class ARShooting : MonoBehaviour
         GameObject[] particleSystems = GameObject.FindGameObjectsWithTag("ParticleSyst");
         mainParticleSyst = particleSystems[0].GetComponent<ParticleSystem>();
         splatterParticleSyst = particleSystems[1].GetComponent<ParticleSystem>();
-
-        if (!emptyAnimator)
-            emptyAnimator = Instantiate(animatorPrefab, Vector3.zero, Quaternion.identity, this.transform).GetComponent<Animator>();
-
+        
         gelAmount = maxAmountGel;
         gelForceModule = mainParticleSyst.forceOverLifetime;
-        offsetBottlePos = new Vector3(0f, 0.1f, 0f);
+        offsetBottlePos = new Vector3(0f, 0.02f, 0f);
     }
 
     private void OnDrag()
     {
-        if (Input.touchCount != 1) return;
-        //Move bottle
-        Vector3 touchPos = Input.touches[0].position;
-        touchPos.z = 1.2f;
+        Vector3 touchPos = Vector3.zero;
+        if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer)
+        {
+            if (Input.touchCount != 1) return;
+            //Move bottle
+            touchPos = Input.touches[0].position;
+            touchPos.z = 0.2f;
+        }
+        if (Application.platform == RuntimePlatform.WindowsPlayer || Application.platform == RuntimePlatform.WindowsEditor ||
+            Application.platform == RuntimePlatform.OSXPlayer || Application.platform == RuntimePlatform.OSXEditor)
+        {
+            //Move bottle
+            touchPos = Input.mousePosition;
+            touchPos.z = 0.2f;
+        }
+
         touchPos = Camera.main.ScreenToWorldPoint(touchPos);
         gelBottle.transform.position = new Vector3(touchPos.x, gelBottle.transform.position.y, gelBottle.transform.position.z);
         gelBottle.transform.localPosition = new Vector3(gelBottle.transform.localPosition.x, localBottlePos.y, localBottlePos.z);
 
         //Emit one particle at a time
         gelAmount -= 0.1f;
-        if (gelAmount > 0)
+        if (gelAmount > 0 || true)
         {
             mainParticleSyst.Emit(1);
 
             //Set height of mainParticleSyst
-            float height = Mathf.Clamp(touchPos.y - shootPosition.position.y, 0f, 1f);
+            float height = Mathf.Clamp(touchPos.y * 10 - shootPosition.position.y, 0f, 1f);
             gelForceModule.yMultiplier = Mathf.Lerp(0.001f, 15f, height);
         }
         else if (!doPuff)
@@ -124,6 +155,16 @@ public class ARShooting : MonoBehaviour
         }
     }
 
+    private void OnParticleCollision(GameObject other)
+    {
+        Debug.Log("Me choco");
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log("Me choco2");
+    }
+
     #endregion
 
     #region Public Methods
@@ -136,6 +177,16 @@ public class ARShooting : MonoBehaviour
     public float GetGelAmountNormalized()
     {
         return gelAmount / maxAmountGel;
+    }
+
+    public void IncrementEliminatedVirus()
+    {
+        eliminatedVirus++;
+    }
+
+    public int GetEliminatedVirus()
+    {
+        return eliminatedVirus;
     }
 
     #endregion
