@@ -44,7 +44,7 @@ namespace ClassRoom
         [SerializeField]
         private ParticleSystem w3Particles;
 
-        private void Start()
+        void Start()
         {
             mainController = this.GetComponent<ClassroomController>();
             doorButtonText.text = doorClosedtext;
