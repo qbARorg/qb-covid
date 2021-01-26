@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Numerics;
 using UnityEngine;
+using UnityEngine.Assertions;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 using Quaternion = UnityEngine.Quaternion;
@@ -63,6 +64,7 @@ public class MaskSceneBehaviour : TrackerListener
         mask.transform.localPosition = Vector3.zero;
         mask.transform.SetParent(mainCamera.transform);
         timeLeft = timeLeftInitial;
+        Assert.IsTrue(SaveSystem.Save("config", new Scores(1)));
     }
 
     public override void OnDetectedUpdate(ARTrackedImage img)
@@ -70,6 +72,7 @@ public class MaskSceneBehaviour : TrackerListener
         this.img = img;
         if (!headInstance)
         {
+            
             timeLeft = timeLeftInitial;
             headInstance = Instantiate(head, img.transform).gameObject;
             headInstanceComponent = headInstance.GetComponent<Head>();
@@ -102,8 +105,15 @@ public class MaskSceneBehaviour : TrackerListener
         }
     }
 
+    private SaveSystem.Informer<Scores> scoreLoad;
+    
     private void HandleUpdate(float dt)
     {
+        if (scoreLoad.loaded)
+        {
+            Debug.Log("LOADED " + scoreLoad.data.maximumScore);
+        }
+        
         timeLeft -= Time.deltaTime;
         showcaseTime = Math.Max((int) timeLeft, 0);
         
