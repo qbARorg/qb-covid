@@ -18,6 +18,8 @@ public class GelController : MonoBehaviour
 
     void Start()
     {
+        _ARShooting = GameObject.Find("Scene").GetComponent<ARShooting>();
+        Debug.Log(_ARShooting);
         particleSystems = GameObject.FindGameObjectsWithTag("ParticleSyst");
         foreach (GameObject ps in particleSystems)
         {
@@ -33,18 +35,19 @@ public class GelController : MonoBehaviour
 
     private void OnParticleCollision(GameObject other)
     {
-        Debug.Log("Deactivate");
-        ParticlePhysicsExtensions.GetCollisionEvents(mainParticleSyst, other, collisionEvents);
-        for (int i = 0; i < collisionEvents.Count; i++)
+        if(mainParticleSyst != null && other != null)
         {
-            EmitAtLocation(collisionEvents[i]);
+            ParticlePhysicsExtensions.GetCollisionEvents(mainParticleSyst, other, collisionEvents);
+            for (int i = 0; i < collisionEvents.Count; i++)
+            {
+                EmitAtLocation(collisionEvents[i]);
+            }
         }
-
-        if(other.transform.parent.name.StartsWith("Controller"))
+        if (other.transform.parent.name.StartsWith("Controller") && other.tag == "Virus")
         {
-            Debug.Log("Deactivate");
             other.SetActive(false);
             _ARShooting.IncrementEliminatedVirus();
+            Debug.Log(_ARShooting.GetEliminatedVirus());
         }
     }
 
