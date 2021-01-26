@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &394739694149052929
+--- !u!1 &4060258640235910686
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,10 +8,73 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3335806325675838538}
-  - component: {fileID: 9161673005483604105}
-  - component: {fileID: 1563448748539251687}
-  - component: {fileID: 4276974096634085014}
+  - component: {fileID: 4060258640235910687}
+  m_Layer: 0
+  m_Name: hands
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4060258640235910687
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4060258640235910686}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.55, z: 1.74}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 4060258640689947726}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4060258640683761955
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4060258640683761952}
+  m_Layer: 0
+  m_Name: VirusController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4060258640683761952
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4060258640683761955}
+  m_LocalRotation: {x: -0, y: -0, z: -0.0000000074505797, w: -1}
+  m_LocalPosition: {x: 0, y: 2, z: -0.5}
+  m_LocalScale: {x: 0.39999998, y: 0.39999998, z: 0.39999998}
+  m_Children:
+  - {fileID: 4060258641813399349}
+  - {fileID: 4060258641724971057}
+  m_Father: {fileID: 4060258640689947726}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 45, y: 180, z: 0}
+--- !u!1 &4060258640689947713
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4060258640689947726}
+  - component: {fileID: 4060258640689947725}
+  - component: {fileID: 4060258640689947724}
+  - component: {fileID: 4060258640689947727}
   m_Layer: 0
   m_Name: Hand visual
   m_TagString: Untagged
@@ -19,36 +82,36 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3335806325675838538
+--- !u!4 &4060258640689947726
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 394739694149052929}
+  m_GameObject: {fileID: 4060258640689947713}
   m_LocalRotation: {x: 0, y: 0.9396927, z: -0.3420201, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
-  - {fileID: 5410018948786068675}
-  m_Father: {fileID: 5291114289817794855}
+  - {fileID: 4060258640683761952}
+  m_Father: {fileID: 4060258640235910687}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 40, y: 180, z: 0}
---- !u!33 &9161673005483604105
+--- !u!33 &4060258640689947725
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 394739694149052929}
+  m_GameObject: {fileID: 4060258640689947713}
   m_Mesh: {fileID: -6032346319419290068, guid: b47d898fc5bfcaf41971f881fc7d5ae3, type: 3}
---- !u!23 &1563448748539251687
+--- !u!23 &4060258640689947724
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 394739694149052929}
+  m_GameObject: {fileID: 4060258640689947713}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -83,13 +146,13 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &4276974096634085014
+--- !u!64 &4060258640689947727
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 394739694149052929}
+  m_GameObject: {fileID: 4060258640689947713}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
@@ -97,7 +160,7 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -6032346319419290068, guid: b47d898fc5bfcaf41971f881fc7d5ae3, type: 3}
---- !u!1 &1389993911296763129
+--- !u!1 &4060258641724971056
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -105,40 +168,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5410018948786068675}
-  m_Layer: 0
-  m_Name: VirusController
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &5410018948786068675
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1389993911296763129}
-  m_LocalRotation: {x: -0, y: -0, z: -0.0000000074505797, w: -1}
-  m_LocalPosition: {x: 0, y: 2, z: -0.5}
-  m_LocalScale: {x: 0.39999998, y: 0.39999998, z: 0.39999998}
-  m_Children:
-  - {fileID: 4795088794671480780}
-  - {fileID: 2986017931619080381}
-  m_Father: {fileID: 3335806325675838538}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 45, y: 180, z: 0}
---- !u!1 &2694977051877328678
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2986017931619080381}
-  - component: {fileID: 7903826368171844051}
+  - component: {fileID: 4060258641724971057}
+  - component: {fileID: 4060258641724971070}
   m_Layer: 0
   m_Name: Controller2
   m_TagString: Untagged
@@ -146,35 +177,35 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2986017931619080381
+--- !u!4 &4060258641724971057
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2694977051877328678}
+  m_GameObject: {fileID: 4060258641724971056}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 5410018948786068675}
+  m_Father: {fileID: 4060258640683761952}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7903826368171844051
+--- !u!114 &4060258641724971070
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2694977051877328678}
+  m_GameObject: {fileID: 4060258641724971056}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6f49c53842f28eb4196074b31819e9ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  handsVisuals: {fileID: 394739694149052929}
-  virusPrefab: {fileID: 8004263697900830020, guid: a7c977ea48102fc41862d0002550f3b2, type: 3}
---- !u!1 &4766498102333236125
+  handsVisuals: {fileID: 4060258640689947713}
+  virusPrefab: {fileID: 7450531825935183165, guid: a7c977ea48102fc41862d0002550f3b2, type: 3}
+--- !u!1 &4060258641813399348
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -182,39 +213,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5291114289817794855}
-  m_Layer: 0
-  m_Name: hands
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &5291114289817794855
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4766498102333236125}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 3335806325675838538}
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &5155881061519577574
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4795088794671480780}
-  - component: {fileID: 6741121300018571949}
+  - component: {fileID: 4060258641813399349}
+  - component: {fileID: 4060258641813399346}
   m_Layer: 0
   m_Name: Controller1
   m_TagString: Untagged
@@ -222,31 +222,31 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4795088794671480780
+--- !u!4 &4060258641813399349
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5155881061519577574}
+  m_GameObject: {fileID: 4060258641813399348}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2, y: -0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 5410018948786068675}
+  m_Father: {fileID: 4060258640683761952}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6741121300018571949
+--- !u!114 &4060258641813399346
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5155881061519577574}
+  m_GameObject: {fileID: 4060258641813399348}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6f49c53842f28eb4196074b31819e9ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  handsVisuals: {fileID: 394739694149052929}
-  virusPrefab: {fileID: 8004263697900830020, guid: a7c977ea48102fc41862d0002550f3b2, type: 3}
+  handsVisuals: {fileID: 4060258640689947713}
+  virusPrefab: {fileID: 7450531825935183165, guid: a7c977ea48102fc41862d0002550f3b2, type: 3}

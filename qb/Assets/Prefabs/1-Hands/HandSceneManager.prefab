@@ -43,8 +43,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f07882b8f23ef64eba942b438ae722a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  imageName: 
-  scene: {fileID: 3376112597462339269, guid: 17cd1cdb7ca05c9488ce7f9b67263fe5, type: 3}
-  hands: {fileID: 4766498102333236125, guid: 159319eb617b80048a77105856e571a4, type: 3}
+  imageName: adri
+  scene: {fileID: 1944760728477686277, guid: 17cd1cdb7ca05c9488ce7f9b67263fe5, type: 3}
+  hands: {fileID: 4060258640235910686, guid: 159319eb617b80048a77105856e571a4, type: 3}
   gelVisualizer: {fileID: 0}
   counter: {fileID: 0}
