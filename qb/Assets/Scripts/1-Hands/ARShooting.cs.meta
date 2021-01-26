@@ -3,7 +3,12 @@ guid: 58b55a1809b34474f891e9eedbe80942
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - handPrefab: {fileID: 4766498102333236125, guid: 159319eb617b80048a77105856e571a4, type: 3}
+  - hudPrefab: {fileID: 5633416513791242583, guid: 897cd4a3e35279f4ab20a6aefc244d7f, type: 3}
+  - mainParticleSyst: {instanceID: 0}
+  - splatterParticleSyst: {instanceID: 0}
+  - emptyAnimation: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

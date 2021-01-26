@@ -1,264 +1,192 @@
-﻿using System;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.XR.ARFoundation;
+﻿using UnityEngine;
 
-[RequireComponent(typeof(ARRaycastManager))]
 public class ARShooting : MonoBehaviour
 {
     #region Attributes
 
-    public GameObject handsPrefab;
-    public GameObject gelPrefab;
-    public GameObject ballParent;
+    [Header("Prefabs")]
+    [SerializeField] private Animator emptyAnimator;
 
-    [SerializeField] [Range(0.001f, 0.1f)] float distanceBtwDots;
+    private GameObject gelBottleHead;       //Animating head
+    private GameObject gelBottle;           //Moving in X axis 
+    private Transform shootPosition;        //Shoot particle syst
+    private Vector3 localBottlePos;
 
-    private GameObject hands;
-    private GameObject gel;
-    private GameObject gelBottleHead;
-    private Transform shootPosition;
+    [Header("Head animation")]
     private Vector3 offsetBottlePos;
-    private bool once = true;
+    private enum Animate { up = 1, down = 0 };
+    private bool finishDownAnimation = false;
 
-    private GameObject[] points;
-    public int numPoints;
-    public float force = 1.0f;
+    [Header("Gel")]
+    public float maxAmountGel = 100f;
+    private float gelAmount;
+    private bool doPuff = false;
+    private ParticleSystem.ForceOverLifetimeModule gelForceModule;
+    private ParticleSystem mainParticleSyst;
+    private ParticleSystem splatterParticleSyst;
+    private int eliminatedVirus;
 
-    private Vector3 startPoint;
-    private Vector3 endPoint;
-    private Vector3 direction;
-    private Vector3 force3;
-    private float distance;
     private bool isDragging;
 
-    #region Trash Att
-    private GameObject ARCam;
-
-    private LineRenderer line;
-    private LayerMask layer;
-    private int lineSegment;
-    private float flightTime = 1.0f;
-    private Vector3 height;
-
-    private Vector2 touchPosition;
-
-    private static List<ARRaycastHit> hits = new List<ARRaycastHit>();
-    private ARRaycastManager _arRaycastManager;
-
-    #endregion
     #endregion
 
-    // Start is called before the first frame update
-    void Awake()
+    #region Unity3D
+
+    private void Awake()
     {
-        _arRaycastManager = GetComponent<ARRaycastManager>();
-        gelBottleHead = GameObject.FindWithTag("BottleHead");
-        shootPosition = gelBottleHead.transform.GetChild(0).transform;
-
-        offsetBottlePos = new Vector3(0f, 0.1f, 0f);
-
-        points = new GameObject[numPoints];
-        for(int i = 0; i<numPoints; i++)
-        {
-            points[i] = Instantiate(gelPrefab, transform.position, Quaternion.identity);
-            points[i].transform.SetParent(ballParent.transform);
-        }
+        SetVariables();
     }
 
-    void OnDragStart()
+    public void Update()
     {
-        startPoint = Input.mousePosition;
-        if(Input.touchCount > 0) startPoint = Input.GetTouch(0).position;
-    }
-
-    void OnDrag()
-    {
-        Ray camRay = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
-
-        if (Physics.Raycast(camRay, out hit, 20f))
+        if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer)
         {
-            endPoint = hit.point;
-            distance = Vector3.Distance(startPoint, endPoint);
-            direction = (startPoint - endPoint).normalized;
-            force3 = direction * distance * force;
-        }
-
-        Debug.DrawLine(startPoint, endPoint);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-        if (hands == null)
-        {
-            hands = Instantiate(handsPrefab, handsPrefab.transform.position, handsPrefab.transform.rotation);
-            hands.transform.parent = GameObject.FindGameObjectWithTag("MainCamera").transform;
-        }
-
-        if (Input.GetMouseButton(0) || Input.touchCount > 0)
-        {
-            isDragging = true;
-            OnDragStart();
-            if (once)
+            //Press
+            if (Input.touchCount == 1)
             {
-                gelBottleHead.transform.position -= offsetBottlePos;
-                once = false;
+                isDragging = true;
+                if (!finishDownAnimation) AnimateBottle(Animate.down);  //Animate bottle
             }
-        }
-
-        if(Application.platform == RuntimePlatform.Android)
-        {
-            if(Input.touchCount <= 0)
+            //Release
+            if (Input.touchCount <= 0)
             {
-                gelBottleHead.transform.position = gelBottleHead.transform.parent.transform.position;
-                once = true;
                 isDragging = false;
+                if (finishDownAnimation) AnimateBottle(Animate.up);     //Animate bottle
             }
+            if (isDragging) OnDrag();
         }
-        else
+        
+        if (Application.platform == RuntimePlatform.WindowsPlayer || Application.platform == RuntimePlatform.WindowsEditor ||
+            Application.platform == RuntimePlatform.OSXPlayer || Application.platform == RuntimePlatform.OSXEditor)
         {
+            //Press
+            if (Input.GetMouseButtonDown(0))
+            {
+                isDragging = true;
+                if (!finishDownAnimation) AnimateBottle(Animate.down);  //Animate bottle
+            }
+            //Release
             if (Input.GetMouseButtonUp(0))
             {
-                gelBottleHead.transform.position = gelBottleHead.transform.parent.transform.position;
-                once = true;
                 isDragging = false;
+                if (finishDownAnimation) AnimateBottle(Animate.up);     //Animate bottle
             }
+            if (isDragging) OnDrag();
+        }
+    }
+
+    #endregion
+
+    #region Private Methods
+
+    private void SetVariables()
+    {
+        eliminatedVirus = 0;
+        gelBottleHead = GameObject.FindGameObjectWithTag("BottleHead");
+        gelBottle = gelBottleHead.transform.parent.gameObject;
+        shootPosition = gelBottleHead.transform.GetChild(0).transform;
+        localBottlePos = gelBottle.transform.localPosition;
+
+        GameObject[] particleSystems = GameObject.FindGameObjectsWithTag("ParticleSyst");
+        mainParticleSyst = particleSystems[0].GetComponent<ParticleSystem>();
+        splatterParticleSyst = particleSystems[1].GetComponent<ParticleSystem>();
+        
+        gelAmount = maxAmountGel;
+        gelForceModule = mainParticleSyst.forceOverLifetime;
+        offsetBottlePos = new Vector3(0f, 0.02f, 0f);
+    }
+
+    private void OnDrag()
+    {
+        Vector3 touchPos = Vector3.zero;
+        if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer)
+        {
+            if (Input.touchCount != 1) return;
+            //Move bottle
+            touchPos = Input.touches[0].position;
+            touchPos.z = 0.2f;
+        }
+        if (Application.platform == RuntimePlatform.WindowsPlayer || Application.platform == RuntimePlatform.WindowsEditor ||
+            Application.platform == RuntimePlatform.OSXPlayer || Application.platform == RuntimePlatform.OSXEditor)
+        {
+            //Move bottle
+            touchPos = Input.mousePosition;
+            touchPos.z = 0.2f;
         }
 
-        if (isDragging)
-        {
-            ballParent.SetActive(true);
-            OnDrag();
+        touchPos = Camera.main.ScreenToWorldPoint(touchPos);
+        gelBottle.transform.position = new Vector3(touchPos.x, gelBottle.transform.position.y, gelBottle.transform.position.z);
+        gelBottle.transform.localPosition = new Vector3(gelBottle.transform.localPosition.x, localBottlePos.y, localBottlePos.z);
 
-            for (int i = 0; i < numPoints; i++)
+        //Emit one particle at a time
+        gelAmount -= 0.1f;
+        if (gelAmount > 0 || true)
+        {
+            mainParticleSyst.Emit(1);
+
+            //Set height of mainParticleSyst
+            float height = Mathf.Clamp(touchPos.y * 10 - shootPosition.position.y, 0f, 1f);
+            gelForceModule.yMultiplier = Mathf.Lerp(0.001f, 15f, height);
+        }
+        else if (!doPuff)
+        {
+            emptyAnimator.gameObject.GetComponent<Transform>().position = shootPosition.position;
+            doPuff = true;
+        }
+    }
+
+    private void AnimateBottle(Animate direction)
+    {
+        if (direction == Animate.up)
+        {
+            gelBottleHead.transform.position += offsetBottlePos;
+            finishDownAnimation = false;
+            emptyAnimator.gameObject.SetActive(false);
+        }
+        else if (direction == Animate.down)
+        {
+            gelBottleHead.transform.position -= offsetBottlePos;
+            finishDownAnimation = true;
+            if (doPuff)
             {
-                points[i].transform.position = PosInTime(i * distanceBtwDots);
+                emptyAnimator.gameObject.SetActive(true);
+                doPuff = false;
             }
         }
-        else
-        {
-            ballParent.SetActive(false);
-        }
-
     }
 
-    public Vector3 PosInTime(float t)
+    private void OnParticleCollision(GameObject other)
     {
-        return shootPosition.position + (direction.normalized * force * t) + 0.5f * Physics.gravity * t * t;
+        Debug.Log("Me choco");
     }
 
-    #region Trash Meth
-    //Update()
-    //{
-    //if(Input.touchCount > 0 || Input.GetMouseButtonDown(0))
-    //{
-    //    height = Vector3.Lerp(Input.mousePosition, handsPrefab.transform.position, 0.5f);
-    //}
-
-    //height is min (0f, 0.5f, 0f);
-
-    ////if (!TryGetTouchPosition(out Vector2 touchPosition)) return;
-
-    //if (Input.touchCount > 0 || Input.GetMouseButton(0))
-    //{
-
-    //    Ray camRay = Camera.main.ScreenPointToRay(Input.mousePosition);
-    //    RaycastHit hit;
-
-    //    if (Physics.Raycast(camRay, out hit, 100f, layer))
-    //    {
-
-    //        Vector3 initialVelocity = CalculateVelocty(hit.point, shootPosition.position, flightTime);
-
-    //        Visualize(initialVelocity, hit.point + Vector3.up * 0.1f); //we include the cursor position as the final nodes for the line visual position
-
-    //        transform.rotation = Quaternion.LookRotation(initialVelocity);
-    //    }
-
-    //    //Vector3.MoveTowards(gelBottleHead.transform.position, gelBottleHead.transform.position - new Vector3(0f, 0.1f, 0f), 0.01f * Time.deltaTime);
-    //    if (once)
-    //    {
-    //        gelBottleHead.transform.position -= offsetBottlePos;
-    //        once = false;
-    //    }
-    //    //Shooting
-    //    if(gel == null)
-    //    {
-    //        gel = Instantiate(gelPrefab, gelPrefab.transform.position, gelPrefab.transform.rotation);
-    //        gel.GetComponent<GelMovement>().shootPosition = shootPosition;
-    //    }
-
-    //}
-    //else
-    //{
-    //    gelBottleHead.transform.position = gelBottleHead.transform.parent.transform.position;
-    //    once = true;
-    //}
-
-    //if (_arRaycastManager.Raycast(touchPosition, hits))
-    //{
-    //    var hitPose = hits[0].pose;
-    //    Vector3 touchWorldPosition = Camera.main.ScreenToWorldPoint(touchPosition);
-
-    //}
-    //}
-
-
-    bool TryGetTouchPosition(out Vector2 touchPosition)
+    private void OnCollisionEnter(Collision collision)
     {
-        if (Input.touchCount > 0)
-        {
-            touchPosition = Input.GetTouch(0).position;
-            return true;
-        }
-        touchPosition = default;
-        return false;
+        Debug.Log("Me choco2");
     }
 
-    private void Visualize(Vector3 initialVel, Vector3 finalPos)
-    {
-        for (int i = 0; i < lineSegment; i++)
-        {
-            Vector3 pos = CalculatePosInTime(initialVel, (i / (float)lineSegment) * flightTime);
-            line.SetPosition(i, pos);
-        }
+    #endregion
 
-        line.SetPosition(lineSegment, finalPos);
+    #region Public Methods
+
+    public float GetGelAmount()
+    {
+        return gelAmount;
     }
 
-
-    private Vector3 CalculateVelocty(Vector3 target, Vector3 origin, float time)
+    public float GetGelAmountNormalized()
     {
-        Vector3 distance = target - origin;
-        Vector3 distance2D = new Vector3(distance.x, 0f, distance.z);
-
-        float sY = distance.y;
-        float sXZ = distance2D.magnitude;
-
-        float vXZ = sXZ / time;
-        float vY = (sY / time) + (0.5f * Mathf.Abs(Physics.gravity.y) * time);
-
-        Vector3 result = distance2D.normalized;
-        result *= vXZ;
-        result.y = vY;
-
-        return result;
+        return gelAmount / maxAmountGel;
     }
 
-    private Vector3 CalculatePosInTime(Vector3 initialVel, float time)
+    public void IncrementEliminatedVirus()
     {
-        Vector3 vXZ = initialVel;
-        vXZ.y = 0f;
+        eliminatedVirus++;
+    }
 
-        Vector3 result = shootPosition.position + initialVel * time;
-        float sY = (-0.5f * Mathf.Abs(Physics.gravity.y) * (time * time)) + (initialVel.y * time) + shootPosition.position.y;
-
-        result.y = sY;
-
-        return result;
+    public int GetEliminatedVirus()
+    {
+        return eliminatedVirus;
     }
 
     #endregion

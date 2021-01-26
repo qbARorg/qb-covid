@@ -28,13 +28,13 @@ public class CovidRunManager : MonoBehaviour
 
     #endregion
 
-    void Awake()
+    void ARAwake()
     {
         currentRail = Rail.Center;
         railDist = 0.5f;
     }
 
-    void Update()
+    public void ARUpdate()
     {
         AppearEnemies(Time.deltaTime);
     }
