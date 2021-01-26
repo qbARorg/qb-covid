@@ -2,15 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a8dae9c4-ce39-4154-9caa-f592794cd2e3" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.qb/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.qb/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.qb/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.qb/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/head.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/head.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/3-mask__.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/3-mask__.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/3-Mask/Head.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/3-Mask/Head.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/3-Mask/MaskSceneBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/3-Mask/MaskSceneBehaviour.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/Assembly-CSharp.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/Assembly-CSharp.csprojAssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/eldanis.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/eldanis.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/3-Mask/lib.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/3-Mask/lib.asset" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -78,46 +71,46 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Assets/Scripts/3-Mask/MaskSceneBehaviour.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="412">
-              <caret line="137" column="19" lean-forward="true" selection-start-line="137" selection-start-column="19" selection-end-line="137" selection-end-column="19" />
+            <state relative-caret-position="84">
+              <caret line="67" column="61" selection-start-line="67" selection-start-column="61" selection-end-line="67" selection-end-column="61" />
               <folding>
-                <marker date="1611690794363" expanded="true" signature="6:265" ph="..." />
-                <marker date="1611690794363" expanded="true" signature="317:5965" ph="{...}" />
-                <marker date="1611690794363" expanded="false" signature="329:363" ph="Public" />
-                <marker date="1611690794363" expanded="true" signature="373:1063" ph="Private" />
-                <marker date="1611690794363" expanded="true" signature="1069:1101" ph="Callbacks" />
-                <marker date="1611690794363" expanded="true" signature="1116:2121" ph="Unity3D" />
-                <marker date="1611690794363" expanded="true" signature="1193:1500" ph="{...}" />
-                <marker date="1611690794363" expanded="true" signature="1563:1892" ph="{...}" />
-                <marker date="1611690794363" expanded="true" signature="1620:1886" ph="{...}" />
-                <marker date="1611690794363" expanded="true" signature="1940:2014" ph="{...}" />
-                <marker date="1611690794363" expanded="true" signature="2051:2101" ph="{...}" />
-                <marker date="1611690794363" expanded="true" signature="2131:5909" ph="Private Methods" />
-                <marker date="1611690794363" expanded="true" signature="2219:2513" ph="{...}" />
-                <marker date="1611690794363" expanded="true" signature="2304:2507" ph="{...}" />
-                <marker date="1611690794363" expanded="true" signature="2554:5889" ph="{...}" />
-                <marker date="1611690794363" expanded="true" signature="2684:2724" ph="{...}" />
-                <marker date="1611690794363" expanded="true" signature="2795:3540" ph="{...}" />
-                <marker date="1611690794363" expanded="true" signature="2906:3530" ph="{...}" />
-                <marker date="1611690794363" expanded="true" signature="3573:3677" ph="{...}" />
-                <marker date="1611690794363" expanded="true" signature="3989:4108" ph="{...}" />
-                <marker date="1611690794363" expanded="true" signature="4167:5862" ph="{...}" />
-                <marker date="1611690794363" expanded="true" signature="4683:4845" ph="{...}" />
-                <marker date="1611690794363" expanded="true" signature="5124:5480" ph="{...}" />
-                <marker date="1611690794363" expanded="true" signature="5919:5963" ph="Public Methods" />
+                <marker date="1611690811603" expanded="true" signature="6:265" ph="..." />
+                <marker date="1611690811603" expanded="true" signature="317:5964" ph="{...}" />
+                <marker date="1611690811603" expanded="false" signature="329:363" ph="Public" />
+                <marker date="1611690811603" expanded="true" signature="373:1063" ph="Private" />
+                <marker date="1611690811603" expanded="true" signature="1069:1101" ph="Callbacks" />
+                <marker date="1611690811603" expanded="true" signature="1116:2121" ph="Unity3D" />
+                <marker date="1611690811603" expanded="true" signature="1193:1500" ph="{...}" />
+                <marker date="1611690811603" expanded="true" signature="1563:1892" ph="{...}" />
+                <marker date="1611690811603" expanded="true" signature="1620:1886" ph="{...}" />
+                <marker date="1611690811603" expanded="true" signature="1940:2014" ph="{...}" />
+                <marker date="1611690811603" expanded="true" signature="2051:2101" ph="{...}" />
+                <marker date="1611690811603" expanded="true" signature="2131:5908" ph="Private Methods" />
+                <marker date="1611690811603" expanded="true" signature="2219:2513" ph="{...}" />
+                <marker date="1611690811603" expanded="true" signature="2304:2507" ph="{...}" />
+                <marker date="1611690811603" expanded="true" signature="2554:5888" ph="{...}" />
+                <marker date="1611690811603" expanded="true" signature="2684:2724" ph="{...}" />
+                <marker date="1611690811603" expanded="true" signature="2795:3540" ph="{...}" />
+                <marker date="1611690811603" expanded="true" signature="2906:3530" ph="{...}" />
+                <marker date="1611690811603" expanded="true" signature="3573:3677" ph="{...}" />
+                <marker date="1611690811603" expanded="true" signature="3989:4108" ph="{...}" />
+                <marker date="1611690811603" expanded="true" signature="4166:5861" ph="{...}" />
+                <marker date="1611690811603" expanded="true" signature="4682:4844" ph="{...}" />
+                <marker date="1611690811603" expanded="true" signature="5123:5479" ph="{...}" />
+                <marker date="1611690811603" expanded="true" signature="5918:5962" ph="Public Methods" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Assets/Scripts/3-Mask/Head.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-181">
-              <caret line="31" selection-start-line="31" selection-end-line="31" />
+            <state relative-caret-position="1890">
+              <caret line="105" column="4" selection-start-line="105" selection-start-column="4" selection-end-line="105" selection-end-column="4" />
               <folding>
                 <marker date="1611689358625" expanded="true" signature="54:2430" ph="{...}" />
                 <marker date="1611689358625" expanded="true" signature="79:171" ph="{...}" />
@@ -131,7 +124,7 @@
                 <marker date="1611689358625" expanded="true" signature="2091:2312" ph="Private Methods" />
                 <marker date="1611689358625" expanded="true" signature="2180:2292" ph="{...}" />
                 <marker date="1611689358625" expanded="true" signature="2232:2286" ph="{...}" />
-                <marker date="1611689358625" expanded="false" signature="2318:2428" ph="Unity3D" />
+                <marker date="1611689358625" expanded="true" signature="2318:2428" ph="Unity3D" />
                 <marker date="1611689358625" expanded="true" signature="2359:2412" ph="{...}" />
               </folding>
             </state>
@@ -169,9 +162,11 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-1768" />
+    <option name="y" value="37" />
     <option name="width" value="1680" />
-    <option name="height" value="1050" />
+    <option name="height" value="1027" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -249,12 +244,12 @@
       <workItem from="1611421238900" duration="182000" />
       <workItem from="1611421805405" duration="2437000" />
       <workItem from="1611425455640" duration="961000" />
-      <workItem from="1611682350634" duration="8299000" />
+      <workItem from="1611682350634" duration="8876000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11879000" />
+    <option name="totallyTimeSpent" value="12456000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -266,7 +261,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1680" height="1027" extended-state="6" />
+    <frame x="-1768" y="37" width="1680" height="1027" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25885227" />
@@ -371,10 +366,43 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/3-Mask/MaskSceneBehaviour.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="67" column="61" selection-start-line="67" selection-start-column="61" selection-end-line="67" selection-end-column="61" />
+          <folding>
+            <marker date="1611690811603" expanded="true" signature="6:265" ph="..." />
+            <marker date="1611690811603" expanded="true" signature="317:5964" ph="{...}" />
+            <marker date="1611690811603" expanded="false" signature="329:363" ph="Public" />
+            <marker date="1611690811603" expanded="true" signature="373:1063" ph="Private" />
+            <marker date="1611690811603" expanded="true" signature="1069:1101" ph="Callbacks" />
+            <marker date="1611690811603" expanded="true" signature="1116:2121" ph="Unity3D" />
+            <marker date="1611690811603" expanded="true" signature="1193:1500" ph="{...}" />
+            <marker date="1611690811603" expanded="true" signature="1563:1892" ph="{...}" />
+            <marker date="1611690811603" expanded="true" signature="1620:1886" ph="{...}" />
+            <marker date="1611690811603" expanded="true" signature="1940:2014" ph="{...}" />
+            <marker date="1611690811603" expanded="true" signature="2051:2101" ph="{...}" />
+            <marker date="1611690811603" expanded="true" signature="2131:5908" ph="Private Methods" />
+            <marker date="1611690811603" expanded="true" signature="2219:2513" ph="{...}" />
+            <marker date="1611690811603" expanded="true" signature="2304:2507" ph="{...}" />
+            <marker date="1611690811603" expanded="true" signature="2554:5888" ph="{...}" />
+            <marker date="1611690811603" expanded="true" signature="2684:2724" ph="{...}" />
+            <marker date="1611690811603" expanded="true" signature="2795:3540" ph="{...}" />
+            <marker date="1611690811603" expanded="true" signature="2906:3530" ph="{...}" />
+            <marker date="1611690811603" expanded="true" signature="3573:3677" ph="{...}" />
+            <marker date="1611690811603" expanded="true" signature="3989:4108" ph="{...}" />
+            <marker date="1611690811603" expanded="true" signature="4166:5861" ph="{...}" />
+            <marker date="1611690811603" expanded="true" signature="4682:4844" ph="{...}" />
+            <marker date="1611690811603" expanded="true" signature="5123:5479" ph="{...}" />
+            <marker date="1611690811603" expanded="true" signature="5918:5962" ph="Public Methods" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Assets/Scripts/3-Mask/Head.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-181">
-          <caret line="31" selection-start-line="31" selection-end-line="31" />
+        <state relative-caret-position="1890">
+          <caret line="105" column="4" selection-start-line="105" selection-start-column="4" selection-end-line="105" selection-end-column="4" />
           <folding>
             <marker date="1611689358625" expanded="true" signature="54:2430" ph="{...}" />
             <marker date="1611689358625" expanded="true" signature="79:171" ph="{...}" />
@@ -388,41 +416,8 @@
             <marker date="1611689358625" expanded="true" signature="2091:2312" ph="Private Methods" />
             <marker date="1611689358625" expanded="true" signature="2180:2292" ph="{...}" />
             <marker date="1611689358625" expanded="true" signature="2232:2286" ph="{...}" />
-            <marker date="1611689358625" expanded="false" signature="2318:2428" ph="Unity3D" />
+            <marker date="1611689358625" expanded="true" signature="2318:2428" ph="Unity3D" />
             <marker date="1611689358625" expanded="true" signature="2359:2412" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Scripts/3-Mask/MaskSceneBehaviour.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="412">
-          <caret line="137" column="19" lean-forward="true" selection-start-line="137" selection-start-column="19" selection-end-line="137" selection-end-column="19" />
-          <folding>
-            <marker date="1611690794363" expanded="true" signature="6:265" ph="..." />
-            <marker date="1611690794363" expanded="true" signature="317:5965" ph="{...}" />
-            <marker date="1611690794363" expanded="false" signature="329:363" ph="Public" />
-            <marker date="1611690794363" expanded="true" signature="373:1063" ph="Private" />
-            <marker date="1611690794363" expanded="true" signature="1069:1101" ph="Callbacks" />
-            <marker date="1611690794363" expanded="true" signature="1116:2121" ph="Unity3D" />
-            <marker date="1611690794363" expanded="true" signature="1193:1500" ph="{...}" />
-            <marker date="1611690794363" expanded="true" signature="1563:1892" ph="{...}" />
-            <marker date="1611690794363" expanded="true" signature="1620:1886" ph="{...}" />
-            <marker date="1611690794363" expanded="true" signature="1940:2014" ph="{...}" />
-            <marker date="1611690794363" expanded="true" signature="2051:2101" ph="{...}" />
-            <marker date="1611690794363" expanded="true" signature="2131:5909" ph="Private Methods" />
-            <marker date="1611690794363" expanded="true" signature="2219:2513" ph="{...}" />
-            <marker date="1611690794363" expanded="true" signature="2304:2507" ph="{...}" />
-            <marker date="1611690794363" expanded="true" signature="2554:5889" ph="{...}" />
-            <marker date="1611690794363" expanded="true" signature="2684:2724" ph="{...}" />
-            <marker date="1611690794363" expanded="true" signature="2795:3540" ph="{...}" />
-            <marker date="1611690794363" expanded="true" signature="2906:3530" ph="{...}" />
-            <marker date="1611690794363" expanded="true" signature="3573:3677" ph="{...}" />
-            <marker date="1611690794363" expanded="true" signature="3989:4108" ph="{...}" />
-            <marker date="1611690794363" expanded="true" signature="4167:5862" ph="{...}" />
-            <marker date="1611690794363" expanded="true" signature="4683:4845" ph="{...}" />
-            <marker date="1611690794363" expanded="true" signature="5124:5480" ph="{...}" />
-            <marker date="1611690794363" expanded="true" signature="5919:5963" ph="Public Methods" />
           </folding>
         </state>
       </provider>

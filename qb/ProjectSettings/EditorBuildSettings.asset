@@ -14,9 +14,12 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/4-Classroom 1.unity
     guid: fe7d5ffd32654e142899ceaaf1fc1922
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/3-mask__.unity
     guid: a378abc40a9eb4afdb30d6da46c83655
+  - enabled: 1
+    path: Assets/Scenes/eldanis.unity
+    guid: 7a6db2dc14ded46b6b706de1d9f14f32
   m_configObjects:
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: c7b46cefd5cbd104e985282043e2b3a4, type: 2}
     UnityEditor.XR.ARKit.ARKitSettings: {fileID: 11400000, guid: 34924b707f20a3946819a0984579d2e6, type: 2}

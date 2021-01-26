@@ -21,6 +21,13 @@
             <e p="MaskSceneBehaviour.cs" t="Include" />
             <e p="RopeSpawn.cs" t="Include" />
           </e>
+          <e p="3-SocialDistance" t="Include">
+            <e p="CovidRunManager.cs" t="Include" />
+            <e p="CovidRunSceneManager.cs" t="Include" />
+            <e p="ImageTrackerManager.cs" t="Include" />
+            <e p="InfectedPerson.cs" t="Include" />
+            <e p="PlayerBehaviour.cs" t="Include" />
+          </e>
           <e p="ARTapToPlaceObject.cs" t="Include" />
           <e p="ARTrackerManager.cs" t="Include" />
           <e p="Classroom" t="Include">
