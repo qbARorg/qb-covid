@@ -35,7 +35,7 @@ public class CovidRunManager : MonoBehaviour
 
     #endregion
 
-    void ARAwake()
+    public void ARAwake()
     {
         currentRail = Rail.Center;
         railDist = 0.5f;
@@ -63,6 +63,7 @@ public class CovidRunManager : MonoBehaviour
 
     private void CheckInfection()
     {
+
     }
 
     private void OnDisable()
