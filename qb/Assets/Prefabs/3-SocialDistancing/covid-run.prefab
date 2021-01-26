@@ -141,7 +141,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   infectedPersonPrefab: {fileID: 471076175699966958, guid: 74b83f27cddfd4129bd62a304e00c916, type: 3}
-  playerPrefab: {fileID: 0}
+  playerPrefab: {fileID: 679425806363448376}
   infectedPersonAppearRate: 2
 --- !u!1001 &408886359098124649
 PrefabInstance:
@@ -222,8 +222,17 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0cffbc2a2eb8a44afb39219fc8f5fa97, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0cffbc2a2eb8a44afb39219fc8f5fa97, type: 3}
+--- !u!1 &679425806363448376 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 0cffbc2a2eb8a44afb39219fc8f5fa97, type: 3}
+  m_PrefabInstance: {fileID: 408886359098124649}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &154844803789917826 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 0cffbc2a2eb8a44afb39219fc8f5fa97, type: 3}
