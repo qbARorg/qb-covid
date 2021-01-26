@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class VirusManager : MonoBehaviour
 {
-    public GameObject hands;
+    #region Attributes
+
+    public GameObject handsVisuals;
     public GameObject virusPrefab;
 
     private new Collider collider;
@@ -12,16 +14,20 @@ public class VirusManager : MonoBehaviour
     private int numViruses = 10;
     private GameObject[] virusInstances;
 
+    #endregion
+
+    #region Unity3D
+
     private void Awake()
     {
-        collider = hands.GetComponent<Collider>();
+        collider = handsVisuals.GetComponent<Collider>();
         hits = new RaycastHit[numViruses];
         for(int i = 0; i<numViruses; i++)
         {
             hits[i] = GetPointOnMesh();
         }
     }
-    // Start is called before the first frame update
+
     void Start()
     {
         virusInstances = new GameObject[hits.Length];
@@ -32,13 +38,12 @@ public class VirusManager : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    #endregion
 
-    private RaycastHit GetPointOnMesh(){
+    #region Private Methods
+
+    private RaycastHit GetPointOnMesh()
+    {
         float length = 50f;
         Vector3 direction = Random.onUnitSphere;
         Ray ray = new Ray(transform.position + (direction * length), -direction);
@@ -46,17 +51,5 @@ public class VirusManager : MonoBehaviour
         return hit;
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        Debug.Log($"Collision with {collision.collider.name}");
-        if(collision.collider.name == "ShootingPos")
-        {
-            this.gameObject.SetActive(false);
-        }
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        Debug.Log($"Collision with {other.name}");
-    }
+    #endregion
 }

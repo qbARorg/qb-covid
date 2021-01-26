@@ -1,27 +1,58 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class UIController : MonoBehaviour
 {
-    public ARShooting _ARShooting;
-    public RectTransform pivotGel;
-    public Text handsText;
+    #region Attributes
 
+    [SerializeField] private ARShooting _ARShooting;
+    private Transform parent;
+    private GameObject gelVisualizer;
+    private Text counter;
+    private RectTransform pivotGel;
     private float gelAmount;
 
-    // Start is called before the first frame update
+    #endregion
+
+    #region Unity3D
+
     void Start()
     {
-
+        parent = GameObject.FindGameObjectWithTag("Hud").transform;
+        for(int i = 0; i<parent.childCount; i++)
+        {
+            if (parent.GetChild(i).name.StartsWith("GelVisualizer"))
+            {
+                gelVisualizer = parent.GetChild(i).gameObject;
+            }
+            else if (parent.GetChild(i).name.StartsWith("Counter"))
+            {
+                counter = parent.GetChild(i).GetComponentInChildren<Text>();
+            }
+        }
+        if (gelVisualizer) pivotGel = gelVisualizer.transform.GetChild(1).GetComponent<RectTransform>();
+        gelVisualizer.SetActive(true);
     }
 
-    // Update is called once per frame
     void Update()
     {
-        gelAmount = _ARShooting.GetGelAmountNormalized();
+        if (_ARShooting)
+        {
+            gelAmount = _ARShooting.GetGelAmountNormalized();
+            counter.text = _ARShooting.GetEliminatedVirus().ToString();
+        }
         if (gelAmount < 0) return;
-        pivotGel.localScale = new Vector3(gelAmount, pivotGel.localScale.y, pivotGel.localScale.y);
+        if (pivotGel)
+        {
+            pivotGel.localScale = new Vector3(gelAmount, pivotGel.localScale.y, pivotGel.localScale.y);
+        }
     }
+
+    #endregion
+
+    #region Public Methods
+
+    
+
+    #endregion
 }

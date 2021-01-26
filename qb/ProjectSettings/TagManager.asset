@@ -5,9 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - BottleHead
-  - Points
-  - Virus
   - ParticleSyst
+  - Undefined
+  - Animator
+  - Hud
   - Rope
   layers:
   - Default

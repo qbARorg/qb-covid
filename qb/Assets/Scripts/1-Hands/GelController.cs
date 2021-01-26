@@ -4,24 +4,31 @@ using UnityEngine;
 public class GelController : MonoBehaviour
 {
     #region Attributes
+
+    private ARShooting _ARShooting;
+    private GameObject[] particleSystems;
     private ParticleSystem splatterParticleSyst;
     private ParticleSystem mainParticleSyst;
     private List<ParticleCollisionEvent> collisionEvents;
 
+
     #endregion
 
-    // Start is called before the first frame update
+    #region Unity3D
+
     void Start()
     {
-        splatterParticleSyst = GameObject.FindGameObjectWithTag("ParticleSyst").GetComponent<ParticleSystem>();
-        collisionEvents = new List<ParticleCollisionEvent>();
+        particleSystems = GameObject.FindGameObjectsWithTag("ParticleSyst");
+        foreach (GameObject ps in particleSystems)
+        {
+            if(ps.name.StartsWith("Splatter"))
+            {
+                splatterParticleSyst = ps.GetComponent<ParticleSystem>();
+                break;
+            }
+        }
         mainParticleSyst = this.GetComponent<ParticleSystem>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        collisionEvents = new List<ParticleCollisionEvent>();
     }
 
     private void OnParticleCollision(GameObject other)
@@ -37,13 +44,26 @@ public class GelController : MonoBehaviour
         {
             Debug.Log("Deactivate");
             other.SetActive(false);
+            _ARShooting.IncrementEliminatedVirus();
         }
     }
+
+    #endregion
+
+    #region Private Methods
 
     private void EmitAtLocation(ParticleCollisionEvent particleCollisionEvent)
     {
         splatterParticleSyst.transform.position = particleCollisionEvent.intersection;
         splatterParticleSyst.transform.rotation = Quaternion.LookRotation(particleCollisionEvent.normal);
-        splatterParticleSyst.Play();
+        splatterParticleSyst.Emit(1);
     }
+
+    #endregion
+
+    #region Public Methods
+    
+    
+
+    #endregion
 }
