@@ -20,6 +20,8 @@ public class CovidRunManager : MonoBehaviour
 
     public GameObject infectedPersonPrefab;
 
+    public GameObject playerPrefab;
+
     private GameObject playerInstance;
 
     public float infectedPersonAppearRate;
@@ -27,6 +29,9 @@ public class CovidRunManager : MonoBehaviour
     private Rail currentRail;
     private float railDist;
     private float timer = 0.0f;
+    private float probabilityOfCovid = 0.0f;
+
+    private const float probDelta = 0.01f;
 
     #endregion
 
@@ -34,7 +39,7 @@ public class CovidRunManager : MonoBehaviour
     {
         currentRail = Rail.Center;
         railDist = 0.5f;
-        playerInstance = GameObject.FindGameObjectsWithTag("Player")[0];
+        playerInstance = Instantiate(playerPrefab, Vector3.back, transform.rotation, transform);
     }
 
     public void ARUpdate()
@@ -52,6 +57,12 @@ public class CovidRunManager : MonoBehaviour
         {
             playerInstance.transform.position = GoLeft();
         }
+
+        
+    }
+
+    private void CheckInfection()
+    {
     }
 
     private void OnDisable()

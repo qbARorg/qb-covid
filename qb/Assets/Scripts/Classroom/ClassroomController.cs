@@ -119,9 +119,9 @@ namespace ClassRoom
             if(!performanceMode)
             {
                 float newAngle = (doorOpenedAngle - doorClosedAngle) / 2f - (doorOpenedAngle - doorClosedAngle) / 2f * Mathf.Cos(doorLerpState * Mathf.PI);
-                doorHinge.transform.eulerAngles = new Vector3(0, newAngle, 0);
+                doorHinge.transform.localEulerAngles = new Vector3(0, newAngle, 0);
             }
-            else doorHinge.transform.eulerAngles = Vector3.Slerp(new Vector3(0f, doorClosedAngle, 0f), new Vector3(0f, doorOpenedAngle, 0f), doorLerpState);
+            else doorHinge.transform.localEulerAngles = Vector3.Slerp(new Vector3(0f, doorClosedAngle, 0f), new Vector3(0f, doorOpenedAngle, 0f), doorLerpState);
         }
 
         public void window1Controller()
@@ -138,14 +138,14 @@ namespace ClassRoom
             if (!performanceMode)
             {
                 float newAngle1 = (window11OpenedAngle - window11ClosedAngle) / 2f - (window11OpenedAngle - window11ClosedAngle) / 2f * Mathf.Cos(window1LerpState * Mathf.PI);
-                window11Hinge.transform.eulerAngles = new Vector3(0, newAngle1, 0);
+                window11Hinge.transform.localEulerAngles = new Vector3(0, newAngle1, 0);
                 float newAngle2 = (window12OpenedAngle - window12ClosedAngle) / 2f - (window12OpenedAngle - window12ClosedAngle) / 2f * Mathf.Cos(window1LerpState * Mathf.PI);
-                window12Hinge.transform.eulerAngles = new Vector3(0, newAngle2, 0);
+                window12Hinge.transform.localEulerAngles = new Vector3(0, newAngle2, 0);
             }
             else
             {
-                window11Hinge.transform.eulerAngles = Vector3.Slerp(new Vector3(0f, window11ClosedAngle, 0f), new Vector3(0f, window11OpenedAngle, 0f), window1LerpState);
-                window12Hinge.transform.eulerAngles = Vector3.Slerp(new Vector3(0f, window12ClosedAngle, 0f), new Vector3(0f, window12OpenedAngle, 0f), window1LerpState);
+                window11Hinge.transform.localEulerAngles = Vector3.Slerp(new Vector3(0f, window11ClosedAngle, 0f), new Vector3(0f, window11OpenedAngle, 0f), window1LerpState);
+                window12Hinge.transform.localEulerAngles = Vector3.Slerp(new Vector3(0f, window12ClosedAngle, 0f), new Vector3(0f, window12OpenedAngle, 0f), window1LerpState);
             }
         }
 
@@ -163,14 +163,14 @@ namespace ClassRoom
             if (!performanceMode)
             {
                 float newAngle1 = (window21OpenedAngle - window21ClosedAngle) / 2f - (window21OpenedAngle - window21ClosedAngle) / 2f * Mathf.Cos(window2LerpState * Mathf.PI);
-                window21Hinge.transform.eulerAngles = new Vector3(0, newAngle1, 0);
+                window21Hinge.transform.localEulerAngles = new Vector3(0, newAngle1, 0);
                 float newAngle2 = (window22OpenedAngle - window22ClosedAngle) / 2f - (window22OpenedAngle - window22ClosedAngle) / 2f * Mathf.Cos(window2LerpState * Mathf.PI);
-                window22Hinge.transform.eulerAngles = new Vector3(0, newAngle2, 0);
+                window22Hinge.transform.localEulerAngles = new Vector3(0, newAngle2, 0);
             }
             else
             {
-                window21Hinge.transform.eulerAngles = Vector3.Slerp(new Vector3(0f, window21ClosedAngle, 0f), new Vector3(0f, window21OpenedAngle, 0f), window2LerpState);
-                window22Hinge.transform.eulerAngles = Vector3.Slerp(new Vector3(0f, window22ClosedAngle, 0f), new Vector3(0f, window22OpenedAngle, 0f), window2LerpState);
+                window21Hinge.transform.localEulerAngles = Vector3.Slerp(new Vector3(0f, window21ClosedAngle, 0f), new Vector3(0f, window21OpenedAngle, 0f), window2LerpState);
+                window22Hinge.transform.localEulerAngles = Vector3.Slerp(new Vector3(0f, window22ClosedAngle, 0f), new Vector3(0f, window22OpenedAngle, 0f), window2LerpState);
             }
             
         }
@@ -189,14 +189,14 @@ namespace ClassRoom
             if (!performanceMode)
             {
                 float newAngle1 = (window31OpenedAngle - window31ClosedAngle) / 2f - (window31OpenedAngle - window31ClosedAngle) / 2f * Mathf.Cos(window3LerpState * Mathf.PI);
-                window31Hinge.transform.eulerAngles = new Vector3(0, newAngle1, 0);
+                window31Hinge.transform.localEulerAngles = new Vector3(0, newAngle1, 0);
                 float newAngle2 = (window32OpenedAngle - window32ClosedAngle) / 2f - (window32OpenedAngle - window32ClosedAngle) / 2f * Mathf.Cos(window3LerpState * Mathf.PI);
-                window32Hinge.transform.eulerAngles = new Vector3(0, newAngle2, 0);
+                window32Hinge.transform.localEulerAngles = new Vector3(0, newAngle2, 0);
             }
             else
             {
-                window31Hinge.transform.eulerAngles = Vector3.Slerp(new Vector3(0f, window31ClosedAngle, 0f), new Vector3(0f, window31OpenedAngle, 0f), window1LerpState);
-                window32Hinge.transform.eulerAngles = Vector3.Slerp(new Vector3(0f, window32ClosedAngle, 0f), new Vector3(0f, window32OpenedAngle, 0f), window1LerpState);
+                window31Hinge.transform.localEulerAngles = Vector3.Slerp(new Vector3(0f, window31ClosedAngle, 0f), new Vector3(0f, window31OpenedAngle, 0f), window1LerpState);
+                window32Hinge.transform.localEulerAngles = Vector3.Slerp(new Vector3(0f, window32ClosedAngle, 0f), new Vector3(0f, window32OpenedAngle, 0f), window1LerpState);
             }
         }
         #endregion
