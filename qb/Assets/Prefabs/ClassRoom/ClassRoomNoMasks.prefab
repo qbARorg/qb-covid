@@ -27374,7 +27374,7 @@ MonoBehaviour:
   - {fileID: 1641707148174279594}
   - {fileID: 5091176062187233811}
   classController: {fileID: 3506442728542074655}
-  infectionRate: 15
+  infectionRate: 18
   ratio1: 0.8
   ratio2: 0.6
   ratio3: 0.4
