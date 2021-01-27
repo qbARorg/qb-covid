@@ -17,11 +17,19 @@ public class StatsFaceManager : TrackerListener
 
     public override void OnDetectedStart(ARTrackedImage img)
     {
+        if (texts != null)
+        {
+            foreach (Stats text in texts)
+            {
+                Destroy(text.gameObject);
+            }
+        }
         texts = new List<Stats>();
         pivotInstance = Instantiate(pivot, img.transform);
         pivotInstance.transform.localPosition = Vector3.zero;
         NewScoreText("Mask Placement", MaskSceneBehaviour.ConfigFileName);
         NewScoreText("Classroom Simulation", "ClassRoomMask");
+        NewScoreText("Classroom Without Masks Simulation", "ClassRoomNoMask");
     }
 
     private void NewScoreText(string game, string nameConfig)
@@ -32,7 +40,7 @@ public class StatsFaceManager : TrackerListener
             Scores scoreMaskScene = SaveSystem.Load<Scores>(nameConfig);
             score = scoreMaskScene.maximumScore;
         }
-        InstantiateText().Text.text = $"Score {game} Game: {score}";
+        InstantiateText().Text.text = $"Record Score {game} Game: {score}";
     }
     
     private Stats InstantiateText()
@@ -40,7 +48,7 @@ public class StatsFaceManager : TrackerListener
         Stats s = Instantiate(prefabSampleText, pivotInstance.transform);
         texts.Add(s);
         s.transform.position = Vector3.zero;
-        s.transform.position += Vector3.down * (texts.Count * 0.2f);
+        s.transform.position += Vector3.down * (texts.Count * 0.1f);
         return s;
     }
 
@@ -48,7 +56,9 @@ public class StatsFaceManager : TrackerListener
     {
         foreach (Stats text in texts)
         {
-            Destroy(text);
+            Destroy(text.gameObject);
         }
+        texts = new List<Stats>();
+        Destroy(pivotInstance);
     }
 }

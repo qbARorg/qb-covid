@@ -7,8 +7,15 @@ public class Scores
 {
     public int maximumScore;
 
+    public float maximumScoreFloat;
+
     public Scores(int maxScore)
     {
         maximumScore = maxScore;
+    }
+    
+    public Scores(float maxScore)
+    {
+        maximumScoreFloat = maxScore;
     }
 }
