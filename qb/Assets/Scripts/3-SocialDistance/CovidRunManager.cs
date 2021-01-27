@@ -76,7 +76,7 @@ public class CovidRunManager : MonoBehaviour
 
     private void OnEnable()
     {
-        foreach(Transform child in this.transform)
+        foreach(Transform child in transform)
         {
             child.gameObject.SetActive(true);
         }
@@ -89,7 +89,7 @@ public class CovidRunManager : MonoBehaviour
         {
             timer = 0.0f;
             Rail rail = RandomRail();
-            Vector3 instantiationPoint = instantiationPointOnRail(rail);
+            Vector3 instantiationPoint = InstantiationPointOnRail(rail);
             InstantiateEnemy(instantiationPoint);
         }
     }
@@ -99,23 +99,23 @@ public class CovidRunManager : MonoBehaviour
         return (Rail)Mathf.Floor(Random.Range(0, (int)Rail.Count));
     }
 
-    private Vector3 instantiationPointOnRail(Rail rail)
+    private Vector3 InstantiationPointOnRail(Rail rail)
     {
-        Vector3 position = Vector3.zero;
+        Vector3 position = transform.position;
 
         switch (rail)
         {
             case Rail.Left:
-                position = new Vector3(-1.0f, -1.0f, 10.0f);
+                position = new Vector3(-1.0f, 0f, 10.0f);
                 break;
             case Rail.Center:
-                position = new Vector3(0.0f, -1.0f, 10.0f);
+                position = new Vector3(0.0f, 0.0f, 10.0f);
                 break;
             case Rail.Right:
-                position = new Vector3(1.0f, -1.0f, 10.0f);
+                position = new Vector3(1.0f, 0f, 10.0f);
                 break;
             default:
-                position = new Vector3(0.0f, -1.0f, 10.0f);
+                position = new Vector3(0.0f, 0f, 10.0f);
                 break;
         }
 
@@ -131,7 +131,7 @@ public class CovidRunManager : MonoBehaviour
         else
         {
             currentRail--;
-            return -railDist * playerInstance.transform.position;
+            return Vector3.left + playerInstance.transform.position;
         }
     }
 
@@ -144,13 +144,13 @@ public class CovidRunManager : MonoBehaviour
         else
         {
             currentRail++;
-            return railDist * playerInstance.transform.position;
+            return Vector3.right + playerInstance.transform.position;
         }
     }
 
     private void InstantiateEnemy(Vector3 position)
     {
-        GameObject newEnemy = Instantiate(infectedPersonPrefab, position, Quaternion.identity);
-        newEnemy.transform.parent = this.transform;
+        GameObject newEnemy = Instantiate(infectedPersonPrefab, position, playerInstance.transform.rotation, transform);
+        newEnemy.transform.parent = transform;
     }
 }
