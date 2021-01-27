@@ -41,8 +41,8 @@ public class CovidRunSceneManager : TrackerListener
 
     public override void OnStoppingDetection()
     {
-        Destroy(managerInstance);
-        managerInstance = null;
+        managerInstance.Dispose();
+        managerInstance.enabled = false;
     }
 
     public override void ARUpdate()

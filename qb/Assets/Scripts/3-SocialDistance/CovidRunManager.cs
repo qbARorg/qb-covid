@@ -42,6 +42,7 @@ public class CovidRunManager : MonoBehaviour
 
     private Vector2 tap = Vector3.zero;
     private bool canTap = true;
+    private bool dead = false;
 
     #endregion
 
@@ -103,11 +104,15 @@ public class CovidRunManager : MonoBehaviour
 
     private void AppearEnemies(float dt)
     {
-        timer += dt;
-        if (timer > infectedPersonAppearRate)
+        if (!dead)
         {
-            timer = 0.0f;
-            InstantiateEnemy();
+            timer += dt;
+            if (timer > infectedPersonAppearRate)
+            {
+                timer = 0.0f;
+                InstantiateEnemy();
+            }
+
         }
     }
 
@@ -174,6 +179,24 @@ public class CovidRunManager : MonoBehaviour
                 currentRail = Rail.Right;
                 playerInstance.transform.position += Vector3.right * 0.2f;
                 break;
+        }
+    }
+
+    public void Dispose()
+    {
+        dead = true;
+        var enemies = FindObjectsOfType<InfectedPerson>();
+        foreach (var enemy in enemies)
+        {
+            Destroy(enemy.gameObject);
+        }
+        Destroy(playerInstance.gameObject);
+        Destroy(score.gameObject);
+        List<GameObject> children = new List<GameObject>();
+        int childCount = transform.childCount;
+        for (int i = childCount - 1; i > - 1; i++)
+        {
+            Destroy(transform.GetChild(i));
         }
     }
 }

@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6390956575641694340
 Transform:
   m_ObjectHideFlags: 0
@@ -144,6 +144,7 @@ MonoBehaviour:
   score: {fileID: 2671445970257535211}
   playerPrefab: {fileID: 4992673622330682846, guid: 6f9dff86e7f58406bb159bd3ac4ae17b, type: 3}
   infectedPersonAppearRate: 2
+  probabilityOfCovid: 0
 --- !u!1001 &763894365756355425
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -206,6 +207,10 @@ PrefabInstance:
     - target: {fileID: 8419857736332247442, guid: 8f32d8a1108f6493784a4ff3a55dd074, type: 3}
       propertyPath: m_Name
       value: Score
+      objectReference: {fileID: 0}
+    - target: {fileID: 8419857736332247442, guid: 8f32d8a1108f6493784a4ff3a55dd074, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8f32d8a1108f6493784a4ff3a55dd074, type: 3}
