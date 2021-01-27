@@ -19,10 +19,6 @@ public class CovidRunManager : MonoBehaviour
 
     #region Properties
 
-    public Vector3 v3Sphere;
-    public Vector3 v3Cylinder;
-    public Vector3 v3Cube;
-
     private ARTrackedImage imgTracker;
 
     public GameObject infectedPersonPrefab;
@@ -74,22 +70,6 @@ public class CovidRunManager : MonoBehaviour
     private void CheckInfection()
     {
 
-    }
-
-    private void OnDisable()
-    {
-        foreach(Transform child in this.transform)
-        {
-            child.gameObject.SetActive(false);
-        }
-    }
-
-    private void OnEnable()
-    {
-        foreach(Transform child in transform)
-        {
-            child.gameObject.SetActive(true);
-        }
     }
 
     private void AppearEnemies(float dt)
