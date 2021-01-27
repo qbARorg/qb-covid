@@ -25,6 +25,8 @@ public class ARShooting : MonoBehaviour
     private ParticleSystem mainParticleSyst;
     private ParticleSystem splatterParticleSyst;
     private int eliminatedVirus;
+    private int maxPointsPerVirus = 100;
+    private int points = 0;
 
     private bool isDragging;
 
@@ -104,14 +106,14 @@ public class ARShooting : MonoBehaviour
             if (Input.touchCount != 1) return;
             //Move bottle
             touchPos = Input.touches[0].position;
-            touchPos.z = 0.2f;
+            touchPos.z = 0.1f;
         }
         if (Application.platform == RuntimePlatform.WindowsPlayer || Application.platform == RuntimePlatform.WindowsEditor ||
             Application.platform == RuntimePlatform.OSXPlayer || Application.platform == RuntimePlatform.OSXEditor)
         {
             //Move bottle
             touchPos = Input.mousePosition;
-            touchPos.z = 0.2f;
+            touchPos.z = 0.1f;
         }
 
         touchPos = Camera.main.ScreenToWorldPoint(touchPos);
@@ -120,7 +122,7 @@ public class ARShooting : MonoBehaviour
 
         //Emit one particle at a time
         gelAmount -= 0.1f;
-        if (gelAmount > 0 || true)
+        if (gelAmount > 0)
         {
             mainParticleSyst.Emit(1);
 
@@ -169,14 +171,20 @@ public class ARShooting : MonoBehaviour
         return gelAmount / maxAmountGel;
     }
 
-    public void IncrementEliminatedVirus()
+    public void IncrementEliminatedVirus(float time)
     {
         eliminatedVirus++;
+        if(time != 0) points += Mathf.FloorToInt(maxPointsPerVirus / time);
     }
 
     public int GetEliminatedVirus()
     {
         return eliminatedVirus;
+    }
+
+    public int GetPunctuation()
+    {
+        return points;
     }
 
     #endregion

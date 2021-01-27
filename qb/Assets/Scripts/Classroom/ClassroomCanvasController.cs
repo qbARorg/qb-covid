@@ -8,6 +8,7 @@ namespace ClassRoom
     public class ClassroomCanvasController : MonoBehaviour
     {
         private ClassroomController mainController = null;
+        [Header("Door")]
         [SerializeField]
         private Text doorButtonText;
         [SerializeField]
@@ -17,6 +18,7 @@ namespace ClassRoom
         [SerializeField]
         private ParticleSystem doorParticles;
 
+        [Header("Window 1")]
         [SerializeField]
         private Text window1ButtonText;
         [SerializeField]
@@ -26,6 +28,7 @@ namespace ClassRoom
         [SerializeField]
         private ParticleSystem w1Particles;
 
+        [Header("Window 2")]
         [SerializeField]
         private Text window2ButtonText;
         [SerializeField]
@@ -35,6 +38,7 @@ namespace ClassRoom
         [SerializeField]
         private ParticleSystem w2Particles;
 
+        [Header("Window 3")]
         [SerializeField]
         private Text window3ButtonText;
         [SerializeField]
