@@ -192,11 +192,5 @@ public class CovidRunManager : MonoBehaviour
         }
         Destroy(playerInstance.gameObject);
         Destroy(score.gameObject);
-        List<GameObject> children = new List<GameObject>();
-        int childCount = transform.childCount;
-        for (int i = childCount - 1; i > - 1; i++)
-        {
-            Destroy(transform.GetChild(i));
-        }
     }
 }

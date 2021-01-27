@@ -28,6 +28,7 @@ public class CovidRunSceneManager : TrackerListener
     {
         managerInstance.Dispose();
         managerInstance.enabled = false;
+        Destroy(managerInstance);
     }
 
     public override void ARUpdate()
@@ -40,6 +41,7 @@ public class CovidRunSceneManager : TrackerListener
         curr += dt;
         if (curr > timeout)
         {
+            curr = 0.0f;
             if (SaveSystem.Exists("CovidRun"))
             {
                 var scores = SaveSystem.Load<Scores>("CovidRun");
