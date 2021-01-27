@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class InfectedPerson : MonoBehaviour
 {
-    public float speed = 3.0f;
+    public float speed = 0.1f;
     public float longevity = 2.5f;
 
     void Start()
     {
-        Destroy(this.gameObject, longevity);
+        Destroy(gameObject, longevity);
     }
 
     void Update()
     {
-        transform.position -= Vector3.forward * (speed * Time.deltaTime);
+        transform.position = -transform.parent.forward * (speed * Time.deltaTime);
     }
 }

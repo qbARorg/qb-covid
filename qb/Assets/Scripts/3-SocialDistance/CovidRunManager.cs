@@ -18,6 +18,10 @@ public class CovidRunManager : MonoBehaviour
 
     #region Properties
 
+    public Vector3 v3Sphere;
+    public Vector3 v3Cylinder;
+    public Vector3 v3Cube;
+
     public GameObject infectedPersonPrefab;
 
     public GameObject playerPrefab;
@@ -106,16 +110,13 @@ public class CovidRunManager : MonoBehaviour
         switch (rail)
         {
             case Rail.Left:
-                position = new Vector3(-1.0f, 0f, 10.0f);
+                position = -transform.right - (transform.forward * 10f);
                 break;
             case Rail.Center:
-                position = new Vector3(0.0f, 0.0f, 10.0f);
+                position = -(transform.forward * 10f);
                 break;
             case Rail.Right:
-                position = new Vector3(1.0f, 0f, 10.0f);
-                break;
-            default:
-                position = new Vector3(0.0f, 0f, 10.0f);
+                position = transform.right - (transform.forward * 10f);
                 break;
         }
 

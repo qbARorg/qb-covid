@@ -140,6 +140,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d62d329a48c0142008d300e8e373ae8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  frontCube: {fileID: 2611215921332643328, guid: 894340451f8ac46048bb026783703e6c, type: 3}
+  rightSphere: {fileID: 19548866712530282, guid: db7d290f21080433aa9d66cbbc5e9734, type: 3}
+  topCylinder: {fileID: 1217383717115005512, guid: c22a1cb4949394b9c8e73b3d0ba7195e, type: 3}
   infectedPersonPrefab: {fileID: 471076175699966958, guid: 74b83f27cddfd4129bd62a304e00c916, type: 3}
   playerPrefab: {fileID: 679425806363448376}
   infectedPersonAppearRate: 2
