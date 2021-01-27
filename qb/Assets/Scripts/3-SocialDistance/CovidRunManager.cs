@@ -35,7 +35,7 @@ public class CovidRunManager : MonoBehaviour
     private Rail currentRail;
     private float railDist;
     private float timer = 0.0f;
-    private float probabilityOfCovid = 0.0f;
+    public float probabilityOfCovid = 0.0f;
 
     private const float probDelta = 0.01f;
     private const float minDist = .5f;
