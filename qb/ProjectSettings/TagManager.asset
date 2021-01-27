@@ -10,8 +10,6 @@ TagManager:
   - Animator
   - Hud
   - Rope
-  - Virus
-  - Counter
   layers:
   - Default
   - TransparentFX

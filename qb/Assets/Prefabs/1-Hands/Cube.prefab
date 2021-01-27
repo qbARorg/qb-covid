@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 7450531825935183161}
   - component: {fileID: 7450531825935183166}
   - component: {fileID: 7450531825935183167}
+  - component: {fileID: 7450531825935183164}
+  - component: {fileID: 5978491279566396451}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Virus
@@ -95,3 +97,27 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7450531825935183164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7450531825935183165}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c7dd7ab6e4b3b544987e244daa73c17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5978491279566396451
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7450531825935183165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04f57237d94333344bb470b4c449ed69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
 
 public class ARShooting : MonoBehaviour
 {
@@ -26,7 +25,6 @@ public class ARShooting : MonoBehaviour
     private ParticleSystem mainParticleSyst;
     private ParticleSystem splatterParticleSyst;
 
-    private Text counter;
     private int eliminatedVirus;
     private int maxPointsPerVirus = 100;
     private int points = 0;
@@ -87,7 +85,6 @@ public class ARShooting : MonoBehaviour
 
     private void SetVariables()
     {
-        counter = GameObject.FindGameObjectWithTag("Counter").GetComponent<Text>();
         eliminatedVirus = 0;
         gelBottleHead = GameObject.FindGameObjectWithTag("BottleHead");
         gelBottle = gelBottleHead.transform.parent.gameObject;
@@ -188,7 +185,6 @@ public class ARShooting : MonoBehaviour
     public void IncrementEliminatedVirus(float time)
     {
         eliminatedVirus++;
-        if(counter) counter.text = eliminatedVirus.ToString();
         if(time != 0) points += Mathf.FloorToInt(maxPointsPerVirus / time);
     }
 
