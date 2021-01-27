@@ -90,6 +90,7 @@ namespace ClassRoom
             {
                 if(!peopleTimersAreSet)
                 {
+                    disableGameUIButtons();
                     setFinalInfectionRate();
                     Debug.Log(infectionRate);
                     setPeopleRandomTimers();
@@ -210,6 +211,14 @@ namespace ClassRoom
             else
             {
                 finalScore = 1;
+            }
+        }
+
+        private void disableGameUIButtons()
+        {
+            foreach(GameObject go in gameUIToDisable)
+            {
+                go.SetActive(false);
             }
         }
 
