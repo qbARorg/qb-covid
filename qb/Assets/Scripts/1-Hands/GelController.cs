@@ -53,7 +53,6 @@ public class GelController : MonoBehaviour
         {
             other.SetActive(false);
             _ARShooting.IncrementEliminatedVirus(time);
-            Debug.Log(_ARShooting.GetEliminatedVirus());
         }
     }
 
