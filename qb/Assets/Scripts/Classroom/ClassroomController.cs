@@ -199,6 +199,16 @@ namespace ClassRoom
                 window32Hinge.transform.localEulerAngles = Vector3.Slerp(new Vector3(0f, window32ClosedAngle, 0f), new Vector3(0f, window32OpenedAngle, 0f), window1LerpState);
             }
         }
+
+        public int getThingsOpened()
+        {
+            int count = 0;
+            if (doorOpen) count++;
+            if (window1Open) count++;
+            if (window2Open) count++;
+            if (window3Open) count++;
+            return count;
+        }
         #endregion
     }
 

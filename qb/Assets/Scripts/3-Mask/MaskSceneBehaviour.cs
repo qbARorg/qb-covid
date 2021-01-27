@@ -57,6 +57,7 @@ public class MaskSceneBehaviour : TrackerListener
     public override void OnDetectedStart(ARTrackedImage img)
     {
         factorTime = 1.0f;
+        currentScore = 0;
         raycastManager = GetComponent<ARRaycastManager>();
         mainCamera = Camera.main;
         mask.SetActive(true);
@@ -125,9 +126,6 @@ public class MaskSceneBehaviour : TrackerListener
                 headInstance = null;
                 Destroy(headInstanceComponent);
                 headInstanceComponent = null;
-                OnDetectedUpdate(img);
-                // 😨 🥵 😳😳😳😳😳😳😳😳😳😳😳😳😳😳😳😳😳😳😳😳😳😳😳😳😳 
-                factorTime += 0.41234567f;
                 currentScore++;
                 if (currentScore > maximumScore)
                 {
@@ -135,6 +133,9 @@ public class MaskSceneBehaviour : TrackerListener
                     Debug.Log($"[MASK SCENE] Saved successfully score: {currentScore}");
                     maximumScore = currentScore;
                 }
+                OnDetectedUpdate(img);
+                // 😨 🥵 😳😳😳😳😳😳😳😳😳😳😳😳😳😳😳😳😳😳😳😳😳😳😳😳😳 
+                factorTime += 0.41234567f;
                 timeLeft /= factorTime;
                 mask.SetActive(true);
                 mask.transform.localPosition = Vector3.zero;

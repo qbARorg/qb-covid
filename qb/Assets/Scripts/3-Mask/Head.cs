@@ -101,7 +101,6 @@ public class Head : MonoBehaviour
     {
         currentScore.text = $"Current Score: {score}";
     }
-    
 
     #endregion
     

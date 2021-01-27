@@ -52,6 +52,9 @@
             <e p="TestData.cs" t="Include" />
             <e p="TestData2.cs" t="Include" />
           </e>
+          <e p="stats-face" t="Include">
+            <e p="StatsFaceManager.cs" t="Include" />
+          </e>
           <e p="TrackerListener.cs" t="Include" />
         </e>
       </e>

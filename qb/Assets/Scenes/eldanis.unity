@@ -339,6 +339,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 503822789}
   m_CullTransparentMesh: 0
+--- !u!1 &513760256
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 513760257}
+  - component: {fileID: 513760258}
+  m_Layer: 0
+  m_Name: classRoomArManagerMasks
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &513760257
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 513760256}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 89400448}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &513760258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 513760256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b68c090ef4b5b4dfda47e27513dbd368, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  imageName: jorge1m
+  scene: {fileID: 6187932936742132688, guid: f1b18a2b52334c049a997f29f271192b, type: 3}
 --- !u!114 &782925817 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 664121217231590835, guid: 43d4d70dbbc9d7f46b7188114faa4f88, type: 3}
@@ -834,6 +879,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1578910770316395354, guid: 5ec861ffd07e245bab4989248f375f18, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1578910770316395355, guid: 5ec861ffd07e245bab4989248f375f18, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1114,21 +1163,29 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 140200443, guid: d53b83fcad53a458fa739ab9ddf65632, type: 3}
+      propertyPath: m_Name
+      value: classRoomArManagerNoMasks
+      objectReference: {fileID: 0}
     - target: {fileID: 140200445, guid: d53b83fcad53a458fa739ab9ddf65632, type: 3}
       propertyPath: imageIndex
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 140200445, guid: d53b83fcad53a458fa739ab9ddf65632, type: 3}
       propertyPath: imageName
-      value: jorge
+      value: jorge2nm
       objectReference: {fileID: 0}
+    - target: {fileID: 140200445, guid: d53b83fcad53a458fa739ab9ddf65632, type: 3}
+      propertyPath: scene
+      value: 
+      objectReference: {fileID: 6187932936742132688, guid: cb63569282263284c9cebe9500f7ffc6, type: 3}
     - target: {fileID: 6155274031550024904, guid: d53b83fcad53a458fa739ab9ddf65632, type: 3}
       propertyPath: m_Name
       value: AR Session Origin
       objectReference: {fileID: 0}
     - target: {fileID: 6155274031550024908, guid: d53b83fcad53a458fa739ab9ddf65632, type: 3}
       propertyPath: listeners.Array.size
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6155274031550024908, guid: d53b83fcad53a458fa739ab9ddf65632, type: 3}
       propertyPath: buttonExitScene
@@ -1142,6 +1199,10 @@ PrefabInstance:
       propertyPath: listeners.Array.data[3]
       value: 
       objectReference: {fileID: 782925817}
+    - target: {fileID: 6155274031550024908, guid: d53b83fcad53a458fa739ab9ddf65632, type: 3}
+      propertyPath: listeners.Array.data[4]
+      value: 
+      objectReference: {fileID: 513760258}
     - target: {fileID: 6155274031550024910, guid: d53b83fcad53a458fa739ab9ddf65632, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

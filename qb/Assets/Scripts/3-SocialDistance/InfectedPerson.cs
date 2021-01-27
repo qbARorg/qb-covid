@@ -5,7 +5,7 @@ using UnityEngine.XR.ARFoundation;
 
 public class InfectedPerson : MonoBehaviour
 {
-    public float speed = 1f;
+    public float speed = 1.2f;
     public float longevity = 2.5f;
     public ARTrackedImage imgTracked;
 
@@ -16,6 +16,7 @@ public class InfectedPerson : MonoBehaviour
 
     void Update()
     {
-        transform.position = -imgTracked.transform.forward * (speed * Time.deltaTime);
+        // Vector3 up because we are children of the target image
+        transform.localPosition += Vector3.up * (speed * Time.deltaTime);
     }
 }
