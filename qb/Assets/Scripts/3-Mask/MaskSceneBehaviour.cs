@@ -24,8 +24,7 @@ public class MaskSceneBehaviour : TrackerListener
     [SerializeField] private Head head;
     [SerializeField] private Head headInstanceComponent;
     private ARRaycastManager raycastManager;
-    [SerializeField]
-    private LayerMask layer;
+   
     [SerializeField]
     private GameObject mask;
     private GameObject headInstance;
