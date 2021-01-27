@@ -37499,7 +37499,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1460122528758499298}
-  - component: {fileID: 6924691029705615389}
   - component: {fileID: 7002326336723206664}
   m_Layer: 0
   m_Name: Proffessor
@@ -37524,20 +37523,6 @@ Transform:
   m_Father: {fileID: 4220383894260061987}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6924691029705615389
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7299884307318397810}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d4dff21675934d4ab0c54c5307cf434, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  infectedMat: {fileID: 0}
-  tochange: []
 --- !u!114 &7002326336723206664
 MonoBehaviour:
   m_ObjectHideFlags: 0

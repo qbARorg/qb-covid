@@ -28,6 +28,7 @@ public class ARShooting : MonoBehaviour
     private int eliminatedVirus;
     private int maxPointsPerVirus = 100;
     private int points = 0;
+    private bool once = true;
 
     private bool isDragging;
 
@@ -91,8 +92,11 @@ public class ARShooting : MonoBehaviour
         localBottlePos = gelBottle.transform.localPosition;
 
         GameObject[] particleSystems = GameObject.FindGameObjectsWithTag("ParticleSyst");
-        mainParticleSyst = particleSystems[0].GetComponent<ParticleSystem>();
-        splatterParticleSyst = particleSystems[1].GetComponent<ParticleSystem>();
+        foreach (GameObject ps in particleSystems)
+        {
+            if(ps.name.StartsWith("Shoot")) mainParticleSyst = ps.GetComponent<ParticleSystem>();
+            if(ps.name.StartsWith("Splatter")) splatterParticleSyst = ps.GetComponent<ParticleSystem>();
+        }
         
         gelAmount = maxAmountGel;
         gelForceModule = mainParticleSyst.forceOverLifetime;
@@ -107,14 +111,14 @@ public class ARShooting : MonoBehaviour
             if (Input.touchCount != 1) return;
             //Move bottle
             touchPos = Input.touches[0].position;
-            touchPos.z = 0.1f;
+            touchPos.z = 0.2f;
         }
         if (Application.platform == RuntimePlatform.WindowsPlayer || Application.platform == RuntimePlatform.WindowsEditor ||
             Application.platform == RuntimePlatform.OSXPlayer || Application.platform == RuntimePlatform.OSXEditor)
         {
             //Move bottle
             touchPos = Input.mousePosition;
-            touchPos.z = 0.1f;
+            touchPos.z = 0.2f;
         }
 
         touchPos = Camera.main.ScreenToWorldPoint(touchPos);
@@ -133,6 +137,12 @@ public class ARShooting : MonoBehaviour
         }
         else if (!doPuff)
         {
+            if (once)
+            {
+                //Save score
+                SaveSystem.Save("HandSceneScore", new Scores(points));
+                once = false;
+            }
             emptyAnimator.gameObject.GetComponent<Transform>().position = shootPosition.position;
             doPuff = true;
         }

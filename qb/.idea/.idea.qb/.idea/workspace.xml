@@ -2,11 +2,28 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a8dae9c4-ce39-4154-9caa-f592794cd2e3" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Stat.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Stat.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/TextScene.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/TextScene.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scenes/ClassTests.unity" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scenes/ClassTests.unity.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/HiddenARCore/84d08cc4-4964-4f72-a92a-9206e62966ee.imgdb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/HiddenARCore/84d08cc4-4964-4f72-a92a-9206e62966ee.imgdb-imglist.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/HiddenARCore/8d84859e-4da4-4131-8b6f-f36f8808174c.imgdb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/HiddenARCore/8d84859e-4da4-4131-8b6f-f36f8808174c.imgdb-imglist.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/HiddenARCore/e594c1ea-bf9c-4b9f-a5bc-79fa1857da4d.imgdb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/HiddenARCore/e594c1ea-bf9c-4b9f-a5bc-79fa1857da4d.imgdb-imglist.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.qb/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.qb/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/Scene-1/GelMaterial.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/Scene-1/GelMaterial.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/1-Hands/Scene.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/1-Hands/Scene.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/ClassRoom/ClassRoom.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/ClassRoom/ClassRoom.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/ClassRoom/ClassRoomNoMasks.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/ClassRoom/ClassRoomNoMasks.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/eldanis.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/eldanis.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/stats-face/StatsFaceManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/stats-face/StatsFaceManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/1-Hands/ARShooting.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/1-Hands/ARShooting.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/1-Hands/GelController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/1-Hands/GelController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/3-Mask/lib.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/3-Mask/lib.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/3-SocialDistance/CovidRunManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/3-SocialDistance/CovidRunManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Classroom/ClassRoomInfectionForPeople.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Classroom/ClassRoomInfectionForPeople.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Classroom/ClassroomPlayManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Classroom/ClassroomPlayManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/Assembly-CSharp.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/Assembly-CSharp.csproj.CoreCompileInputs.cache" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -16,7 +33,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Assets/Scripts/ARTrackerManager.cs">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="216">
@@ -119,18 +136,16 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Assets/Scripts/3-SocialDistance/CovidRunManager.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="723">
-              <caret line="144" column="53" selection-start-line="144" selection-start-column="53" selection-end-line="144" selection-end-column="53" />
+            <state relative-caret-position="759">
+              <caret line="127" column="53" selection-start-line="127" selection-start-column="53" selection-end-line="127" selection-end-column="53" />
               <folding>
-                <marker date="1611715082926" expanded="false" signature="6:113" ph="..." />
-                <marker date="1611715082926" expanded="true" signature="159:3640" ph="{...}" />
-                <marker date="1611715082926" expanded="true" signature="166:289" ph="Enums" />
-                <marker date="1611715082926" expanded="true" signature="194:273" ph="{...}" />
-                <marker date="1611715082926" expanded="true" signature="295:803" ph="Properties" />
-                <marker date="1611715082926" expanded="true" signature="848:1044" ph="{...}" />
-                <marker date="1611715082926" expanded="true" signature="1072:1263" ph="{...}" />
-                <marker date="1611715082926" expanded="true" signature="3619:3630" ph="{...}" />
-                <marker date="1611715082926" expanded="true" signature="3619:3636" ph="{...}" />
+                <marker date="1611717976094" expanded="false" signature="6:113" ph="..." />
+                <marker date="1611717976094" expanded="true" signature="159:3416" ph="{...}" />
+                <marker date="1611717976094" expanded="true" signature="166:289" ph="Enums" />
+                <marker date="1611717976094" expanded="true" signature="194:273" ph="{...}" />
+                <marker date="1611717976094" expanded="true" signature="295:320" ph="Properties" />
+                <marker date="1611717976094" expanded="true" signature="3395:3406" ph="{...}" />
+                <marker date="1611717976094" expanded="true" signature="3395:3412" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -151,20 +166,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Assets/Scripts/stats-face/StatsFaceManager.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="540">
-              <caret line="42" column="65" selection-start-line="42" selection-start-column="65" selection-end-line="42" selection-end-column="65" />
+            <state relative-caret-position="594">
+              <caret line="45" selection-start-line="45" selection-end-line="45" />
               <folding>
-                <marker date="1611717492164" expanded="false" signature="6:113" ph="..." />
-                <marker date="1611717492164" expanded="true" signature="162:1492" ph="{...}" />
-                <marker date="1611717492164" expanded="true" signature="407:713" ph="{...}" />
-                <marker date="1611717492164" expanded="true" signature="776:1065" ph="{...}" />
-                <marker date="1611717492164" expanded="true" signature="848:990" ph="{...}" />
-                <marker date="1611717492164" expanded="true" signature="1106:1345" ph="{...}" />
-                <marker date="1611717492164" expanded="true" signature="1393:1490" ph="{...}" />
-                <marker date="1611717492164" expanded="true" signature="1437:1484" ph="{...}" />
+                <marker date="1611717501325" expanded="false" signature="6:113" ph="..." />
+                <marker date="1611717501325" expanded="true" signature="162:1493" ph="{...}" />
+                <marker date="1611717501325" expanded="true" signature="407:713" ph="{...}" />
+                <marker date="1611717501325" expanded="true" signature="776:1065" ph="{...}" />
+                <marker date="1611717501325" expanded="true" signature="848:990" ph="{...}" />
+                <marker date="1611717501325" expanded="true" signature="1106:1346" ph="{...}" />
+                <marker date="1611717501325" expanded="true" signature="1394:1491" ph="{...}" />
+                <marker date="1611717501325" expanded="true" signature="1438:1485" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -385,12 +400,12 @@
       <workItem from="1611421805405" duration="2437000" />
       <workItem from="1611425455640" duration="961000" />
       <workItem from="1611682350634" duration="15731000" />
-      <workItem from="1611703297132" duration="9363000" />
+      <workItem from="1611703297132" duration="9956000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="28674000" />
+    <option name="totallyTimeSpent" value="29267000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -577,35 +592,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Scripts/ARTrackerManager.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="12" column="4" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="4" />
-          <folding>
-            <marker date="1611695716000" expanded="true" signature="6:244" ph="..." />
-            <marker date="1611695716000" expanded="true" signature="291:5067" ph="{...}" />
-            <marker date="1611695716000" expanded="true" signature="617:849" ph="{...}" />
-            <marker date="1611695716000" expanded="true" signature="855:958" ph="/// TODO: Properly delete ... " />
-            <marker date="1611695716000" expanded="true" signature="1028:3878" ph="{...}" />
-            <marker date="1611695716000" expanded="true" signature="1097:2387" ph="{...}" />
-            <marker date="1611695716000" expanded="true" signature="1586:1960" ph="/* Check if it's another tracked image, delete previous ... */" />
-            <marker date="1611695716000" expanded="true" signature="2444:3525" ph="{...}" />
-            <marker date="1611695716000" expanded="true" signature="2524:3501" ph="{...}" />
-            <marker date="1611695716000" expanded="true" signature="2665:3424" ph="{...}" />
-            <marker date="1611695716000" expanded="true" signature="3582:3872" ph="{...}" />
-            <marker date="1611695716000" expanded="true" signature="3904:4155" ph="{...}" />
-            <marker date="1611695716000" expanded="true" signature="3961:4149" ph="{...}" />
-            <marker date="1611695716000" expanded="true" signature="4213:4518" ph="{...}" />
-            <marker date="1611695716000" expanded="true" signature="4289:4462" ph="{...}" />
-            <marker date="1611695716000" expanded="true" signature="4367:4452" ph="{...}" />
-            <marker date="1611695716000" expanded="true" signature="4545:4816" ph="{...}" />
-            <marker date="1611695716000" expanded="true" signature="4605:4720" ph="{...}" />
-            <marker date="1611695716000" expanded="true" signature="4733:4810" ph="{...}" />
-            <marker date="1611695716000" expanded="true" signature="4851:5065" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Assets/Scripts/Config/Scores.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="216">
@@ -674,18 +660,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Assets/Scripts/3-SocialDistance/CovidRunManager.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="723">
-          <caret line="144" column="53" selection-start-line="144" selection-start-column="53" selection-end-line="144" selection-end-column="53" />
+        <state relative-caret-position="759">
+          <caret line="127" column="53" selection-start-line="127" selection-start-column="53" selection-end-line="127" selection-end-column="53" />
           <folding>
-            <marker date="1611715082926" expanded="false" signature="6:113" ph="..." />
-            <marker date="1611715082926" expanded="true" signature="159:3640" ph="{...}" />
-            <marker date="1611715082926" expanded="true" signature="166:289" ph="Enums" />
-            <marker date="1611715082926" expanded="true" signature="194:273" ph="{...}" />
-            <marker date="1611715082926" expanded="true" signature="295:803" ph="Properties" />
-            <marker date="1611715082926" expanded="true" signature="848:1044" ph="{...}" />
-            <marker date="1611715082926" expanded="true" signature="1072:1263" ph="{...}" />
-            <marker date="1611715082926" expanded="true" signature="3619:3630" ph="{...}" />
-            <marker date="1611715082926" expanded="true" signature="3619:3636" ph="{...}" />
+            <marker date="1611717976094" expanded="false" signature="6:113" ph="..." />
+            <marker date="1611717976094" expanded="true" signature="159:3416" ph="{...}" />
+            <marker date="1611717976094" expanded="true" signature="166:289" ph="Enums" />
+            <marker date="1611717976094" expanded="true" signature="194:273" ph="{...}" />
+            <marker date="1611717976094" expanded="true" signature="295:320" ph="Properties" />
+            <marker date="1611717976094" expanded="true" signature="3395:3406" ph="{...}" />
+            <marker date="1611717976094" expanded="true" signature="3395:3412" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -737,17 +721,46 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Assets/Scripts/stats-face/StatsFaceManager.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="42" column="65" selection-start-line="42" selection-start-column="65" selection-end-line="42" selection-end-column="65" />
+        <state relative-caret-position="594">
+          <caret line="45" selection-start-line="45" selection-end-line="45" />
           <folding>
-            <marker date="1611717492164" expanded="false" signature="6:113" ph="..." />
-            <marker date="1611717492164" expanded="true" signature="162:1492" ph="{...}" />
-            <marker date="1611717492164" expanded="true" signature="407:713" ph="{...}" />
-            <marker date="1611717492164" expanded="true" signature="776:1065" ph="{...}" />
-            <marker date="1611717492164" expanded="true" signature="848:990" ph="{...}" />
-            <marker date="1611717492164" expanded="true" signature="1106:1345" ph="{...}" />
-            <marker date="1611717492164" expanded="true" signature="1393:1490" ph="{...}" />
-            <marker date="1611717492164" expanded="true" signature="1437:1484" ph="{...}" />
+            <marker date="1611717501325" expanded="false" signature="6:113" ph="..." />
+            <marker date="1611717501325" expanded="true" signature="162:1493" ph="{...}" />
+            <marker date="1611717501325" expanded="true" signature="407:713" ph="{...}" />
+            <marker date="1611717501325" expanded="true" signature="776:1065" ph="{...}" />
+            <marker date="1611717501325" expanded="true" signature="848:990" ph="{...}" />
+            <marker date="1611717501325" expanded="true" signature="1106:1346" ph="{...}" />
+            <marker date="1611717501325" expanded="true" signature="1394:1491" ph="{...}" />
+            <marker date="1611717501325" expanded="true" signature="1438:1485" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/ARTrackerManager.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="12" column="4" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="4" />
+          <folding>
+            <marker date="1611695716000" expanded="true" signature="6:244" ph="..." />
+            <marker date="1611695716000" expanded="true" signature="291:5067" ph="{...}" />
+            <marker date="1611695716000" expanded="true" signature="617:849" ph="{...}" />
+            <marker date="1611695716000" expanded="true" signature="855:958" ph="/// TODO: Properly delete ... " />
+            <marker date="1611695716000" expanded="true" signature="1028:3878" ph="{...}" />
+            <marker date="1611695716000" expanded="true" signature="1097:2387" ph="{...}" />
+            <marker date="1611695716000" expanded="true" signature="1586:1960" ph="/* Check if it's another tracked image, delete previous ... */" />
+            <marker date="1611695716000" expanded="true" signature="2444:3525" ph="{...}" />
+            <marker date="1611695716000" expanded="true" signature="2524:3501" ph="{...}" />
+            <marker date="1611695716000" expanded="true" signature="2665:3424" ph="{...}" />
+            <marker date="1611695716000" expanded="true" signature="3582:3872" ph="{...}" />
+            <marker date="1611695716000" expanded="true" signature="3904:4155" ph="{...}" />
+            <marker date="1611695716000" expanded="true" signature="3961:4149" ph="{...}" />
+            <marker date="1611695716000" expanded="true" signature="4213:4518" ph="{...}" />
+            <marker date="1611695716000" expanded="true" signature="4289:4462" ph="{...}" />
+            <marker date="1611695716000" expanded="true" signature="4367:4452" ph="{...}" />
+            <marker date="1611695716000" expanded="true" signature="4545:4816" ph="{...}" />
+            <marker date="1611695716000" expanded="true" signature="4605:4720" ph="{...}" />
+            <marker date="1611695716000" expanded="true" signature="4733:4810" ph="{...}" />
+            <marker date="1611695716000" expanded="true" signature="4851:5065" ph="{...}" />
           </folding>
         </state>
       </provider>
