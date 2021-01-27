@@ -34,10 +34,24 @@
             <e p="ClassroomCanvasController.cs" t="Include" />
             <e p="ClassroomController.cs" t="Include" />
           </e>
+          <e p="Config" t="Include">
+            <e p="Scores.cs" t="Include" />
+          </e>
+          <e p="Data and Save System" t="Include">
+            <e p="GameData.cs" t="Include" />
+            <e p="PlayerData.cs" t="Include" />
+          </e>
           <e p="Game" t="Include">
             <e p="ARTrackerClassRoom.cs" t="Include" />
           </e>
           <e p="LightEstimation.cs" t="Include" />
+          <e p="SaveSystem" t="Include">
+            <e p="AESEncrypt.cs" t="Include" />
+            <e p="Hex.cs" t="Include" />
+            <e p="SaveSystem.cs" t="Include" />
+            <e p="TestData.cs" t="Include" />
+            <e p="TestData2.cs" t="Include" />
+          </e>
           <e p="TrackerListener.cs" t="Include" />
         </e>
       </e>

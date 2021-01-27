@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Numerics;
 using UnityEngine;
+using UnityEngine.Assertions;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 using Quaternion = UnityEngine.Quaternion;
@@ -13,29 +14,28 @@ public class MaskSceneBehaviour : TrackerListener
 {
     
     #region Public
+
+    public const string ConfigFileName = "Mask_Scene_Score";
     
     #endregion
     
     #region Private
-
+    
     [SerializeField] private Head head;
     [SerializeField] private Head headInstanceComponent;
-    
     private ARRaycastManager raycastManager;
-    
     [SerializeField]
     private LayerMask layer;
-
     [SerializeField]
     private GameObject mask;
-
     private GameObject headInstance;
     private Camera mainCamera;
     private float currentTimeLeft = 0.0f;
     private float factorTime = 1.0f;
     private float timeLeft = 0.0f;
     private const float timeLeftInitial = 20.0f;
-
+    private int maximumScore = 0;
+    private int currentScore = 0;
     private float nextPersonTimer = 0.0f;
     private float timeForNextPerson = 3.0f;
     
@@ -63,16 +63,29 @@ public class MaskSceneBehaviour : TrackerListener
         mask.transform.localPosition = Vector3.zero;
         mask.transform.SetParent(mainCamera.transform);
         timeLeft = timeLeftInitial;
+        if (!SaveSystem.Exists(ConfigFileName))
+        {
+            SaveSystem.Save(ConfigFileName, new Scores(0));
+            Debug.Log($"[MASK SCENE] Loaded successfully: score {maximumScore}");
+        }
+        else
+        {
+            Scores scores = SaveSystem.Load<Scores>(ConfigFileName);
+            maximumScore = scores.maximumScore;
+            Debug.Log($"[MASK SCENE] Loaded successfully: score {maximumScore}");
+        }
     }
 
     public override void OnDetectedUpdate(ARTrackedImage img)
     {
         this.img = img;
         if (!headInstance)
-        {
+        {            
             timeLeft = timeLeftInitial;
             headInstance = Instantiate(head, img.transform).gameObject;
             headInstanceComponent = headInstance.GetComponent<Head>();
+            headInstanceComponent.SetScore(currentScore);
+            headInstanceComponent.SetMaxScore(maximumScore);
             transform.localPosition = new Vector3(0f, 0f, 0f);
         }
     }
@@ -91,17 +104,7 @@ public class MaskSceneBehaviour : TrackerListener
     #endregion
     
     #region Private Methods
-
-    private void HandleImageUpdate(ARTrackedImage trackedImage)
-    {
-        if (trackedImage.trackingState != TrackingState.None && !headInstance)
-        {
-            Debug.Log("INSTANTIATING");
-            headInstance = Instantiate(head, trackedImage.transform).gameObject;
-            transform.localPosition = new Vector3(0f,0f, 0f);
-        }
-    }
-
+    
     private void HandleUpdate(float dt)
     {
         timeLeft -= Time.deltaTime;
@@ -125,6 +128,13 @@ public class MaskSceneBehaviour : TrackerListener
                 OnDetectedUpdate(img);
                 // 😨 🥵 😳😳😳😳😳😳😳😳😳😳😳😳😳😳😳😳😳😳😳😳😳😳😳😳😳 
                 factorTime += 0.41234567f;
+                currentScore++;
+                if (currentScore > maximumScore)
+                {
+                    SaveSystem.Save(ConfigFileName, new Scores(currentScore));
+                    Debug.Log($"[MASK SCENE] Saved successfully score: {currentScore}");
+                    maximumScore = currentScore;
+                }
                 timeLeft /= factorTime;
                 mask.SetActive(true);
                 mask.transform.localPosition = Vector3.zero;
