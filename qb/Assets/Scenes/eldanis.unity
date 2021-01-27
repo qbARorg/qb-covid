@@ -1258,7 +1258,11 @@ PrefabInstance:
     - target: {fileID: 6155274031550024905, guid: d53b83fcad53a458fa739ab9ddf65632, type: 3}
       propertyPath: m_SerializedLibrary
       value: 
-      objectReference: {fileID: 11400000, guid: 001bb1aa311514f9a98cdab714b89131, type: 2}
+      objectReference: {fileID: 11400000, guid: ee1dcc1d61b9410458cfaac284ecc044, type: 2}
+    - target: {fileID: 6155274031550024905, guid: d53b83fcad53a458fa739ab9ddf65632, type: 3}
+      propertyPath: m_MaxNumberOfMovingImages
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 6155274031550024908, guid: d53b83fcad53a458fa739ab9ddf65632, type: 3}
       propertyPath: listeners.Array.size
       value: 6
