@@ -59,10 +59,12 @@ public class CovidRunManager : MonoBehaviour
 
         if (dir > 0)
         {
+            Debug.Log("Next thing that should happen is to move the player to the RIGHT");
             playerInstance.transform.position = GoRight();
         }
         else
         {
+            Debug.Log("Next thing that should happen is to move the player to the LEFT");
             playerInstance.transform.position = GoLeft();
         }
     }
