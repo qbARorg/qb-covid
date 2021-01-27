@@ -765,10 +765,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: TextScene
       objectReference: {fileID: 0}
-    - target: {fileID: 5147102318808919400, guid: 9dc66057373124f95915f10f36155197, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6865841450951502972, guid: 9dc66057373124f95915f10f36155197, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
