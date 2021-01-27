@@ -138,7 +138,7 @@ public class ARShooting : MonoBehaviour
             mainParticleSyst.Emit(1);
 
             //Set height of mainParticleSyst
-            float height = Mathf.Clamp(touchPos.y * 3 - shootPosition.position.y, 0f, 1f);
+            float height = Mathf.Clamp(touchPos.y * 4 - shootPosition.position.y, 0f, 1f);
             gelForceModule.yMultiplier = Mathf.Lerp(0.001f, 15f, height);
         }
         else if (!doPuff)
