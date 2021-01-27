@@ -111,14 +111,14 @@ public class ARShooting : MonoBehaviour
             if (Input.touchCount != 1) return;
             //Move bottle
             touchPos = Input.touches[0].position;
-            touchPos.z = 0.1f;
+            touchPos.z = 0.2f;
         }
         if (Application.platform == RuntimePlatform.WindowsPlayer || Application.platform == RuntimePlatform.WindowsEditor ||
             Application.platform == RuntimePlatform.OSXPlayer || Application.platform == RuntimePlatform.OSXEditor)
         {
             //Move bottle
             touchPos = Input.mousePosition;
-            touchPos.z = 0.1f;
+            touchPos.z = 0.2f;
         }
 
         touchPos = Camera.main.ScreenToWorldPoint(touchPos);
