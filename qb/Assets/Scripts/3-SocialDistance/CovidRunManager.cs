@@ -41,7 +41,6 @@ public class CovidRunManager : MonoBehaviour
     public void ARAwake(ARTrackedImage img)
     {
         imgTracker = img;
-
         currentRail = Rail.Center;
         railDist = 0.5f;
         playerInstance = Instantiate(playerPrefab, Vector3.back, transform.rotation, transform);
@@ -50,21 +49,23 @@ public class CovidRunManager : MonoBehaviour
     public void ARUpdate()
     {
         AppearEnemies(Time.deltaTime);
+        Debug.Log("Player is at: " + playerInstance.transform.position);
         var tap = Input.mousePosition;
         var middle = Screen.width / 2;
         var dir = (int)((middle - tap.x) / Mathf.Abs(middle - tap.x));
-        Debug.Log("taped at: " + tap);
-        Debug.Log("middle is at: " + middle);
-        Debug.Log("dir to move player is: " + dir);
+
+        Debug.Log("User taped at: " + tap);
+        Debug.Log("Middle is at: " + middle);
+        Debug.Log("Dir to move player is: " + dir);
 
         if (dir > 0)
         {
-            Debug.Log("Next thing that should happen is to move the player to the RIGHT");
+            Debug.Log("Next thing move RIGHT");
             playerInstance.transform.position = GoRight();
         }
         else
         {
-            Debug.Log("Next thing that should happen is to move the player to the LEFT");
+            Debug.Log("Next thing move LEFT");
             playerInstance.transform.position = GoLeft();
         }
     }
