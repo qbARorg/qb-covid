@@ -12,7 +12,7 @@ public class CovidRunManager : MonoBehaviour
         Left = 0,
         Center,
         Right,
-        Count = 4
+        Count = 3
     }
 
     #endregion
@@ -95,12 +95,19 @@ public class CovidRunManager : MonoBehaviour
         if (timer > infectedPersonAppearRate)
         {
             timer = 0.0f;
-            Rail rail = RandomRail();
-            Vector3 instantiationPoint = InstantiationPointOnRail(rail);
-            InstantiateEnemy(instantiationPoint);
+            InstantiateEnemy();
         }
     }
 
+    private void InstantiateEnemy()
+    {
+        GameObject newEnemy = Instantiate(infectedPersonPrefab, imgTracker.transform);
+        InfectedPerson ip = newEnemy.GetComponent<InfectedPerson>();
+        Vector3 p = InstantiationPointOnRail(RandomRail());
+        newEnemy.transform.localPosition = p;
+        ip.imgTracked = imgTracker;
+    }
+    
     private Rail RandomRail()
     {
         return (Rail)Mathf.Floor(Random.Range(0, (int)Rail.Count));
@@ -108,18 +115,20 @@ public class CovidRunManager : MonoBehaviour
 
     private Vector3 InstantiationPointOnRail(Rail rail)
     {
-        Vector3 position = transform.position;
+        Vector3 position = Vector3.zero;
 
         switch (rail)
         {
             case Rail.Left:
-                position = -imgTracker.transform.right - (imgTracker.transform.forward * 10f);
+                position = Vector3.left;
                 break;
+            
             case Rail.Center:
-                position = -(imgTracker.transform.forward * 10f);
+                position = Vector3.zero;
                 break;
+            
             case Rail.Right:
-                position = imgTracker.transform.right - (imgTracker.transform.forward * 10f);
+                position = Vector3.right;
                 break;
         }
 
@@ -152,12 +161,5 @@ public class CovidRunManager : MonoBehaviour
         }
     }
 
-    private void InstantiateEnemy(Vector3 position)
-    {
-        GameObject newEnemy = Instantiate(infectedPersonPrefab, position, imgTracker.transform.rotation, imgTracker.transform);
-        InfectedPerson ip = newEnemy.GetComponent<InfectedPerson>();
-        ip.imgTracked = imgTracker;
-        Destroy(newEnemy.gameObject, 2.5f);
 
-    }
 }

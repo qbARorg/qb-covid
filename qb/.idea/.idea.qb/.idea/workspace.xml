@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a8dae9c4-ce39-4154-9caa-f592794cd2e3" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.qb/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.qb/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/3-Mask/Head.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/3-Mask/Head.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/3-Mask/MaskSceneBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/3-Mask/MaskSceneBehaviour.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/3-Mask/lib.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/3-Mask/lib.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/3-SocialDistancing/infected Variant.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/3-SocialDistancing/infected Variant.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/eldanis.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/eldanis.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/3-SocialDistance/CovidRunManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/3-SocialDistance/CovidRunManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/3-SocialDistance/InfectedPerson.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/3-SocialDistance/InfectedPerson.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -83,8 +83,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Assets/Scripts/3-Mask/MaskSceneBehaviour.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1152">
-              <caret line="83" column="21" selection-start-line="83" selection-start-column="21" selection-end-line="83" selection-end-column="21" />
+            <state>
+              <caret column="13" lean-forward="true" selection-start-column="13" selection-end-column="13" />
               <folding>
                 <marker date="1611702902411" expanded="true" signature="6:295" ph="..." />
                 <marker date="1611702902411" expanded="true" signature="347:6693" ph="{...}" />
@@ -117,14 +117,68 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Assets/Scripts/3-SocialDistance/CovidRunManager.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="585">
+              <caret line="137" column="28" lean-forward="true" selection-start-line="137" selection-start-column="28" selection-end-line="137" selection-end-column="28" />
+              <folding>
+                <marker date="1611712826015" expanded="false" signature="6:113" ph="..." />
+                <marker date="1611712826015" expanded="true" signature="159:3540" ph="{...}" />
+                <marker date="1611712826015" expanded="true" signature="166:289" ph="Enums" />
+                <marker date="1611712826015" expanded="true" signature="194:273" ph="{...}" />
+                <marker date="1611712826015" expanded="true" signature="295:803" ph="Properties" />
+                <marker date="1611712826015" expanded="true" signature="848:1044" ph="{...}" />
+                <marker date="1611712826015" expanded="true" signature="1072:1460" ph="{...}" />
+                <marker date="1611712826015" expanded="true" signature="1284:1363" ph="{...}" />
+                <marker date="1611712826015" expanded="true" signature="1376:1454" ph="{...}" />
+                <marker date="1611712826015" expanded="true" signature="1495:1508" ph="{...}" />
+                <marker date="1611712826015" expanded="true" signature="1538:1668" ph="{...}" />
+                <marker date="1611712826015" expanded="true" signature="1595:1662" ph="{...}" />
+                <marker date="1611712826015" expanded="true" signature="1697:1821" ph="{...}" />
+                <marker date="1611712826015" expanded="true" signature="1749:1815" ph="{...}" />
+                <marker date="1611712826015" expanded="true" signature="1863:2020" ph="{...}" />
+                <marker date="1611712826015" expanded="true" signature="1936:2014" ph="{...}" />
+                <marker date="1611712826015" expanded="true" signature="2057:2367" ph="{...}" />
+                <marker date="1611712826015" expanded="true" signature="2402:2482" ph="{...}" />
+                <marker date="1611712826015" expanded="true" signature="2539:2967" ph="{...}" />
+                <marker date="1611712826015" expanded="true" signature="2609:2935" ph="{...}" />
+                <marker date="1611712826015" expanded="true" signature="2997:3250" ph="{...}" />
+                <marker date="1611712826015" expanded="true" signature="3041:3115" ph="{...}" />
+                <marker date="1611712826015" expanded="true" signature="3128:3244" ph="{...}" />
+                <marker date="1611712826015" expanded="true" signature="3281:3536" ph="{...}" />
+                <marker date="1611712826015" expanded="true" signature="3326:3400" ph="{...}" />
+                <marker date="1611712826015" expanded="true" signature="3413:3530" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Assets/Scripts/3-SocialDistance/InfectedPerson.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="17" column="5" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
+              <folding>
+                <marker date="1611712414261" expanded="false" signature="6:113" ph="..." />
+                <marker date="1611712414261" expanded="true" signature="158:507" ph="{...}" />
+                <marker date="1611712414261" expanded="true" signature="282:334" ph="{...}" />
+                <marker date="1611712414261" expanded="true" signature="353:505" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Assets/Scripts/stats-face/StatsFaceManager.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
+            <state relative-caret-position="342">
+              <caret line="22" column="5" selection-start-line="22" selection-start-column="5" selection-end-line="23" selection-end-column="24" />
               <folding>
-                <marker date="1611709888118" expanded="false" signature="6:78" ph="..." />
-                <marker date="1611709888118" expanded="true" signature="125:299" ph="{...}" />
-                <marker date="1611709888118" expanded="true" signature="197:218" ph="{...}" />
-                <marker date="1611709888118" expanded="true" signature="276:297" ph="{...}" />
+                <marker date="1611710086110" expanded="false" signature="6:113" ph="..." />
+                <marker date="1611710086110" expanded="true" signature="162:531" ph="{...}" />
+                <marker date="1611710086110" expanded="true" signature="313:382" ph="{...}" />
+                <marker date="1611710086110" expanded="true" signature="430:455" ph="{...}" />
+                <marker date="1611710086110" expanded="true" signature="492:529" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -167,6 +221,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/SaveSystem/SaveSystem.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/3-Mask/MaskSceneBehaviour.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Game/ARTrackerClassRoom.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/3-SocialDistance/InfectedPerson.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/3-Mask/Head.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Config/Scores.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ARTrackerManager.cs" root0="FORCE_HIGHLIGHTING" />
@@ -175,7 +230,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Data and Save System/PlayerData.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/99258562-0D64-4271-98DD-F3A0E1467733/b7/d65b11df/StreamWriter.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Data and Save System/GameData.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/stats-face/StatsFaceManager.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/stats-face/StatsFaceManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/3-SocialDistance/CovidRunSceneManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/SaveSystem/Hex.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
@@ -191,6 +246,9 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/SaveSystem/SaveSystem.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/3-Mask/Head.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/3-Mask/MaskSceneBehaviour.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/stats-face/StatsFaceManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/3-SocialDistance/InfectedPerson.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/3-SocialDistance/CovidRunManager.cs" />
       </list>
     </option>
   </component>
@@ -239,6 +297,12 @@
               <item name="Assets" type="8711f2a6:AssetsRoot" />
               <item name="Scripts" type="1045f7f1:UnityExplorerNode" />
               <item name="3-Mask" type="1045f7f1:UnityExplorerNode" />
+            </path>
+            <path>
+              <item name="" type="e068e287:UnityExplorerRootNode" />
+              <item name="Assets" type="8711f2a6:AssetsRoot" />
+              <item name="Scripts" type="1045f7f1:UnityExplorerNode" />
+              <item name="3-SocialDistance" type="1045f7f1:UnityExplorerNode" />
             </path>
             <path>
               <item name="" type="e068e287:UnityExplorerRootNode" />
@@ -314,12 +378,12 @@
       <workItem from="1611421805405" duration="2437000" />
       <workItem from="1611425455640" duration="961000" />
       <workItem from="1611682350634" duration="15731000" />
-      <workItem from="1611703297132" duration="2297000" />
+      <workItem from="1611703297132" duration="5182000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="21608000" />
+    <option name="totallyTimeSpent" value="24493000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -331,7 +395,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="12" y="80" width="1680" height="1027" extended-state="0" />
+    <frame x="0" y="23" width="1680" height="1027" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26190478" />
@@ -448,41 +512,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Scripts/3-SocialDistance/CovidRunManager.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="35" column="44" lean-forward="true" selection-start-line="35" selection-start-column="44" selection-end-line="35" selection-end-column="44" />
-          <folding>
-            <marker date="1611708927419" expanded="false" signature="6:78" ph="..." />
-            <marker date="1611708927419" expanded="true" signature="124:3495" ph="{...}" />
-            <marker date="1611708927419" expanded="false" signature="131:254" ph="Enums" />
-            <marker date="1611708927419" expanded="true" signature="159:238" ph="{...}" />
-            <marker date="1611708927419" expanded="true" signature="260:728" ph="Properties" />
-            <marker date="1611708927419" expanded="true" signature="755:924" ph="{...}" />
-            <marker date="1611708927419" expanded="true" signature="952:1350" ph="{...}" />
-            <marker date="1611708927419" expanded="true" signature="1164:1243" ph="{...}" />
-            <marker date="1611708927419" expanded="true" signature="1256:1334" ph="{...}" />
-            <marker date="1611708927419" expanded="true" signature="1385:1398" ph="{...}" />
-            <marker date="1611708927419" expanded="true" signature="1428:1558" ph="{...}" />
-            <marker date="1611708927419" expanded="true" signature="1485:1552" ph="{...}" />
-            <marker date="1611708927419" expanded="true" signature="1587:1711" ph="{...}" />
-            <marker date="1611708927419" expanded="true" signature="1639:1705" ph="{...}" />
-            <marker date="1611708927419" expanded="true" signature="1753:2039" ph="{...}" />
-            <marker date="1611708927419" expanded="true" signature="1826:2033" ph="{...}" />
-            <marker date="1611708927419" expanded="true" signature="2070:2150" ph="{...}" />
-            <marker date="1611708927419" expanded="true" signature="2207:2691" ph="{...}" />
-            <marker date="1611708927419" expanded="true" signature="2283:2659" ph="{...}" />
-            <marker date="1611708927419" expanded="true" signature="2721:2974" ph="{...}" />
-            <marker date="1611708927419" expanded="true" signature="2765:2839" ph="{...}" />
-            <marker date="1611708927419" expanded="true" signature="2852:2968" ph="{...}" />
-            <marker date="1611708927419" expanded="true" signature="3005:3260" ph="{...}" />
-            <marker date="1611708927419" expanded="true" signature="3050:3124" ph="{...}" />
-            <marker date="1611708927419" expanded="true" signature="3137:3254" ph="{...}" />
-            <marker date="1611708927419" expanded="true" signature="3313:3493" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Assets/Scripts/SaveSystem/SaveSystem.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="672">
@@ -587,13 +616,13 @@
         <state relative-caret-position="360">
           <caret line="23" column="5" selection-start-line="23" selection-start-column="5" selection-end-line="23" selection-end-column="5" />
           <folding>
-            <marker date="1611703345183" expanded="false" signature="6:113" ph="..." />
-            <marker date="1611703345183" expanded="true" signature="166:852" ph="{...}" />
-            <marker date="1611703345183" expanded="true" signature="311:475" ph="{...}" />
-            <marker date="1611703345183" expanded="true" signature="538:586" ph="{...}" />
-            <marker date="1611703345183" expanded="true" signature="634:712" ph="{...}" />
-            <marker date="1611703345183" expanded="true" signature="749:850" ph="{...}" />
-            <marker date="1611703345183" expanded="true" signature="784:844" ph="{...}" />
+            <marker date="1611710257428" expanded="false" signature="6:113" ph="..." />
+            <marker date="1611710257428" expanded="true" signature="166:855" ph="{...}" />
+            <marker date="1611710257428" expanded="true" signature="311:478" ph="{...}" />
+            <marker date="1611710257428" expanded="true" signature="541:589" ph="{...}" />
+            <marker date="1611710257428" expanded="true" signature="637:715" ph="{...}" />
+            <marker date="1611710257428" expanded="true" signature="752:853" ph="{...}" />
+            <marker date="1611710257428" expanded="true" signature="787:847" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -623,10 +652,37 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/stats-face/StatsFaceManager.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="22" column="5" selection-start-line="22" selection-start-column="5" selection-end-line="23" selection-end-column="24" />
+          <folding>
+            <marker date="1611710086110" expanded="false" signature="6:113" ph="..." />
+            <marker date="1611710086110" expanded="true" signature="162:531" ph="{...}" />
+            <marker date="1611710086110" expanded="true" signature="313:382" ph="{...}" />
+            <marker date="1611710086110" expanded="true" signature="430:455" ph="{...}" />
+            <marker date="1611710086110" expanded="true" signature="492:529" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/3-SocialDistance/InfectedPerson.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="17" column="5" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
+          <folding>
+            <marker date="1611712414261" expanded="false" signature="6:113" ph="..." />
+            <marker date="1611712414261" expanded="true" signature="158:507" ph="{...}" />
+            <marker date="1611712414261" expanded="true" signature="282:334" ph="{...}" />
+            <marker date="1611712414261" expanded="true" signature="353:505" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Assets/Scripts/3-Mask/MaskSceneBehaviour.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1152">
-          <caret line="83" column="21" selection-start-line="83" selection-start-column="21" selection-end-line="83" selection-end-column="21" />
+        <state>
+          <caret column="13" lean-forward="true" selection-start-column="13" selection-end-column="13" />
           <folding>
             <marker date="1611702902411" expanded="true" signature="6:295" ph="..." />
             <marker date="1611702902411" expanded="true" signature="347:6693" ph="{...}" />
@@ -657,14 +713,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Scripts/stats-face/StatsFaceManager.cs">
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/3-SocialDistance/CovidRunManager.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
+        <state relative-caret-position="585">
+          <caret line="137" column="28" lean-forward="true" selection-start-line="137" selection-start-column="28" selection-end-line="137" selection-end-column="28" />
           <folding>
-            <marker date="1611709888118" expanded="false" signature="6:78" ph="..." />
-            <marker date="1611709888118" expanded="true" signature="125:299" ph="{...}" />
-            <marker date="1611709888118" expanded="true" signature="197:218" ph="{...}" />
-            <marker date="1611709888118" expanded="true" signature="276:297" ph="{...}" />
+            <marker date="1611712826015" expanded="false" signature="6:113" ph="..." />
+            <marker date="1611712826015" expanded="true" signature="159:3540" ph="{...}" />
+            <marker date="1611712826015" expanded="true" signature="166:289" ph="Enums" />
+            <marker date="1611712826015" expanded="true" signature="194:273" ph="{...}" />
+            <marker date="1611712826015" expanded="true" signature="295:803" ph="Properties" />
+            <marker date="1611712826015" expanded="true" signature="848:1044" ph="{...}" />
+            <marker date="1611712826015" expanded="true" signature="1072:1460" ph="{...}" />
+            <marker date="1611712826015" expanded="true" signature="1284:1363" ph="{...}" />
+            <marker date="1611712826015" expanded="true" signature="1376:1454" ph="{...}" />
+            <marker date="1611712826015" expanded="true" signature="1495:1508" ph="{...}" />
+            <marker date="1611712826015" expanded="true" signature="1538:1668" ph="{...}" />
+            <marker date="1611712826015" expanded="true" signature="1595:1662" ph="{...}" />
+            <marker date="1611712826015" expanded="true" signature="1697:1821" ph="{...}" />
+            <marker date="1611712826015" expanded="true" signature="1749:1815" ph="{...}" />
+            <marker date="1611712826015" expanded="true" signature="1863:2020" ph="{...}" />
+            <marker date="1611712826015" expanded="true" signature="1936:2014" ph="{...}" />
+            <marker date="1611712826015" expanded="true" signature="2057:2367" ph="{...}" />
+            <marker date="1611712826015" expanded="true" signature="2402:2482" ph="{...}" />
+            <marker date="1611712826015" expanded="true" signature="2539:2967" ph="{...}" />
+            <marker date="1611712826015" expanded="true" signature="2609:2935" ph="{...}" />
+            <marker date="1611712826015" expanded="true" signature="2997:3250" ph="{...}" />
+            <marker date="1611712826015" expanded="true" signature="3041:3115" ph="{...}" />
+            <marker date="1611712826015" expanded="true" signature="3128:3244" ph="{...}" />
+            <marker date="1611712826015" expanded="true" signature="3281:3536" ph="{...}" />
+            <marker date="1611712826015" expanded="true" signature="3326:3400" ph="{...}" />
+            <marker date="1611712826015" expanded="true" signature="3413:3530" ph="{...}" />
           </folding>
         </state>
       </provider>
