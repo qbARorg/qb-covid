@@ -11,6 +11,7 @@ namespace ClassRoom
         private Material infectedMat;
         [SerializeField]
         private MeshRenderer [] tochange;
+        private bool infected = false;
         #endregion
 
         #region Custom Methods
@@ -20,6 +21,12 @@ namespace ClassRoom
             {
                 meshy.material = infectedMat;
             }
+            infected = true;
+        }
+
+        public bool getInfectedValue()
+        {
+            return infected;
         }
         #endregion
     }
