@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class ARShooting : MonoBehaviour
 {
@@ -26,11 +27,15 @@ public class ARShooting : MonoBehaviour
     private ParticleSystem splatterParticleSyst;
 
     private int eliminatedVirus;
-    private int maxPointsPerVirus = 100;
+    private int maxPointsPerVirus = 10;
     private int points = 0;
     private bool once = true;
 
     private bool isDragging;
+
+    [Header("UI Final")]
+    public GameObject uiScore;
+    public Text scoreText;
 
     #endregion
 
@@ -39,6 +44,7 @@ public class ARShooting : MonoBehaviour
     private void Awake()
     {
         SetVariables();
+        uiScore.SetActive(false);
     }
 
     public void Update()
@@ -141,6 +147,8 @@ public class ARShooting : MonoBehaviour
             {
                 //Save score
                 SaveSystem.Save("HandSceneScore", new Scores(points));
+                uiScore.SetActive(true);
+                scoreText.text = "" + points.ToString();
                 once = false;
             }
             emptyAnimator.gameObject.GetComponent<Transform>().position = shootPosition.position;

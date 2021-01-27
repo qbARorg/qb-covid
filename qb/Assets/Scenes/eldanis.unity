@@ -765,10 +765,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: TextScene
       objectReference: {fileID: 0}
-    - target: {fileID: 5147102318808919400, guid: 9dc66057373124f95915f10f36155197, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6865841450951502972, guid: 9dc66057373124f95915f10f36155197, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1316,6 +1312,10 @@ PrefabInstance:
       propertyPath: m_SerializedLibrary
       value: 
       objectReference: {fileID: 11400000, guid: 001bb1aa311514f9a98cdab714b89131, type: 2}
+    - target: {fileID: 6155274031550024905, guid: d53b83fcad53a458fa739ab9ddf65632, type: 3}
+      propertyPath: m_MaxNumberOfMovingImages
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6155274031550024908, guid: d53b83fcad53a458fa739ab9ddf65632, type: 3}
       propertyPath: listeners.Array.size
       value: 6

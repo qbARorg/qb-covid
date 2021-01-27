@@ -9,18 +9,27 @@ public class StatsFaceManager : TrackerListener
 
     private List<Stats> texts;
 
-    private Stats InstantiateText()
-    {
-        Stats s = Instantiate(prefabSampleText, transform);
-        texts.Add(s);
-        s.transform.position += Vector3.down * (texts.Count * 1.5f);
-        return s;
-    }
+    [SerializeField]
+    private GameObject pivot;
+
+    private GameObject pivotInstance;
     
+
     public override void OnDetectedStart(ARTrackedImage img)
     {
+        if (texts != null)
+        {
+            foreach (Stats text in texts)
+            {
+                Destroy(text.gameObject);
+            }
+        }
+        texts = new List<Stats>();
+        pivotInstance = Instantiate(pivot, img.transform);
+        pivotInstance.transform.localPosition = Vector3.zero;
         NewScoreText("Mask Placement", MaskSceneBehaviour.ConfigFileName);
         NewScoreText("Classroom Simulation", "ClassRoomMask");
+        NewScoreText("Classroom Without Masks Simulation", "ClassRoomNoMask");
     }
 
     private void NewScoreText(string game, string nameConfig)
@@ -31,14 +40,25 @@ public class StatsFaceManager : TrackerListener
             Scores scoreMaskScene = SaveSystem.Load<Scores>(nameConfig);
             score = scoreMaskScene.maximumScore;
         }
-        InstantiateText().Text.text = $"Score {game} Game: {score}";
+        InstantiateText().Text.text = $"Record Score {game} Game: {score}";
+    }
+    
+    private Stats InstantiateText()
+    {
+        Stats s = Instantiate(prefabSampleText, pivotInstance.transform);
+        texts.Add(s);
+        s.transform.position = Vector3.zero;
+        s.transform.position += Vector3.down * (texts.Count * 0.1f);
+        return s;
     }
 
     public override void OnStoppingDetection()
     {
         foreach (Stats text in texts)
         {
-            Destroy(text);
+            Destroy(text.gameObject);
         }
+        texts = new List<Stats>();
+        Destroy(pivotInstance);
     }
 }
