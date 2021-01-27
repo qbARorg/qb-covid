@@ -26,7 +26,7 @@ public class ARShooting : MonoBehaviour
     private ParticleSystem splatterParticleSyst;
 
     private int eliminatedVirus;
-    private int maxPointsPerVirus = 100;
+    private int maxPointsPerVirus = 10;
     private int points = 0;
     private bool once = true;
 
