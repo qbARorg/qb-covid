@@ -91,6 +91,7 @@ namespace ClassRoom
                 if(!peopleTimersAreSet)
                 {
                     setFinalInfectionRate();
+                    Debug.Log(infectionRate);
                     setPeopleRandomTimers();
                 }
                 timer += Time.deltaTime;
@@ -100,8 +101,7 @@ namespace ClassRoom
                     timeLine.value = simulationTime;
                     endedSim = true;
                     endScreen.SetActive(true);
-                    if(this.gameObject.name == "ClassRoom") SaveSystem.Save("ClassRoomMask", new Scores(finalScore));
-                    else if (this.gameObject.name == "ClassRoomNoMasks") SaveSystem.Save("ClassRoomNoMask", new Scores(finalScore));
+                    saveClassScore();
                 }
                 else timeLine.value = timer;
             }
@@ -165,6 +165,7 @@ namespace ClassRoom
                         break;
                     default:
                         partSys1.Play();
+                        infectionRate *= ratio4;
                         setEndScore(s1);
                         break;
                 }
@@ -177,8 +178,10 @@ namespace ClassRoom
             {
                 if(timer >= peopleTimers[i])
                 {
-                    if(people[i] != null && people[i].GetComponent<ClassRoomInfectionForPeople>() != null)
+                    if(people[i] != null && people[i].GetComponent<ClassRoomInfectionForPeople>() != null
+                        && !people[i].GetComponent<ClassRoomInfectionForPeople>().getInfectedValue())
                     {
+                        Debug.Log(people[i].gameObject.name + " is now infected (" + peopleTimers[i] + ")");
                         people[i].GetComponent<ClassRoomInfectionForPeople>().getInfectedBoi();
                     }
                 }
@@ -208,6 +211,12 @@ namespace ClassRoom
             {
                 finalScore = 1;
             }
+        }
+
+        private void saveClassScore()
+        {
+            if (this.gameObject.name == "ClassRoom") SaveSystem.Save("ClassRoomMask", new Scores(finalScore));
+            else if (this.gameObject.name == "ClassRoomNoMasks") SaveSystem.Save("ClassRoomNoMask", new Scores(finalScore));
         }
         #endregion
     }
