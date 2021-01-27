@@ -12,7 +12,7 @@ public class CovidRunSceneManager : TrackerListener
     {
         Debug.Log("goooolaso de maradona 😱🙇🏽‍♀️");
         managerInstance = Instantiate(manager, img.transform);
-        managerInstance.ARAwake();
+        managerInstance.ARAwake(img);
     }
 
     public override void OnDetectedUpdate(ARTrackedImage img)
