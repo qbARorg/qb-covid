@@ -5,7 +5,7 @@ public class GelController : MonoBehaviour
 {
     #region Attributes
 
-    private ARShooting _ARShooting;
+    public ARShooting _ARShooting;
     private GameObject[] particleSystems;
     private ParticleSystem splatterParticleSyst;
     private ParticleSystem mainParticleSyst;
@@ -19,7 +19,7 @@ public class GelController : MonoBehaviour
     void Start()
     {
         time = 0;
-        _ARShooting = GameObject.Find("Scene").GetComponent<ARShooting>();
+        if(_ARShooting == null) _ARShooting = GameObject.Find("Scene").GetComponent<ARShooting>();
         Debug.Log(_ARShooting);
         particleSystems = GameObject.FindGameObjectsWithTag("ParticleSyst");
         foreach (GameObject ps in particleSystems)
@@ -49,7 +49,7 @@ public class GelController : MonoBehaviour
                 EmitAtLocation(collisionEvents[i]);
             }
         }
-        if (other.transform.parent.name.StartsWith("Controller") && other.tag == "Virus")
+        if (/*other.transform.parent.name.StartsWith("Controller") && */other.gameObject.tag == "Virus")
         {
             other.SetActive(false);
             _ARShooting.IncrementEliminatedVirus(time);
