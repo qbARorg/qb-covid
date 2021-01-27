@@ -24,13 +24,11 @@ public class MaskSceneBehaviour : TrackerListener
     [SerializeField] private Head head;
     [SerializeField] private Head headInstanceComponent;
     private ARRaycastManager raycastManager;
-    [SerializeField]
-    private LayerMask layer;
+   
     [SerializeField]
     private GameObject mask;
     private GameObject headInstance;
     private Camera mainCamera;
-    private float currentTimeLeft = 0.0f;
     private float factorTime = 1.0f;
     private float timeLeft = 0.0f;
     private const float timeLeftInitial = 20.0f;
