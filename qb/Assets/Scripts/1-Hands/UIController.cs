@@ -27,7 +27,7 @@ public class UIController : MonoBehaviour
             }
             else if (parent.GetChild(i).name.StartsWith("Counter"))
             {
-                counter = parent.GetChild(i).GetComponentInChildren<Text>();
+                counter = parent.GetChild(i).GetChild(0).GetComponent<Text>();
             }
         }
         if (gelVisualizer) pivotGel = gelVisualizer.transform.GetChild(1).GetComponent<RectTransform>();
@@ -39,7 +39,7 @@ public class UIController : MonoBehaviour
         if (_ARShooting)
         {
             gelAmount = _ARShooting.GetGelAmountNormalized();
-            counter.text = _ARShooting.GetEliminatedVirus().ToString();
+            counter.text = /*_ARShooting.GetEliminatedVirus().ToString();*/"";
         }
         if (gelAmount < 0) return;
         if (pivotGel)
