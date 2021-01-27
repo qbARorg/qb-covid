@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.XR.ARFoundation;
 
 public class CovidRunManager : MonoBehaviour
@@ -23,8 +24,10 @@ public class CovidRunManager : MonoBehaviour
 
     public GameObject infectedPersonPrefab;
 
-    public GameObject playerPrefab;
+    public TextMesh score;
+    private TextMesh scoreInstance;
 
+    public GameObject playerPrefab;
     private GameObject playerInstance;
 
     public float infectedPersonAppearRate;
@@ -35,6 +38,10 @@ public class CovidRunManager : MonoBehaviour
     private float probabilityOfCovid = 0.0f;
 
     private const float probDelta = 0.01f;
+    private const float minDist = .5f;
+
+    private Vector2 tap = Vector3.zero;
+    private bool canTap = true;
 
     #endregion
 
@@ -43,36 +50,55 @@ public class CovidRunManager : MonoBehaviour
         imgTracker = img;
         currentRail = Rail.Center;
         railDist = 0.5f;
-        playerInstance = Instantiate(playerPrefab, Vector3.back, transform.rotation, transform);
+        playerInstance = Instantiate(playerPrefab, Vector3.left * 0.08f + Vector3.back * 0.3f, transform.rotation, transform);
+        playerInstance.transform.localScale *= 0.7f;
+        playerInstance.transform.Rotate(Vector3.right * 90f);
+        score.transform.Rotate(Vector3.right * 90f);
     }
 
     public void ARUpdate()
     {
         AppearEnemies(Time.deltaTime);
-        Debug.Log("Player is at: " + playerInstance.transform.position);
-        var tap = Input.mousePosition;
-        var middle = Screen.width / 2;
-        var dir = (int)((middle - tap.x) / Mathf.Abs(middle - tap.x));
+        HandleTouch();
+        score.text = probabilityOfCovid.ToString();
+    }
 
-        Debug.Log("User taped at: " + tap);
-        Debug.Log("Middle is at: " + middle);
-        Debug.Log("Dir to move player is: " + dir);
+    private void HandleTouch()
+    {
+        tap = Input.mousePosition;
+        if (canTap && Input.touchCount > 0)
+        {
+            var middle = Screen.width / 2;
+            var dir = (int)((middle - tap.x) / Mathf.Abs(middle - tap.x));
+            if (dir > 0)
+            {
+                GoLeft();
+            }
+            else if (dir < 0)
+            {
+                GoRight();
+            }
+            canTap = false;
+        }
+        else if (!canTap && Input.touchCount == 0)
+        {
+            canTap = true;
+        }
 
-        if (dir > 0)
-        {
-            Debug.Log("Next thing move RIGHT");
-            playerInstance.transform.position = GoRight();
-        }
-        else
-        {
-            Debug.Log("Next thing move LEFT");
-            playerInstance.transform.position = GoLeft();
-        }
+        CheckInfection();
     }
 
     private void CheckInfection()
     {
-
+        var enemies = FindObjectsOfType<InfectedPerson>();
+        foreach (var enemy in enemies)
+        {
+            float dist = (playerInstance.transform.position - enemy.transform.position).sqrMagnitude;
+            if (dist > minDist)
+            {
+                probabilityOfCovid += probDelta;
+            }
+        }
     }
 
     private void AppearEnemies(float dt)
@@ -121,31 +147,33 @@ public class CovidRunManager : MonoBehaviour
         return position;
     }
 
-    private Vector3 GoLeft()
+    private void GoLeft()
     {
-        if (currentRail == Rail.Left)
+        switch (currentRail)
         {
-            return playerInstance.transform.position;
-        }
-        else
-        {
-            currentRail--;
-            return Vector3.left * 0.2f;
+            case Rail.Center:
+                currentRail = Rail.Left;
+                playerInstance.transform.position += Vector3.left * 0.2f;
+                break;
+            case Rail.Right:
+                currentRail = Rail.Center;
+                playerInstance.transform.position += Vector3.left * 0.2f;
+                break;
         }
     }
 
-    private Vector3 GoRight()
+    private void GoRight()
     {
-        if (currentRail == Rail.Right)
+        switch (currentRail)
         {
-            return playerInstance.transform.position;
-        }
-        else
-        {
-            currentRail++;
-            return Vector3.right * 0.2f;
+            case Rail.Left:
+                currentRail = Rail.Center;
+                playerInstance.transform.position += Vector3.right * 0.2f;
+                break;
+            case Rail.Center:
+                currentRail = Rail.Right;
+                playerInstance.transform.position += Vector3.right * 0.2f;
+                break;
         }
     }
-
-
 }
