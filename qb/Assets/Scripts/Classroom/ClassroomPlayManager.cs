@@ -96,6 +96,8 @@ namespace ClassRoom
                     timeLine.value = simulationTime;
                     endedSim = true;
                     endScreen.SetActive(true);
+                    if(this.gameObject.name == "ClassRoom") SaveSystem.Save("ClassRoomMask", new Scores(finalScore));
+                    else if (this.gameObject.name == "ClassRoomNoMasks") SaveSystem.Save("ClassRoomNoMask", new Scores(finalScore));
                 }
                 else timeLine.value = timer;
             }
