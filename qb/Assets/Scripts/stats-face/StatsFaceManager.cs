@@ -31,6 +31,7 @@ public class StatsFaceManager : TrackerListener
         NewScoreText("Classroom Simulation", "ClassRoomMask");
         NewScoreText("Classroom Without Masks Simulation", "ClassRoomNoMask");
         NewScoreText("Hand Clean", "HandSceneScore");
+        NewScoreTextFloat("Run from Covid-19", "CovidRun");
     }
 
     private void NewScoreText(string game, string nameConfig)
@@ -40,6 +41,17 @@ public class StatsFaceManager : TrackerListener
         {
             Scores scoreMaskScene = SaveSystem.Load<Scores>(nameConfig);
             score = scoreMaskScene.maximumScore;
+        }
+        InstantiateText().Text.text = $"Record Score {game} Game: {score}";
+    }
+    
+    private void NewScoreTextFloat(string game, string nameConfig)
+    {
+        float score = 0;
+        if (SaveSystem.Exists(nameConfig))
+        {
+            Scores scoreMaskScene = SaveSystem.Load<Scores>(nameConfig);
+            score = scoreMaskScene.maximumScoreFloat;
         }
         InstantiateText().Text.text = $"Record Score {game} Game: {score}";
     }
