@@ -7,6 +7,7 @@ namespace ClassRoom
 {
     public class ClassroomPlayManager : MonoBehaviour
     {
+        #region Attributes
         [Header("UI")]
         [SerializeField]
         GameObject[] gameUIToDisable;
@@ -67,8 +68,10 @@ namespace ClassRoom
         private float ratio3 = 0.4f;
         [SerializeField]
         private float ratio4 = 0.2f;
-        private int finalScore;
+        private int finalScore = 0;
+        #endregion
 
+        #region Main Methods
         // Start is called before the first frame update
         void Start()
         {
@@ -77,6 +80,7 @@ namespace ClassRoom
             timer = 0.0f;
             peopleTimers = new float[people.Length];
             timeLine.maxValue = simulationTime;
+            finalScore = 0;
         }
 
         // Update is called once per frame
@@ -96,11 +100,15 @@ namespace ClassRoom
                     timeLine.value = simulationTime;
                     endedSim = true;
                     endScreen.SetActive(true);
+                    if(this.gameObject.name == "ClassRoom") SaveSystem.Save("ClassRoomMask", new Scores(finalScore));
+                    else if (this.gameObject.name == "ClassRoomNoMasks") SaveSystem.Save("ClassRoomNoMask", new Scores(finalScore));
                 }
                 else timeLine.value = timer;
             }
         }
+        #endregion
 
+        #region Custom Methods
         public void setStartSimulation()
         {
             startSim = true;
@@ -201,5 +209,6 @@ namespace ClassRoom
                 finalScore = 1;
             }
         }
+        #endregion
     }
 }

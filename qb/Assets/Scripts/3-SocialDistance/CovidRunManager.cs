@@ -57,6 +57,9 @@ public class CovidRunManager : MonoBehaviour
         var tap = Input.mousePosition;
         var middle = Screen.width;
         var dir = (int)((middle - tap.x) / Mathf.Abs(middle - tap.x));
+        Debug.Log("taped at: " + tap);
+        Debug.Log("middle is at: " + middle);
+        Debug.Log("dir to move player is: " + tap);
 
         if (dir > 0)
         {
@@ -120,15 +123,15 @@ public class CovidRunManager : MonoBehaviour
         switch (rail)
         {
             case Rail.Left:
-                position = Vector3.left;
+                position = Vector3.left * 0.2f;
                 break;
             
             case Rail.Center:
-                position = Vector3.zero;
+                position = Vector3.zero * 0.2f;
                 break;
             
             case Rail.Right:
-                position = Vector3.right;
+                position = Vector3.right * 0.2f;
                 break;
         }
 
@@ -144,7 +147,7 @@ public class CovidRunManager : MonoBehaviour
         else
         {
             currentRail--;
-            return Vector3.left + playerInstance.transform.position;
+            return Vector3.left * 0.2f;
         }
     }
 
@@ -157,7 +160,7 @@ public class CovidRunManager : MonoBehaviour
         else
         {
             currentRail++;
-            return Vector3.right + playerInstance.transform.position;
+            return Vector3.right * 0.2f;
         }
     }
 

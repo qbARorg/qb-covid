@@ -7,6 +7,7 @@ namespace ClassRoom
 {
     public class ClassroomCanvasController : MonoBehaviour
     {
+        #region Attributes
         private ClassroomController mainController = null;
         [Header("Door")]
         [SerializeField]
@@ -47,7 +48,9 @@ namespace ClassRoom
         private string window3Openedtext = "Window 3: Opened";
         [SerializeField]
         private ParticleSystem w3Particles;
+        #endregion
 
+        #region Main Methods
         void Start()
         {
             mainController = this.GetComponent<ClassroomController>();
@@ -60,7 +63,9 @@ namespace ClassRoom
             w2Particles.Stop();
             w3Particles.Stop();
         }
+        #endregion
 
+        #region Custom Methods
         public void doorButtonClick()
         {
             if(mainController.getDoorState())
@@ -124,5 +129,6 @@ namespace ClassRoom
                 w3Particles.Play();
             }
         }
+        #endregion
     }
 }

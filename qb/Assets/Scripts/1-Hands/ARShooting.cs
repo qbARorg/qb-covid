@@ -24,6 +24,7 @@ public class ARShooting : MonoBehaviour
     private ParticleSystem.ForceOverLifetimeModule gelForceModule;
     private ParticleSystem mainParticleSyst;
     private ParticleSystem splatterParticleSyst;
+
     private int eliminatedVirus;
     private int maxPointsPerVirus = 100;
     private int points = 0;
