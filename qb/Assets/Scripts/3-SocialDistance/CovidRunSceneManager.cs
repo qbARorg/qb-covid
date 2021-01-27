@@ -21,6 +21,21 @@ public class CovidRunSceneManager : TrackerListener
 
     public override void OnDetectedUpdate(ARTrackedImage img)
     {
+        
+    }
+
+    public override void OnStoppingDetection()
+    {
+        managerInstance.Dispose();
+        managerInstance.enabled = false;
+    }
+
+    public override void ARUpdate()
+    {
+        if (managerInstance)
+        {
+            managerInstance.ARUpdate();
+        }
         float dt = Time.deltaTime;
         curr += dt;
         if (curr > timeout)
@@ -36,20 +51,6 @@ public class CovidRunSceneManager : TrackerListener
                 managerInstance.score.text += "\nNew Highscore! -> " + managerInstance.probabilityOfCovid;
                 SaveSystem.Save("CovidRun", new Scores(managerInstance.probabilityOfCovid));
             }
-        }
-    }
-
-    public override void OnStoppingDetection()
-    {
-        managerInstance.Dispose();
-        managerInstance.enabled = false;
-    }
-
-    public override void ARUpdate()
-    {
-        if (managerInstance)
-        {
-            managerInstance.ARUpdate();
         }
     }
 }
