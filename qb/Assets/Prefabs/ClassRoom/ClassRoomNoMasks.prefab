@@ -20943,7 +20943,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: fb87f129af9293241a32b5d0b5b157d4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 37dfe5c2606509640bc5a72760512026, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -27227,7 +27227,7 @@ GameObject:
   - component: {fileID: 3556312495214342013}
   - component: {fileID: 1814228459322016160}
   m_Layer: 0
-  m_Name: ClassRoom
+  m_Name: ClassRoomNoMasks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27359,11 +27359,11 @@ MonoBehaviour:
   partSys3: {fileID: 1423963219823386244}
   partSys4: {fileID: 1338600216459336541}
   partSys5: {fileID: 1260013612180712069}
-  s1: "\u2605\u2605\u2606\u2606\u2606"
-  s2: "\u2605\u2605\u2606\u2606\u2606"
-  s3: "\u2605\u2605\u2605\u2606\u2606"
-  s4: "\u2605\u2605\u2605\u2605\u2606"
-  s5: "\u2605\u2605\u2605\u2605\u2605"
+  s1: "\u2605\u2606\u2606\u2606\u2606"
+  s2: "\u2605\u2606\u2606\u2606\u2606"
+  s3: "\u2605\u2605\u2606\u2606\u2606"
+  s4: "\u2605\u2605\u2605\u2606\u2606"
+  s5: "\u2605\u2605\u2605\u2606\u2606"
   simulationTime: 20
   infectionsStart: 10
   people:
@@ -27374,7 +27374,7 @@ MonoBehaviour:
   - {fileID: 1641707148174279594}
   - {fileID: 5091176062187233811}
   classController: {fileID: 3506442728542074655}
-  infectionRate: 100
+  infectionRate: 15
   ratio1: 0.8
   ratio2: 0.6
   ratio3: 0.4
