@@ -193,7 +193,7 @@ public class ARShooting : MonoBehaviour
     public void IncrementEliminatedVirus(float time)
     {
         eliminatedVirus++;
-        if(time != 0) points += Mathf.FloorToInt(maxPointsPerVirus / time);
+        if (time != 0) points += Mathf.FloorToInt(maxPointsPerVirus / time);
     }
 
     public int GetEliminatedVirus()
