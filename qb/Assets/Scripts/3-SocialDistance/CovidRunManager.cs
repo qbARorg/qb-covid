@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR.ARFoundation;
 
 public class CovidRunManager : MonoBehaviour
 {
@@ -22,6 +23,8 @@ public class CovidRunManager : MonoBehaviour
     public Vector3 v3Cylinder;
     public Vector3 v3Cube;
 
+    private ARTrackedImage imgTracker;
+
     public GameObject infectedPersonPrefab;
 
     public GameObject playerPrefab;
@@ -39,8 +42,10 @@ public class CovidRunManager : MonoBehaviour
 
     #endregion
 
-    public void ARAwake()
+    public void ARAwake(ARTrackedImage img)
     {
+        imgTracker = img;
+
         currentRail = Rail.Center;
         railDist = 0.5f;
         playerInstance = Instantiate(playerPrefab, Vector3.back, transform.rotation, transform);
@@ -61,8 +66,6 @@ public class CovidRunManager : MonoBehaviour
         {
             playerInstance.transform.position = GoLeft();
         }
-
-        
     }
 
     private void CheckInfection()
@@ -110,13 +113,13 @@ public class CovidRunManager : MonoBehaviour
         switch (rail)
         {
             case Rail.Left:
-                position = -transform.right - (transform.forward * 10f);
+                position = -imgTracker.transform.right - (imgTracker.transform.forward * 10f);
                 break;
             case Rail.Center:
-                position = -(transform.forward * 10f);
+                position = -(imgTracker.transform.forward * 10f);
                 break;
             case Rail.Right:
-                position = transform.right - (transform.forward * 10f);
+                position = imgTracker.transform.right - (imgTracker.transform.forward * 10f);
                 break;
         }
 
@@ -151,7 +154,10 @@ public class CovidRunManager : MonoBehaviour
 
     private void InstantiateEnemy(Vector3 position)
     {
-        GameObject newEnemy = Instantiate(infectedPersonPrefab, position, playerInstance.transform.rotation, transform);
-        newEnemy.transform.parent = transform;
+        GameObject newEnemy = Instantiate(infectedPersonPrefab, position, imgTracker.transform.rotation, imgTracker.transform);
+        InfectedPerson ip = newEnemy.GetComponent<InfectedPerson>();
+        ip.imgTracked = imgTracker;
+        Destroy(newEnemy.gameObject, 2.5f);
+
     }
 }
