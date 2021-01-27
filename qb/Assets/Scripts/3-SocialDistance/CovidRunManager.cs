@@ -19,10 +19,6 @@ public class CovidRunManager : MonoBehaviour
 
     #region Properties
 
-    public Vector3 v3Sphere;
-    public Vector3 v3Cylinder;
-    public Vector3 v3Cube;
-
     private ARTrackedImage imgTracker;
 
     public GameObject infectedPersonPrefab;
@@ -55,11 +51,11 @@ public class CovidRunManager : MonoBehaviour
     {
         AppearEnemies(Time.deltaTime);
         var tap = Input.mousePosition;
-        var middle = Screen.width;
+        var middle = Screen.width / 2;
         var dir = (int)((middle - tap.x) / Mathf.Abs(middle - tap.x));
         Debug.Log("taped at: " + tap);
         Debug.Log("middle is at: " + middle);
-        Debug.Log("dir to move player is: " + tap);
+        Debug.Log("dir to move player is: " + dir);
 
         if (dir > 0)
         {
@@ -74,22 +70,6 @@ public class CovidRunManager : MonoBehaviour
     private void CheckInfection()
     {
 
-    }
-
-    private void OnDisable()
-    {
-        foreach(Transform child in this.transform)
-        {
-            child.gameObject.SetActive(false);
-        }
-    }
-
-    private void OnEnable()
-    {
-        foreach(Transform child in transform)
-        {
-            child.gameObject.SetActive(true);
-        }
     }
 
     private void AppearEnemies(float dt)

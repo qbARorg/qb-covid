@@ -13,7 +13,6 @@
             <e p="HandsRotation.cs" t="Include" />
             <e p="HandsSceneManager.cs" t="Include" />
             <e p="UIController.cs" t="Include" />
-            <e p="Virus.cs" t="Include" />
             <e p="VirusManager.cs" t="Include" />
           </e>
           <e p="3-Mask" t="Include">
@@ -33,6 +32,8 @@
           <e p="Classroom" t="Include">
             <e p="ClassroomCanvasController.cs" t="Include" />
             <e p="ClassroomController.cs" t="Include" />
+            <e p="ClassRoomInfectionForPeople.cs" t="Include" />
+            <e p="ClassroomPlayManager.cs" t="Include" />
           </e>
           <e p="Config" t="Include">
             <e p="Scores.cs" t="Include" />
@@ -45,6 +46,7 @@
             <e p="ARTrackerClassRoom.cs" t="Include" />
           </e>
           <e p="LightEstimation.cs" t="Include" />
+          <e p="MenuManager.cs" t="Include" />
           <e p="SaveSystem" t="Include">
             <e p="AESEncrypt.cs" t="Include" />
             <e p="Hex.cs" t="Include" />
@@ -53,6 +55,7 @@
             <e p="TestData2.cs" t="Include" />
           </e>
           <e p="stats-face" t="Include">
+            <e p="Stats.cs" t="Include" />
             <e p="StatsFaceManager.cs" t="Include" />
           </e>
           <e p="TrackerListener.cs" t="Include" />
