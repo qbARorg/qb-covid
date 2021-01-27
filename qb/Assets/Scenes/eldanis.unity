@@ -1177,7 +1177,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6155274031550024908, guid: d53b83fcad53a458fa739ab9ddf65632, type: 3}
       propertyPath: listeners.Array.size
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6155274031550024908, guid: d53b83fcad53a458fa739ab9ddf65632, type: 3}
       propertyPath: buttonExitScene
@@ -1191,6 +1191,10 @@ PrefabInstance:
       propertyPath: listeners.Array.data[3]
       value: 
       objectReference: {fileID: 782925817}
+    - target: {fileID: 6155274031550024908, guid: d53b83fcad53a458fa739ab9ddf65632, type: 3}
+      propertyPath: listeners.Array.data[4]
+      value: 
+      objectReference: {fileID: 513760258}
     - target: {fileID: 6155274031550024910, guid: d53b83fcad53a458fa739ab9ddf65632, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
