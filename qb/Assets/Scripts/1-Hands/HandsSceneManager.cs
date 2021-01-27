@@ -33,8 +33,9 @@ public class HandsSceneManager : TrackerListener
         {
             //Instantiate scene
             handsInstance = Instantiate(hands, img.transform).gameObject;
-            handsInstance.transform.localPosition = Vector3.zero;
-            handsInstance.transform.LookAt(sceneInstance.transform);
+            //handsInstance.transform.localPosition = Vector3.zero;
+            //handsInstance.transform.localRotation = Quaternion.identity;
+            //handsInstance.transform.LookAt(sceneInstance.transform);
         }
     }
 

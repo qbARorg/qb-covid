@@ -18,6 +18,9 @@ EditorBuildSettings:
     path: Assets/Scenes/3-mask__.unity
     guid: a378abc40a9eb4afdb30d6da46c83655
   - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: 2f9f23bd61db1594599214b00e493e3a
+  - enabled: 1
     path: Assets/Scenes/eldanis.unity
     guid: 7a6db2dc14ded46b6b706de1d9f14f32
   m_configObjects:

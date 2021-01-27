@@ -10,7 +10,7 @@ public class GelController : MonoBehaviour
     private ParticleSystem splatterParticleSyst;
     private ParticleSystem mainParticleSyst;
     private List<ParticleCollisionEvent> collisionEvents;
-
+    private float time;
 
     #endregion
 
@@ -18,6 +18,7 @@ public class GelController : MonoBehaviour
 
     void Start()
     {
+        time = 0;
         _ARShooting = GameObject.Find("Scene").GetComponent<ARShooting>();
         Debug.Log(_ARShooting);
         particleSystems = GameObject.FindGameObjectsWithTag("ParticleSyst");
@@ -33,6 +34,11 @@ public class GelController : MonoBehaviour
         collisionEvents = new List<ParticleCollisionEvent>();
     }
 
+    void Update()
+    {
+        time += Time.deltaTime;
+    }
+
     private void OnParticleCollision(GameObject other)
     {
         if(mainParticleSyst != null && other != null)
@@ -46,7 +52,7 @@ public class GelController : MonoBehaviour
         if (other.transform.parent.name.StartsWith("Controller") && other.tag == "Virus")
         {
             other.SetActive(false);
-            _ARShooting.IncrementEliminatedVirus();
+            _ARShooting.IncrementEliminatedVirus(time);
             Debug.Log(_ARShooting.GetEliminatedVirus());
         }
     }
