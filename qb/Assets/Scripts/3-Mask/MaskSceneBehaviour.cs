@@ -29,7 +29,6 @@ public class MaskSceneBehaviour : TrackerListener
     private GameObject mask;
     private GameObject headInstance;
     private Camera mainCamera;
-    private float currentTimeLeft = 0.0f;
     private float factorTime = 1.0f;
     private float timeLeft = 0.0f;
     private const float timeLeftInitial = 20.0f;

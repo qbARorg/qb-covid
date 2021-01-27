@@ -30,6 +30,7 @@ public class StatsFaceManager : TrackerListener
         NewScoreText("Mask Placement", MaskSceneBehaviour.ConfigFileName);
         NewScoreText("Classroom Simulation", "ClassRoomMask");
         NewScoreText("Classroom Without Masks Simulation", "ClassRoomNoMask");
+        NewScoreText("Hand Clean", "HandSceneScore");
     }
 
     private void NewScoreText(string game, string nameConfig)
